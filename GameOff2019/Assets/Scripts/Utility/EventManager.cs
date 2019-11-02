@@ -2,38 +2,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System;
 
 /// <summary>
-/// An event manager.  Commented out for now
+/// An event manager.  Only works with delegates who dont require input parameters
+/// Can make more general later
 /// </summary>
-//public static class EventManager 
-//{
-//    static Fish invoker;
-//    static UnityAction<int> listener;
+public static class EventManager
+{
+    static Dictionary<EventNames, List<Action>> eventDictionary = new Dictionary<EventNames, List<Action>>();
 
-//    /// <summary>
-//    /// Adds the invoker
-//    /// </summary>
-//    /// <param name="script">fish script</param>
-//    public static void AddInvoker(Fish script)
-//    {
-//        invoker = script;
-//        if (listener != null)
-//        {
-//            invoker.AddPointsAddedEventListener(listener);
-//        }
-//    }
+    public static void AddListener(EventNames eventName, Action listenerMethod)
+    {
+        if (eventDictionary.ContainsKey(eventName))
+        {
+            eventDictionary[eventName].Add(listenerMethod);
+        }
+        else
+        {
+            eventDictionary.Add(eventName, new List<Action>());
+            eventDictionary[eventName].Add(listenerMethod);
+        }
+    }
 
-//    /// <summary>
-//    /// Adds the listener
-//    /// </summary>
-//    /// <param name="handler">event handler</param>
-//    public static void AddListener(UnityAction<int> handler)
-//    {
-//        listener = handler;
-//        if (invoker != null)
-//        {
-//            invoker.AddPointsAddedEventListener(listener);            
-//        }
-//    }
-//}
+    public static void RemoveListener(EventNames eventName, Action listenerMethod)
+    {
+        if (eventDictionary[eventName].Contains(listenerMethod))
+        {
+            eventDictionary[eventName].Remove(listenerMethod);
+        }
+        else
+        {
+            Debug.Log("There is no method: " + listenerMethod +
+                " registered to the following event: " + eventName);
+        }
+    }
+
+    public static void RaiseEvent(EventNames eventName)
+    {
+        if (eventDictionary.ContainsKey(eventName))
+        {
+            foreach (var listenerMethod in eventDictionary[eventName])
+            {
+                listenerMethod.Invoke();
+            }
+        }
+    }
+}
