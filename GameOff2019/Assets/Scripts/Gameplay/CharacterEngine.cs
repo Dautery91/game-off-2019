@@ -22,18 +22,23 @@ public class CharacterEngine : MonoBehaviour
     private float landPositionY;
     private float timeToJumpDestination;
 
+    Vector3 destination;
+    Vector3 currentPos;
 
     private void Awake()
     {
         rb2D = this.GetComponent<Rigidbody2D>();
         characterInput = this.GetComponent<PlayerInputReader>();
         jumpStoredAmount = 5;
+        currentPos = this.transform.position;
     }
 
     private void FixedUpdate()
     {
         MoveCharacterHorizontal();
         Jump();
+
+        MoveRigidBody();
     }
 
 
@@ -65,25 +70,24 @@ public class CharacterEngine : MonoBehaviour
 
     private void Jump()
     {
-        timeToJumpDestination += Time.fixedDeltaTime / CharacterData.InverseJumpSpeed;
 
         isGrounded = Physics2D.OverlapCircle(GroundCheck.position, groundCheckRadius, GroundLayer);
 
         if (characterInput.JumpInput && isGrounded)
         {
-            float startPositionY = rb2D.position.y;
-
-            //transform.position = Vector2.Lerp(new Vector2(rb2D.position.x, startPositionY), new Vector2(rb2D.position.x, startPositionY + jumpPositionY), timeToJumpDestination);
-
-            rb2D.MovePosition(new Vector2(rb2D.position.x, rb2D.position.y + jumpStoredAmount));
+            destination.y = currentPos.y + jumpStoredAmount;
             jumpStoredAmount = 0;
-            jumpPositionY = rb2D.position.y;
 
-            // might have to delete this later
-            isGrounded = false;
         }
+
 
     }
 
+    private void MoveRigidBody()
+    {
+        Vector3 smoothedDelta = Vector3.MoveTowards(currentPos, destination, Time.fixedDeltaTime * 5);
+
+        rb2D.MovePosition(smoothedDelta);
+    }
 
 }

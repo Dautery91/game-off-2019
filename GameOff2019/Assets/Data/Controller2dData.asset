@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HorizontalRayCount: 4
   VerticalRayCount: 4
-  HorizontalSpeed: 5
+  HorizontalSpeed: 6
   tileLength: 1
   apexTimePerTile: 0.01
+  maxClimbableSlope: 75
+  maxDescendableSlope: 75
+  HangTimeDuration: 0.75
+  StartingJumpStrength: 3

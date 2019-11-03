@@ -4,6 +4,5 @@ using UnityEngine;
 
 public enum EventNames
 {
-    JumpEvent,
-    LandedEvent
+    JumpUpdateEvent,
 }

@@ -4,48 +4,51 @@ using UnityEngine;
 using UnityEngine.Events;
 using System;
 
-/// <summary>
-/// An event manager.  Only works with delegates who dont require input parameters
-/// Can make more general later
-/// </summary>
+public struct EventParam
+{
+    public string stringParam;
+    public int intParam;
+    public float floatParam;
+    public bool boolParam;
+}
+
 public static class EventManager
 {
-    static Dictionary<EventNames, List<Action>> eventDictionary = new Dictionary<EventNames, List<Action>>();
+    static Dictionary<EventNames, Action<EventParam>> eventDictionary = new Dictionary<EventNames, Action<EventParam>>();
 
-    public static void AddListener(EventNames eventName, Action listenerMethod)
+    public static void AddListener(EventNames eventName, Action<EventParam> listenerMethod)
     {
-        if (eventDictionary.ContainsKey(eventName))
+        Action<EventParam> thisEvent;
+
+        if (eventDictionary.TryGetValue(eventName, out thisEvent))
         {
-            eventDictionary[eventName].Add(listenerMethod);
+            thisEvent += listenerMethod;
+            eventDictionary[eventName] = thisEvent;
         }
         else
         {
-            eventDictionary.Add(eventName, new List<Action>());
-            eventDictionary[eventName].Add(listenerMethod);
+            thisEvent += listenerMethod;
+            eventDictionary.Add(eventName, listenerMethod);
         }
     }
 
-    public static void RemoveListener(EventNames eventName, Action listenerMethod)
+    public static void StopListening(EventNames eventName, Action<EventParam> listener)
     {
-        if (eventDictionary[eventName].Contains(listenerMethod))
+        Action<EventParam> thisEvent;
+        if (eventDictionary.TryGetValue(eventName, out thisEvent))
         {
-            eventDictionary[eventName].Remove(listenerMethod);
-        }
-        else
-        {
-            Debug.Log("There is no method: " + listenerMethod +
-                " registered to the following event: " + eventName);
+            thisEvent -= listener;
+
+            eventDictionary[eventName] = thisEvent;
         }
     }
 
-    public static void RaiseEvent(EventNames eventName)
+    public static void RaiseEvent(EventNames eventName, EventParam eventParam)
     {
-        if (eventDictionary.ContainsKey(eventName))
+        Action<EventParam> thisEvent = null;
+        if (eventDictionary.TryGetValue(eventName, out thisEvent))
         {
-            foreach (var listenerMethod in eventDictionary[eventName])
-            {
-                listenerMethod.Invoke();
-            }
+            thisEvent.Invoke(eventParam);
         }
     }
 }
