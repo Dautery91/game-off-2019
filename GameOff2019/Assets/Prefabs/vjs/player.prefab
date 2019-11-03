@@ -90,7 +90,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 5864738753963051366}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 4889ab30820269942bd298144e48ad58, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -122,7 +122,7 @@ MonoBehaviour:
   controller2DData: {fileID: 11400000, guid: 130b0d1777ca59442a2069b3f09243aa, type: 2}
   playerInputReader: {fileID: 5864738753963051388}
   gravity: {fileID: 11400000, guid: dbf490ff8644d8b4bb8355b13e8d2bdb, type: 2}
-  layerMask:
+  collisionMask:
     serializedVersion: 2
     m_Bits: 256
 --- !u!114 &5864738753963051388
