@@ -323,7 +323,6 @@ GameObject:
   - component: {fileID: 250622597}
   - component: {fileID: 250622603}
   - component: {fileID: 250622602}
-  - component: {fileID: 250622598}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -347,19 +346,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.0013597012}
   m_Size: {x: 0.5, y: 0.6274233}
   m_Direction: 0
---- !u!114 &250622598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250622596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afcc916b3efc969469a72c7a422d6a3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pogoData: {fileID: 11400000, guid: 167cac3d1df433b4da240fccd9c1d2f3, type: 2}
 --- !u!50 &250622599
 Rigidbody2D:
   serializedVersion: 4
@@ -950,7 +936,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 05d7a4c48a0fcc941bd4f85dd741e109, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

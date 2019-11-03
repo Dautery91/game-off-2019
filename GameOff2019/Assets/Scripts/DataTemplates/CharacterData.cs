@@ -5,5 +5,5 @@ public class CharacterData : ScriptableObject
 {
     public float MoveSpeed;
     public float JumpForce;
-    public AbilityEnum EquippedAbility;
+    public float InverseJumpSpeed;
 }
