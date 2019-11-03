@@ -4,5 +4,6 @@ using UnityEngine;
 
 public enum EventNames
 {
-    AbilityActivatedEvent
+    JumpEvent,
+    LandedEvent
 }

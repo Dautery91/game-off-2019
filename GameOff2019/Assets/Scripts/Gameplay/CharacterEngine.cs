@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public class CharacterEngine : MonoBehaviour
 {
+    // Scriptable object data injection
+    [SerializeField] CharacterData CharacterData;
+
     // Movement support
     private Rigidbody2D rb2D;
     private PlayerInputReader characterInput;
@@ -11,39 +14,31 @@ public class CharacterEngine : MonoBehaviour
     private bool isGrounded;
     private const float groundCheckRadius = 0.1f;
 
-    [SerializeField]
-    CharacterData CharacterData;
+    // Jump support
+    [SerializeField] Transform GroundCheck;
+    [SerializeField] LayerMask GroundLayer;
+    private int jumpStoredAmount;
+    private float jumpPositionY;
+    private float landPositionY;
+    private float timeToJumpDestination;
 
-    public Transform GroundCheck;
-    public LayerMask GroundLayer;
-
-    // Pogo ability support (to pull out in to seperate script)
-    private bool isAbilityActive = false;
-    private PogoAbility pogoScript;
 
     private void Awake()
     {
         rb2D = this.GetComponent<Rigidbody2D>();
         characterInput = this.GetComponent<PlayerInputReader>();
-
+        jumpStoredAmount = 5;
     }
 
-    private void Start()
-    {
-        EventManager.AddListener(EventNames.AbilityActivatedEvent, HandleAbilityActivatedEvent);
-    }
-
-    // Note:  I could also see making jump an event as opposed to polling for it in the fixedupdate method
     private void FixedUpdate()
     {
-        MoveCharacter();
-
-        InitialJump();
+        MoveCharacterHorizontal();
+        Jump();
     }
 
 
     #region Horizontal Movement
-    private void MoveCharacter()
+    private void MoveCharacterHorizontal()
     {
         rb2D.velocity = new Vector2(characterInput.HorizontalMoveInput * CharacterData.MoveSpeed, rb2D.velocity.y);
 
@@ -68,25 +63,26 @@ public class CharacterEngine : MonoBehaviour
 
     #endregion
 
-    private void InitialJump()
+    private void Jump()
     {
+        timeToJumpDestination += Time.fixedDeltaTime / CharacterData.InverseJumpSpeed;
+
         isGrounded = Physics2D.OverlapCircle(GroundCheck.position, groundCheckRadius, GroundLayer);
 
-        if (characterInput.JumpInput && isGrounded && !isAbilityActive)
+        if (characterInput.JumpInput && isGrounded)
         {
-            rb2D.velocity = Vector2.up * CharacterData.JumpForce;
+            float startPositionY = rb2D.position.y;
 
-            // First jump activates pogo or skateboard
-            EventManager.RaiseEvent(EventNames.AbilityActivatedEvent);
+            //transform.position = Vector2.Lerp(new Vector2(rb2D.position.x, startPositionY), new Vector2(rb2D.position.x, startPositionY + jumpPositionY), timeToJumpDestination);
+
+            rb2D.MovePosition(new Vector2(rb2D.position.x, rb2D.position.y + jumpStoredAmount));
+            jumpStoredAmount = 0;
+            jumpPositionY = rb2D.position.y;
+
+            // might have to delete this later
+            isGrounded = false;
         }
 
-    }
-
-    // Ideally want to change this to take an ability type parameter
-    public void HandleAbilityActivatedEvent()
-    {
-        isAbilityActive = true;
-        //EventManager.RemoveListener(EventNames.AbilityActivatedEvent, HandleAbilityActivatedEvent);
     }
 
 
