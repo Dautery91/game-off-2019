@@ -121,7 +121,9 @@ public class Controller2D : MonoBehaviour
     private void CalculateFallDistance()
     {
         // need to improve this to account for change in gravity direction
-        if (collisionFlags.below && haveJumped)
+        //@DAUTERY I am removing havejumped from the condition below as the player can accumulate jumpcount with jumping
+        //by just falling
+        if (collisionFlags.below)
         {
 
             //floor or ceil or round
@@ -133,7 +135,8 @@ public class Controller2D : MonoBehaviour
             haveJumped = false;
 
         }
-        else if (velocity.y < 0)
+        //falling
+        if (velocity.y < 0 && !collisionFlags.below && !atJumpPeak)
         {
             fallDistance += Mathf.Abs(velocity.y * Time.deltaTime);
         }
@@ -160,7 +163,7 @@ public class Controller2D : MonoBehaviour
             
             float horizontalDisplacement = playerInputReader.HorizontalMoveInput * controller2DData.HorizontalSpeed;
             velocity.x = horizontalDisplacement;
-
+            //@DAUTERY shouldn't we start this when we first set atJumpPeak = true
             if (atJumpPeak && !jumpApexTimer.Running)
             {
                 jumpApexTimer.Run();
@@ -286,7 +289,8 @@ public class Controller2D : MonoBehaviour
                     ClimbSlope(ref movement, slopeAngle);
                     velocity.x += distanceToSlopeStart * direction;
                     // @VJS Is this break needed?
-                    break;
+                    //@DAUTERY not anymore as you added the climbing slope flag
+                    //break;
                 }
 
                 if (!collisionFlags.climbingSlope || slopeAngle > controller2DData.maxClimbableSlope)
