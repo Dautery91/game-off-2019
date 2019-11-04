@@ -13,6 +13,8 @@ public class Controller2dData : ScriptableObject
     public float tileLength = 1f;
 
     // @VJS Looks like this isnt used, right?
+    //@DAUTERY not at the moment I was going to use it to control ascension rate like time taken to reach apex per tile ie multiply it 
+    //with jumpcount to get total time. then I realised I had to change Gravity as well if I fix both time and height.
     public float apexTimePerTile = 1f;
 
     public float maxClimbableSlope = 75f;
