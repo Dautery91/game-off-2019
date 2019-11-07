@@ -5,4 +5,6 @@ using UnityEngine;
 public enum EventNames
 {
     JumpUpdateEvent,
+    LevelFinishedEvent,
+    PlayerDeathEvent
 }

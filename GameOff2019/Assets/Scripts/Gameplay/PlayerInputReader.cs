@@ -6,10 +6,12 @@
 public class PlayerInputReader : MonoBehaviour
 {
     private float horizontalMoveInput;
+    private bool playerRetryInput;
     private bool jumpInput;
     private float rotateInput;
 
     public float HorizontalMoveInput { get { return horizontalMoveInput; } }
+    public bool PlayerRetryInput { get { return playerRetryInput; } }
     public bool JumpInput { get { return jumpInput; } }
     public float RotateInput { get { return rotateInput; } }
 
@@ -18,9 +20,8 @@ public class PlayerInputReader : MonoBehaviour
     void Update()
     {
         ReadMovementInput();
-        ReadRotateInput();
         ReadJumpInput();
-
+        ReadRetryInput();
     }
 
     private void ReadMovementInput()
@@ -28,10 +29,6 @@ public class PlayerInputReader : MonoBehaviour
         horizontalMoveInput = Input.GetAxisRaw("Horizontal");
     }
 
-    private void ReadRotateInput()
-    {
-        rotateInput = Input.GetAxisRaw("Rotate");
-    }
 
     private void ReadJumpInput()
     {
@@ -42,6 +39,18 @@ public class PlayerInputReader : MonoBehaviour
         else
         {
             jumpInput = false;
+        }
+    }
+
+    private void ReadRetryInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            playerRetryInput = true;
+        }
+        else
+        {
+            playerRetryInput = false;
         }
     }
 

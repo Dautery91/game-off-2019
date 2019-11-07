@@ -115,6 +115,10 @@ public class Controller2D : MonoBehaviour
         // Moves based on Vector2D "velocity" calculated using the above methods
         Move(velocity * Time.deltaTime);
 
+        if (playerInputReader.PlayerRetryInput)
+        {
+            RaisePlayerRetryEvent();
+        }
 
     }
 
@@ -263,7 +267,7 @@ public class Controller2D : MonoBehaviour
     {
         float direction = Mathf.Sign(movement.x);
         
-        float raydistance = Mathf.Abs(movement.x)+skinWidth;
+        float raydistance = Mathf.Abs(movement.x) + skinWidth;
 
         for (int i = 0; i < HorizontalRayCount; i++)
         {
@@ -388,5 +392,16 @@ public class Controller2D : MonoBehaviour
         EventParam jumpParam = new EventParam();
         jumpParam.intParam = jumpCount;
         EventManager.RaiseEvent(EventNames.JumpUpdateEvent, jumpParam);
+    }
+
+    private void RaisePlayerRetryEvent()
+    {
+        // Raise retry event, kill self
+        EventParam playerRetryParam = new EventParam();
+        // garbage value
+        playerRetryParam.intParam = 5;
+
+        EventManager.RaiseEvent(EventNames.PlayerDeathEvent, playerRetryParam);
+        Destroy(this.gameObject);
     }
 }
