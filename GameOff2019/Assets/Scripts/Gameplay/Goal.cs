@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Goal : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Goal : MonoBehaviour
             Debug.Log("Level Finished!");
             EventParam placeHolder = new EventParam();
             EventManager.RaiseEvent(EventNames.LevelFinishedEvent, placeHolder);
+            SceneManager.LoadScene(2);
         }
     }
 }

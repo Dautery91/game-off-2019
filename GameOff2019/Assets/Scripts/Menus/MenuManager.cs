@@ -21,6 +21,11 @@ public static class MenuManager
                 // go to MainMenu scene
                 SceneManager.LoadScene("MainMenu");
                 break;
+            case MenuNamesEnum.OptionsMenu:
+
+                // instantiate prefab
+                Object.Instantiate(Resources.Load("OptionsMenu"));
+                break;
             case MenuNamesEnum.PauseMenu:
 
                 // instantiate prefab

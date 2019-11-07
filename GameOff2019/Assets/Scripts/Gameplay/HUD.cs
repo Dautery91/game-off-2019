@@ -11,7 +11,7 @@ public class HUD : MonoBehaviour
     const string HUDTextPrefix = "Jump Height: ";
     private Action<EventParam> jumpEventListener;
 
-    private void Awake()
+    private void Start()
     {
         // Need to figure out initialization
         hudText.text = HUDTextPrefix + 0;
