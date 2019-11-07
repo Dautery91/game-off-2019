@@ -41,6 +41,11 @@ public class Controller2D : MonoBehaviour
     [SerializeField] Vector2Data gravity;
 
     [SerializeField] LayerMask collisionMask;
+
+    // change this event Type according to the data we want to pass.
+    [SerializeField] VoidGameEvent PlayerDeathEvent;
+
+    [SerializeField] IntGameEvent UpdateJumpCountEvent;
     BoxCollider2D collider;
 
     public CollisionFlags collisionFlags;
@@ -85,11 +90,15 @@ public class Controller2D : MonoBehaviour
         jumpApexTimer.Duration = controller2DData.HangTimeDuration;
         atJumpPeak = false;
 
-        UpdateJumpCountHUD();
+        RaiseUpdateJumpcountEvent();
     }
 
     void Update()
     {
+        if(playerInputReader.GamePaused){
+            return;
+        }
+        
         if (oldYVelocity >= 0 && currentYVelocity < 0 && haveJumped)
         {
             atJumpPeak = true;
@@ -115,12 +124,13 @@ public class Controller2D : MonoBehaviour
         // Moves based on Vector2D "velocity" calculated using the above methods
         Move(velocity * Time.deltaTime);
 
-        if (playerInputReader.PlayerRetryInput)
-        {
-            RaisePlayerRetryEvent();
-        }
+        // if (playerInputReader.PlayerRetryInput)
+        // {
+        //     RaisePlayerDeathEvent();
+        // }
 
     }
+
 
     private void CalculateFallDistance()
     {
@@ -133,7 +143,7 @@ public class Controller2D : MonoBehaviour
             //floor or ceil or round
             jumpCount += Mathf.RoundToInt(fallDistance / controller2DData.tileLength);
 
-            UpdateJumpCountHUD();
+            RaiseUpdateJumpcountEvent();
 
             fallDistance = 0;
             haveJumped = false;
@@ -189,7 +199,7 @@ public class Controller2D : MonoBehaviour
             velocity.y += Mathf.Sqrt(maxHeight * Mathf.Abs(gravity.data.y) * 2);
             jumpCount = 0;
             haveJumped = true;
-            UpdateJumpCountHUD();
+            RaiseUpdateJumpcountEvent();
 
         }
     }
@@ -386,22 +396,20 @@ public class Controller2D : MonoBehaviour
 
     }
 
-    private void UpdateJumpCountHUD()
+    private void RaiseUpdateJumpcountEvent()
     {
-        // Raise event to display jump count to HUD
-        EventParam jumpParam = new EventParam();
-        jumpParam.intParam = jumpCount;
-        EventManager.RaiseEvent(EventNames.JumpUpdateEvent, jumpParam);
+        UpdateJumpCountEvent.Raise(jumpCount);
     }
 
-    private void RaisePlayerRetryEvent()
+    private void RaisePlayerDeathEvent()
     {
-        // Raise retry event, kill self
-        EventParam playerRetryParam = new EventParam();
-        // garbage value
-        playerRetryParam.intParam = 5;
+        // // Raise retry event, kill self
+        // EventParam playerRetryParam = new EventParam();
+        // // garbage value
+        // playerRetryParam.intParam = 5;
 
-        EventManager.RaiseEvent(EventNames.PlayerDeathEvent, playerRetryParam);
+        // EventManager.RaiseEvent(EventNames.PlayerDeathEvent, playerRetryParam);
+        PlayerDeathEvent.Raise();
         Destroy(this.gameObject);
     }
 }
