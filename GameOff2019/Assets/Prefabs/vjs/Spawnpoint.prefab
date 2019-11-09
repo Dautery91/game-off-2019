@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4952248898052436960}
   - component: {fileID: 6812798079926545190}
+  - component: {fileID: 6812798079926545191}
   m_Layer: 0
   m_Name: Spawnpoint
   m_TagString: Untagged
@@ -45,3 +46,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 5864738753963051366, guid: 11016721361ebec4e809a8a54bc607fb,
     type: 3}
+--- !u!114 &6812798079926545191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3301227624207993383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1fdb781ab08f7c48b27369cbb940ec5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6812798079926545190}
+        m_MethodName: RespawnPlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gameEvent: {fileID: 11400000, guid: 82654bc2783e01240825d38cdfbae3cf, type: 2}

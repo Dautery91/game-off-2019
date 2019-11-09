@@ -5,9 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] Levels levels;
     public void HandlePlayButtonOnClickEvent()
     {
-        SceneManager.LoadScene("Level1");
+        if(levels.levels.Length>0){
+            SceneManager.LoadScene(levels.levels[0].name);
+        }
+        else{
+            Debug.LogError("there are no levels configured in levels data");
+        }
+        
     }
 
     /// <summary>
