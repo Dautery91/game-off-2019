@@ -61,7 +61,7 @@ public class Controller2D : MonoBehaviour
 
     float fallDistance = 0;
 
-    int jumpCount = 0;
+    [SerializeField]IntData jumpCount;
 
     Vector3 velocity;
 
@@ -85,7 +85,7 @@ public class Controller2D : MonoBehaviour
         collider = GetComponent<BoxCollider2D>();
         CalculateRaySpacing();
         collisionFlags.Reset();
-        jumpCount = controller2DData.StartingJumpStrength;
+        jumpCount.Data = controller2DData.StartingJumpStrength;
         jumpApexTimer = this.gameObject.AddComponent<Timer>();
         jumpApexTimer.Duration = controller2DData.HangTimeDuration;
         atJumpPeak = false;
@@ -93,7 +93,7 @@ public class Controller2D : MonoBehaviour
         RaiseUpdateJumpcountEvent();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(playerInputReader.GamePaused){
             return;
@@ -141,7 +141,7 @@ public class Controller2D : MonoBehaviour
         {
 
             //floor or ceil or round
-            jumpCount += Mathf.RoundToInt(fallDistance / controller2DData.tileLength);
+            jumpCount.Data += Mathf.RoundToInt(fallDistance / controller2DData.tileLength);
 
             RaiseUpdateJumpcountEvent();
 
@@ -195,9 +195,9 @@ public class Controller2D : MonoBehaviour
     {
         if (playerInputReader.JumpInput && collisionFlags.below)
         {
-            float maxHeight = ((float)jumpCount) * controller2DData.tileLength + collider.bounds.size.y / 4;
+            float maxHeight = ((float)jumpCount.Data) * controller2DData.tileLength + collider.bounds.size.y / 4;
             velocity.y += Mathf.Sqrt(maxHeight * Mathf.Abs(gravity.data.y) * 2);
-            jumpCount = 0;
+            jumpCount.Data = 0;
             haveJumped = true;
             RaiseUpdateJumpcountEvent();
 
@@ -398,7 +398,7 @@ public class Controller2D : MonoBehaviour
 
     private void RaiseUpdateJumpcountEvent()
     {
-        UpdateJumpCountEvent.Raise(jumpCount);
+        UpdateJumpCountEvent.Raise(jumpCount.Data);
     }
 
     private void RaisePlayerDeathEvent()

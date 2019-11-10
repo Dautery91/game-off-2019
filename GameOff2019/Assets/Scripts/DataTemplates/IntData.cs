@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IntData : MonoBehaviour
+
+[CreateAssetMenu]
+public class IntData : ScriptableObject
 {
     protected int data;
 
@@ -12,7 +14,7 @@ public class IntData : MonoBehaviour
             return data;
         }
         set{
-            value = data;
+           data = value;
         }
     }
 }

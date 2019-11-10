@@ -24,12 +24,12 @@ public static class MenuManager
             case MenuNamesEnum.OptionsMenu:
 
                 // instantiate prefab
-                Object.Instantiate(Resources.Load("OptionsMenu"));
+                IObject.Instantiate(Resources.Load("OptionsMenu"));
                 break;
             case MenuNamesEnum.PauseMenu:
 
                 // instantiate prefab
-                Object.Instantiate(Resources.Load("PauseMenu"));
+                IObject.Instantiate(Resources.Load("PauseMenu"));
                 break;
         }
     }
