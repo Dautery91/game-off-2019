@@ -140,19 +140,27 @@ public class Controller2D : MonoBehaviour
         if (collisionFlags.below)
         {
 
-            //floor or ceil or round
-            jumpCount.Data += Mathf.RoundToInt(fallDistance / controller2DData.tileLength);
-
-            RaiseUpdateJumpcountEvent();
-
-            fallDistance = 0;
+            
             haveJumped = false;
+            fallDistance = 0;
 
         }
         //falling
         if (velocity.y < 0 && !collisionFlags.below && !atJumpPeak)
         {
             fallDistance += Mathf.Abs(velocity.y * Time.deltaTime);
+
+            if(Mathf.RoundToInt(fallDistance / controller2DData.tileLength)>0){
+                //floor or ceil or round
+                jumpCount.Data += Mathf.RoundToInt(fallDistance / controller2DData.tileLength);
+
+                RaiseUpdateJumpcountEvent();
+                fallDistance-=Mathf.RoundToInt(fallDistance / controller2DData.tileLength);
+            }
+
+            
+
+            
         }
     }
 
@@ -283,6 +291,11 @@ public class Controller2D : MonoBehaviour
         {
             Vector2 rayOrigin = (direction==1?rayCastBounds.bottomRight:rayCastBounds.bottomLeft);
             rayOrigin.y += HorizontalRaySpacing*i;
+
+            //for uneven slopes
+            if(i==0){
+                rayOrigin.y+=skinWidth*2;
+            }
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin,direction*Vector2.right,raydistance,collisionMask);
 
             Debug.DrawRay(rayOrigin,Vector2.right*direction,Color.red);
