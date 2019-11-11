@@ -61,7 +61,7 @@ public class Controller2D : MonoBehaviour
 
     float fallDistance = 0;
 
-    int jumpCount = 0;
+    [SerializeField]IntData jumpCount;
 
     Vector3 velocity;
 
@@ -85,7 +85,7 @@ public class Controller2D : MonoBehaviour
         collider = GetComponent<BoxCollider2D>();
         CalculateRaySpacing();
         collisionFlags.Reset();
-        jumpCount = controller2DData.StartingJumpStrength;
+        jumpCount.Data = controller2DData.StartingJumpStrength;
         jumpApexTimer = this.gameObject.AddComponent<Timer>();
         jumpApexTimer.Duration = controller2DData.HangTimeDuration;
         atJumpPeak = false;
@@ -93,7 +93,7 @@ public class Controller2D : MonoBehaviour
         RaiseUpdateJumpcountEvent();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(playerInputReader.GamePaused){
             return;
@@ -140,19 +140,27 @@ public class Controller2D : MonoBehaviour
         if (collisionFlags.below)
         {
 
-            //floor or ceil or round
-            jumpCount += Mathf.RoundToInt(fallDistance / controller2DData.tileLength);
-
-            RaiseUpdateJumpcountEvent();
-
-            fallDistance = 0;
+            
             haveJumped = false;
+            fallDistance = 0;
 
         }
         //falling
         if (velocity.y < 0 && !collisionFlags.below && !atJumpPeak)
         {
             fallDistance += Mathf.Abs(velocity.y * Time.deltaTime);
+
+            if(Mathf.RoundToInt(fallDistance / controller2DData.tileLength)>0){
+                //floor or ceil or round
+                jumpCount.Data += Mathf.RoundToInt(fallDistance / controller2DData.tileLength);
+
+                RaiseUpdateJumpcountEvent();
+                fallDistance-=Mathf.RoundToInt(fallDistance / controller2DData.tileLength);
+            }
+
+            
+
+            
         }
     }
 
@@ -195,9 +203,9 @@ public class Controller2D : MonoBehaviour
     {
         if (playerInputReader.JumpInput && collisionFlags.below)
         {
-            float maxHeight = ((float)jumpCount) * controller2DData.tileLength + collider.bounds.size.y / 4;
+            float maxHeight = ((float)jumpCount.Data) * controller2DData.tileLength + collider.bounds.size.y / 4;
             velocity.y += Mathf.Sqrt(maxHeight * Mathf.Abs(gravity.data.y) * 2);
-            jumpCount = 0;
+            jumpCount.Data = 0;
             haveJumped = true;
             RaiseUpdateJumpcountEvent();
 
@@ -283,6 +291,11 @@ public class Controller2D : MonoBehaviour
         {
             Vector2 rayOrigin = (direction==1?rayCastBounds.bottomRight:rayCastBounds.bottomLeft);
             rayOrigin.y += HorizontalRaySpacing*i;
+
+            //for uneven slopes
+            if(i==0){
+                rayOrigin.y+=skinWidth*2;
+            }
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin,direction*Vector2.right,raydistance,collisionMask);
 
             Debug.DrawRay(rayOrigin,Vector2.right*direction,Color.red);
@@ -398,7 +411,7 @@ public class Controller2D : MonoBehaviour
 
     private void RaiseUpdateJumpcountEvent()
     {
-        UpdateJumpCountEvent.Raise(jumpCount);
+        UpdateJumpCountEvent.Raise(jumpCount.Data);
     }
 
     private void RaisePlayerDeathEvent()

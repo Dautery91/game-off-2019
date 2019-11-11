@@ -20,4 +20,4 @@ MonoBehaviour:
   maxClimbableSlope: 75
   maxDescendableSlope: 75
   HangTimeDuration: 0.75
-  StartingJumpStrength: 3
+  StartingJumpStrength: 0
