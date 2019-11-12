@@ -8,7 +8,7 @@ public class PlayerInputReader : MonoBehaviour
     private float horizontalMoveInput;
     private bool playerRetryInput;
     private bool jumpInput;
-
+    private bool normalJumpInput;
     private bool gamePaused = false;
 
     public bool GamePaused{
@@ -17,12 +17,10 @@ public class PlayerInputReader : MonoBehaviour
         }
     }
     private float rotateInput;
-
-    [SerializeField] VoidGameEvent GamePauseEvent;
-
     public float HorizontalMoveInput { get { return horizontalMoveInput; } }
     public bool PlayerRetryInput { get { return playerRetryInput; } }
     public bool JumpInput { get { return jumpInput; } }
+    public bool NormalJumpInput { get { return normalJumpInput; } }
     public float RotateInput { get { return rotateInput; } }
 
 
@@ -32,8 +30,6 @@ public class PlayerInputReader : MonoBehaviour
        
         ReadMovementInput();
         ReadJumpInput();
-        ReadPauseInput();
-        
         
     }
 
@@ -55,21 +51,19 @@ public class PlayerInputReader : MonoBehaviour
         {
             jumpInput = false;
         }
-    }
-
-    private void ReadPauseInput()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape) && !gamePaused)
+        if (Input.GetKeyDown(KeyCode.Q) && !gamePaused)
         {
-            gamePaused = true;
-            GamePauseEvent.Raise();
+            normalJumpInput = true;
         }
-        
+        else
+        {
+            normalJumpInput = false;
+        }
     }
 
-    public void onPlayerDeath(){
+
+    public void onPause(){
         gamePaused = true;
-        GamePauseEvent.Raise();
     }
 
     public void OnResume(){

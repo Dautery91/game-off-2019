@@ -29,8 +29,9 @@ public class gameOverPanel : MonoBehaviour
     }
 
     public void Retry(){
-        RespawnPlayerEvent.Raise();
-        GameResumeEvent.Raise();
+        // RespawnPlayerEvent.Raise();
+        // GameResumeEvent.Raise();
+        GameManager.instance.ResetLevel();
     }
 
     public void MainMenu(){

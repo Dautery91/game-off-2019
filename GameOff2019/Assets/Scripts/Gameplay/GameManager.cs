@@ -7,10 +7,12 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField] Levels LevelData;
+    [SerializeField] VoidGameEvent GamePauseEvent;
 
 
     //singleton stuff
     public static GameManager instance;
+    private bool gamePaused = false;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -23,6 +25,37 @@ public class GameManager : MonoBehaviour
         else{
             instance = this;
         }
+    }
+
+    public void OnResume(){
+        gamePaused = false;
+    }
+
+
+    public void ResetLevel(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
+    {
+        ReadPauseInput();
+    }
+
+    private void ReadPauseInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && !gamePaused)
+        {
+           PauseGame();
+        }
+        
+    }
+
+    public void PauseGame(){
+        gamePaused = true;
+        GamePauseEvent.Raise();
     }
 
 
