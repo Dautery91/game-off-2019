@@ -12,14 +12,17 @@ public struct CollisionFlags{
     public bool above,below,left,right;
     public bool climbingSlope;
     public bool descendingSlope;
+    public bool onSlope;
     public float slopeAngle, slopeAngleOld;
 
     public void Reset()
     {
+        onSlope = (slopeAngleOld!=0);
         above = below = false;
         left = right = false;
         climbingSlope = false;
         descendingSlope = false;
+        
 
         slopeAngleOld = slopeAngle;
         slopeAngle = 0;
@@ -43,7 +46,6 @@ public class Controller2D : MonoBehaviour
     [SerializeField] LayerMask collisionMask;
 
     // change this event Type according to the data we want to pass.
-    [SerializeField] VoidGameEvent PlayerDeathEvent;
 
     [SerializeField] IntGameEvent UpdateJumpCountEvent;
     BoxCollider2D collider;
@@ -53,6 +55,11 @@ public class Controller2D : MonoBehaviour
     float VerticalRaySpacing;
 
     float HorizontalRaySpacing;
+
+
+    //can change this if we want to reduce or increase gravity for just player
+
+    float gravityScale = 1f;
 
 
     RayCastBounds rayCastBounds;
@@ -71,10 +78,9 @@ public class Controller2D : MonoBehaviour
     float oldYVelocity;
     Timer jumpApexTimer;
 
-    // Jump Count Support
-    float heightOnJump;
-    float heightOnLand;
+    // Jump flags
     bool haveJumped = false;
+    bool haveNormalJumped;
 
     #endregion
 
@@ -124,10 +130,8 @@ public class Controller2D : MonoBehaviour
         // Moves based on Vector2D "velocity" calculated using the above methods
         Move(velocity * Time.deltaTime);
 
-        // if (playerInputReader.PlayerRetryInput)
-        // {
-        //     RaisePlayerDeathEvent();
-        // }
+
+        
 
     }
 
@@ -135,18 +139,18 @@ public class Controller2D : MonoBehaviour
     private void CalculateFallDistance()
     {
         // need to improve this to account for change in gravity direction
-        //@DAUTERY I am removing havejumped from the condition below as the player can accumulate jumpcount with jumping
+        //@DAUTERY I am removing havejumped from the condition below as the player can accumulate jumpcount without jumping
         //by just falling
         if (collisionFlags.below)
         {
 
-            
+            haveNormalJumped = false;
             haveJumped = false;
             fallDistance = 0;
 
         }
         //falling
-        if (velocity.y < 0 && !collisionFlags.below && !atJumpPeak)
+        if (velocity.y < 0 && !collisionFlags.below && !atJumpPeak && !haveNormalJumped)
         {
             fallDistance += Mathf.Abs(velocity.y * Time.deltaTime);
 
@@ -180,7 +184,7 @@ public class Controller2D : MonoBehaviour
 
     private void HandleHorizontalInput()
     {
-        if (collisionFlags.below || atJumpPeak)
+        if (collisionFlags.below || atJumpPeak || haveNormalJumped)
         {
             
             float horizontalDisplacement = playerInputReader.HorizontalMoveInput * controller2DData.HorizontalSpeed;
@@ -196,18 +200,28 @@ public class Controller2D : MonoBehaviour
 
     private void CalculateGravityMovement()
     {
-        velocity += new Vector3(gravity.data.x * Time.deltaTime, gravity.data.y * Time.deltaTime, 0);
+        velocity += new Vector3(gravity.data.x * Time.deltaTime, gravity.data.y * Time.deltaTime, 0)*gravityScale;
     }
 
     private void HandleJumpInput()
     {
-        if (playerInputReader.JumpInput && collisionFlags.below)
+        // JetPackJump
+        if (playerInputReader.JumpInput && collisionFlags.below && !collisionFlags.onSlope)
         {
             float maxHeight = ((float)jumpCount.Data) * controller2DData.tileLength + collider.bounds.size.y / 4;
             velocity.y += Mathf.Sqrt(maxHeight * Mathf.Abs(gravity.data.y) * 2);
             jumpCount.Data = 0;
             haveJumped = true;
             RaiseUpdateJumpcountEvent();
+
+        }
+
+        //normalJump
+        if( playerInputReader.NormalJumpInput && collisionFlags.below){
+
+            float maxHeight = ((float)controller2DData.NormalJumpHeight) * controller2DData.tileLength + collider.bounds.size.y / 4;
+            velocity.y += Mathf.Sqrt(maxHeight * Mathf.Abs(gravity.data.y) * 2);
+            haveNormalJumped = true;
 
         }
     }
@@ -222,10 +236,9 @@ public class Controller2D : MonoBehaviour
             DescendSlope(ref movement);
         }
 
-        if(Mathf.Abs(movement.x) > 0)
-        {
+        
             HorizontalCollisionDetection(ref movement);
-        }
+       
 
         if(Mathf.Abs(movement.y) > 0)
         {
@@ -234,7 +247,7 @@ public class Controller2D : MonoBehaviour
 
         currentYVelocity = movement.y;
 
-        if (!collisionFlags.below && !atJumpPeak)
+        if (!collisionFlags.below && !atJumpPeak && !haveNormalJumped)
         {
             movement.x = 0;
         }
@@ -286,16 +299,15 @@ public class Controller2D : MonoBehaviour
         float direction = Mathf.Sign(movement.x);
         
         float raydistance = Mathf.Abs(movement.x) + skinWidth;
+        if(movement.x==0){
+            raydistance+=skinWidth;
+        }
 
         for (int i = 0; i < HorizontalRayCount; i++)
         {
             Vector2 rayOrigin = (direction==1?rayCastBounds.bottomRight:rayCastBounds.bottomLeft);
             rayOrigin.y += HorizontalRaySpacing*i;
 
-            //for uneven slopes
-            if(i==0){
-                rayOrigin.y+=skinWidth*2;
-            }
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin,direction*Vector2.right,raydistance,collisionMask);
 
             Debug.DrawRay(rayOrigin,Vector2.right*direction,Color.red);
@@ -414,15 +426,10 @@ public class Controller2D : MonoBehaviour
         UpdateJumpCountEvent.Raise(jumpCount.Data);
     }
 
-    private void RaisePlayerDeathEvent()
+    public void OnPlayerDeath()
     {
-        // // Raise retry event, kill self
-        // EventParam playerRetryParam = new EventParam();
-        // // garbage value
-        // playerRetryParam.intParam = 5;
-
-        // EventManager.RaiseEvent(EventNames.PlayerDeathEvent, playerRetryParam);
-        PlayerDeathEvent.Raise();
+        
+        // any dying animations/effects
         Destroy(this.gameObject);
     }
 }

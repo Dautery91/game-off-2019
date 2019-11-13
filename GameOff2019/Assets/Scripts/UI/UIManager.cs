@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour
     }
 
     public void OnLevelCleared(){
-
+        GameManager.instance.PauseGame();
         gameOverPanel.SetActive(true);
         gameOverPanel.GetComponent<gameOverPanel>().Setup(true);
 

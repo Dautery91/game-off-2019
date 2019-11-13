@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5864738753963051388}
   - component: {fileID: 1903966819}
   - component: {fileID: 1332258445}
+  - component: {fileID: 1816495338499407612}
   m_Layer: 9
   m_Name: player
   m_TagString: Player
@@ -127,7 +128,6 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 256
-  PlayerDeathEvent: {fileID: 11400000, guid: 82654bc2783e01240825d38cdfbae3cf, type: 2}
   UpdateJumpCountEvent: {fileID: 11400000, guid: 639b2450f07d4fe40b7d0001a36243d6,
     type: 2}
   jumpCount: {fileID: 11400000, guid: 84504cbc8bc0ce9469f9b6b70e62f0e3, type: 2}
@@ -143,7 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007ec59585a1c1646963e154f76e2d5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamePauseEvent: {fileID: 11400000, guid: 98deea485312ac340a3dc986fe548628, type: 2}
 --- !u!114 &1903966819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,3 +191,30 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1816495338499407612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5864738753963051366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1fdb781ab08f7c48b27369cbb940ec5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5864738753963051388}
+        m_MethodName: onPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gameEvent: {fileID: 11400000, guid: 98deea485312ac340a3dc986fe548628, type: 2}

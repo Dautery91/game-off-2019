@@ -21,6 +21,8 @@ public class Controller2dData : ScriptableObject
     public float HangTimeDuration = 1.5f;
     public int StartingJumpStrength = 3;
 
+    public int NormalJumpHeight = 1;
+
 
 
 
