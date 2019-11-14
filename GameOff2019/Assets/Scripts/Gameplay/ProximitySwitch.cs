@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 // this is the base class of switch. It activates all objects in the level of same color within the radius of jumpCount.
-public class Switch : MonoBehaviour
+public class ProximitySwitch : MonoBehaviour
 {
     public ObjectColor objectColor;
 

@@ -69,7 +69,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 08b4bc1f19ceb5c43aeaa3956986596b, type: 3}
+  m_Sprite: {fileID: 1970486196952638397, guid: a648fc220cb112e4d8c9ef01f9359e53,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -92,7 +93,7 @@ GameObject:
   - component: {fileID: 2807688248229066434}
   - component: {fileID: 3946627212190195998}
   m_Layer: 8
-  m_Name: Door_Red
+  m_Name: OnOff_Pink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,7 +224,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8933607801220796041, guid: e4e03bb21ee8ee84ea6a504bff660d9f,
+  m_Sprite: {fileID: -3708691830684869284, guid: a648fc220cb112e4d8c9ef01f9359e53,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.7137255}
   m_FlipX: 0

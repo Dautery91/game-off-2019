@@ -9,9 +9,10 @@ public enum ObjectState{
 }
 
 public enum ObjectColor {
-    Red,
+    Pink,
     Blue,
-    Green
+    Green,
+    Orange
 }
 
 
@@ -34,16 +35,31 @@ public abstract class IObject : MonoBehaviour
     /// </summary>
     void Start()
     {
+        // Initialize the object based on its starting state
+        InitializeState();
+
         tilemap = GetComponentInParent<Tilemap>();
-        if(tilemap == null){
-            cellPos = new Vector3Int(0,0,0);
+        if (tilemap == null)
+        {
+            cellPos = new Vector3Int(0, 0, 0);
             Debug.LogError("No tilemap in parent");
             return;
         }
-      
+
         cellPos = tilemap.WorldToCell(transform.position);
     }
 
+    private void InitializeState()
+    {
+        if (objectState == ObjectState.On)
+        {
+            this.TurnOn();
+        }
+        else
+        {
+            this.TurnOff();
+        }
+    }
 
     public void ToggleState(){
 
