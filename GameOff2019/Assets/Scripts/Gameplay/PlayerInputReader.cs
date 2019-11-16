@@ -5,7 +5,7 @@
 /// </summary>
 public class PlayerInputReader : MonoBehaviour
 {
-    private float horizontalMoveInput;
+    private float horizontalMoveInput = 0f;
     private bool playerRetryInput;
     private bool jumpInput;
     private bool normalJumpInput;
