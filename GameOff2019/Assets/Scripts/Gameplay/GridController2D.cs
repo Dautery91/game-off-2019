@@ -1,12 +1,43 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class gridBlockController2D : MonoBehaviour
+
+public struct RayCastOrigins{
+    public Vector2 up,down;
+    public Vector2 left,right;
+    
+}
+public struct GridCollisionFlags{
+    public bool above,below,left,right;
+
+    public float lslopeAngle , rslopeAngle, dslopeAngle;
+
+    public Collider2D Cabove,Cbelow,Cleft,Cright;
+
+    public void Reset()
+    {
+        above = below = false;
+        left = right = false;
+
+        Cabove = Cbelow = Cleft = Cright = null;
+
+        dslopeAngle = lslopeAngle = rslopeAngle = 0;
+
+    }
+}
+
+[RequireComponent(typeof(BoxCollider2D))]
+public class GridController2D : MonoBehaviour
 {
 
+    [SerializeField] PlayerInputReader playerInputReader;
+
     [SerializeField] Tilemap tilemap;
+
+    [SerializeField] IntData jumpCount;
 
     BoxCollider2D collider;
 
@@ -22,13 +53,20 @@ public class gridBlockController2D : MonoBehaviour
 
     bool moving = false;
 
+    bool hanging = false;
 
     public float movementSpeed = 5f;
 
+    public int horizontalTileMovementDuringHanging = 2;
 
     public float maxSlopeAngle = 80f;
 
     public LayerMask collideableLayer;
+
+    Timer HangingTimer;
+
+    [HideInInspector]
+    public bool launched = false;
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -45,6 +83,9 @@ public class gridBlockController2D : MonoBehaviour
         //move into cell centre if not already there
         transform.position = tilemap.CellToWorld(currentTile)+tilemap.tileAnchor;
 
+        HangingTimer = this.gameObject.AddComponent<Timer>();
+
+        jumpCount.Data = 0;
 
 
     }
@@ -55,14 +96,32 @@ public class gridBlockController2D : MonoBehaviour
     void Update()
     {
 
+       
         GetCollisions();
 
+        if(!moving&&!launched){
 
-        if(!moving){
+            
 
+            if(hanging&&!HangingTimer.Running){
+
+                if(HangingTimer.Finished){
+                    HangingTimer.Stop();
+                    hanging = false;
+                }
+                else{
+                    float duration = horizontalTileMovementDuringHanging*tilelength/movementSpeed;
+                    HangingTimer.Duration = duration;
+                    HangingTimer.Run();
+                }
+
+            }
 
             GravityMovement();
 
+            HorizontalMovement();
+
+            JumpMovement();
 
         }
 
@@ -71,11 +130,65 @@ public class gridBlockController2D : MonoBehaviour
         
     }
 
+    IEnumerator launch(Vector2 direction){
 
-    public void HorizontalMovement(float horizontalMovement)
+        while(moving){
+            yield return null;
+        }
+        if(direction==Vector2.up){
+            hanging = true;
+        }
+        else{
+            hanging = false;
+        }
+        int distanceIntiles = (int)(GetDistanceToCollideAbleTile(direction)/tilelength);
+
+        Vector3Int newTile = currentTile + new Vector3Int((int)direction.x*distanceIntiles,(int)direction.y*distanceIntiles,0);
+
+        StartCoroutine(SmoothMove(newTile));
+
+        while(moving){
+            yield return null;
+        }
+
+        launched = false;
+
+
+    }
+
+    public void Launch(Vector2 direction){
+
+       StartCoroutine(launch(direction));
+       launched = true;
+
+    }
+
+    private void JumpMovement()
     {
-        if(gridCollisionFlags.below&&!moving){
-           
+
+        if(gridCollisionFlags.below && playerInputReader.JumpInput){
+            
+            int distanceIntiles = (int)(GetDistanceToCollideAbleTile(Vector2.up)/tilelength);
+
+            distanceIntiles = Mathf.Min(distanceIntiles,jumpCount.Data);
+
+            jumpCount.Data = 0;
+
+            Vector3Int newTile = new Vector3Int(currentTile.x,currentTile.y+distanceIntiles,0);
+
+            StartCoroutine(SmoothMove(newTile));
+
+            hanging = true;
+
+            
+        }
+
+    }
+
+    private void HorizontalMovement()
+    {
+        if(gridCollisionFlags.below || hanging){
+            float horizontalMovement = playerInputReader.HorizontalMoveInput;
 
             Vector3Int newTile = currentTile;
 
@@ -109,14 +222,30 @@ public class gridBlockController2D : MonoBehaviour
             
             StartCoroutine(SmoothMove(newTile));
 
+
+            if((gridCollisionFlags.Cleft!=null&&gridCollisionFlags.Cleft.tag == "Block")&&horizontalMovement<0){
+                gridBlockController2D blockController2D = gridCollisionFlags.Cleft.GetComponent<gridBlockController2D>();
+                if(blockController2D!=null){
+                    blockController2D.HorizontalMovement(horizontalMovement);
+                }
+            }
+
+            if((gridCollisionFlags.Cright!=null&&gridCollisionFlags.Cright.tag == "Block")&&horizontalMovement>0){
+                gridBlockController2D blockController2D = gridCollisionFlags.Cright.GetComponent<gridBlockController2D>();
+                if(blockController2D!=null){
+                    blockController2D.HorizontalMovement(horizontalMovement);
+                }
+            }
+
         }
     }
 
     private void GravityMovement()
     {
-        if(!gridCollisionFlags.below){
-            int distanceIntiles = (int)(GetDistanceToCollideAbleTile(Vector2.up*-1,rayCastOrigins.down)/tilelength);
+        if(!gridCollisionFlags.below&&!hanging){
+            int distanceIntiles = (int)(GetDistanceToCollideAbleTile(Vector2.up*-1)/tilelength);
             
+            jumpCount.Data+=distanceIntiles;
 
             Vector3Int newTile = new Vector3Int(currentTile.x,currentTile.y-distanceIntiles,0);
 
@@ -198,7 +327,26 @@ public class gridBlockController2D : MonoBehaviour
 
     }
 
-    float GetDistanceToCollideAbleTile(Vector2 direction,Vector2 origin){
+    float GetDistanceToCollideAbleTile(Vector2 direction){
+
+        Vector2 origin = transform.position;
+
+        if(direction == Vector2.up){
+            origin = rayCastOrigins.up;
+        }
+        else if(direction == -1*Vector2.up){
+            origin = rayCastOrigins.down;
+        }
+        else if(direction == Vector2.right){
+            origin = rayCastOrigins.right;
+        }
+        else if(direction == -1*Vector2.right){
+            origin = rayCastOrigins.left;
+        }
+
+
+
+
 
         float distance = 0;
 
@@ -243,4 +391,8 @@ public class gridBlockController2D : MonoBehaviour
 
     
 
+
+
+    
 }
+
