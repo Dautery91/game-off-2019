@@ -12,7 +12,8 @@ public enum ObjectColor {
     Pink,
     Blue,
     Green,
-    Orange
+    Orange,
+    Gray
 }
 
 
