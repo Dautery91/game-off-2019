@@ -45,12 +45,13 @@ public class PressurePlate : IObject
         GetCollisions();
         setCollisionCount();
 
+        ActivateWireBlocks();
+
         if(collisionCount%2 == 1 && objectState == ObjectState.Off){
-            ActivateWireBlocks();
+           
             ToggleState();
         }
         else if(collisionCount%2 == 0 && objectState == ObjectState.On){
-            ActivateWireBlocks();
             ToggleState();
         }
     }
@@ -84,7 +85,10 @@ public class PressurePlate : IObject
 
             visited.Add(currentTile.transform);
 
-            currentTile.ToggleState();
+            if(currentTile.objectState!=objectState){
+                currentTile.ToggleState();
+            }
+
             
             queue.Dequeue();
 

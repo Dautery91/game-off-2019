@@ -19,5 +19,6 @@ public class WireTile : IObject
         onSprite.SetActive(true);
         offSprite.SetActive(false);
     }
+
     
 }

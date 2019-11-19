@@ -50,7 +50,7 @@ public abstract class IObject : MonoBehaviour
         cellPos = tilemap.WorldToCell(transform.position);
     }
 
-    private void InitializeState()
+    protected virtual void InitializeState()
     {
         if (objectState == ObjectState.On)
         {

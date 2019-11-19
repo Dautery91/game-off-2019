@@ -102,7 +102,7 @@ MonoBehaviour:
   maxSlopeAngle: 80
   collideableLayer:
     serializedVersion: 2
-    m_Bits: 3328
+    m_Bits: 1280
   launched: 0
 --- !u!61 &4539870196126327996
 BoxCollider2D:

@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - hazzard
   - Block
+  - passable
   layers:
   - Default
   - TransparentFX
