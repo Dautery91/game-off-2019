@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d10e00301922f0242a9c71405b95dc7e, type: 3}
   m_Name: VerticalMoveSpeedData
   m_EditorClassIdentifier: 
-  data: 50
+  data: 20

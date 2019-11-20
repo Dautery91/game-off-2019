@@ -73,6 +73,10 @@ public class GridController2D : MonoBehaviour
     [HideInInspector]
     public bool launched = false;
 
+    // Animation support fields
+    [SerializeField] Animator animator;
+
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
@@ -107,18 +111,22 @@ public class GridController2D : MonoBehaviour
        
         GetCollisions();
 
-        if(!moving&&!launched){
+        if(!moving&&!launched)
+        {
 
-            
 
-            if(hanging&&!HangingTimer.Running){
 
-                if(HangingTimer.Finished){
+            if (hanging && !HangingTimer.Running)
+            {
+
+                if (HangingTimer.Finished)
+                {
                     HangingTimer.Stop();
                     hanging = false;
                 }
-                else{
-                    float duration = horizontalTileMovementDuringHanging*tilelength/horizontalMovementSpeed;
+                else
+                {
+                    float duration = horizontalTileMovementDuringHanging * tilelength / horizontalMovementSpeed;
                     HangingTimer.Duration = duration;
                     HangingTimer.Run();
                 }
@@ -131,11 +139,28 @@ public class GridController2D : MonoBehaviour
 
             JumpMovement();
 
+            CheckIfIdle();
+
         }
 
-        
-        
-        
+
+
+
+    }
+
+    /// <summary>
+    /// For animation
+    /// </summary>
+    private void CheckIfIdle()
+    {
+        if (!moving)
+        {
+            animator.SetBool("isIdle", true);
+        }
+        else
+        {
+            animator.SetBool("isIdle", false);
+        }
     }
 
     IEnumerator launch(Vector2 direction){
@@ -389,7 +414,27 @@ public class GridController2D : MonoBehaviour
             movementSpeedLocal = horizontalMovementSpeed;
         }
 
-        while(transform.position!=positionToMove){
+        // animation checks
+        if (positionToMove.x > originPosition.x && !hanging)
+        {
+            animator.SetBool("isSlidingRight", true);
+        }
+        else if (positionToMove.x < originPosition.x && !hanging)
+        {
+            animator.SetBool("isSlidingLeft", true);
+        }
+        else if (positionToMove.y > originPosition.y)
+        {
+            animator.SetBool("hasJumped", true);
+        }
+        else if (positionToMove.y < originPosition.y)
+        {
+
+            animator.SetBool("isHanging", false);
+        }
+
+
+        while (transform.position!=positionToMove){
 
             float ratio = Mathf.Abs((Mathf.Abs((transform.position-originPosition).magnitude)+ movementSpeedLocal * Time.deltaTime)/(positionToMove-originPosition).magnitude);
 
@@ -399,6 +444,17 @@ public class GridController2D : MonoBehaviour
         }
         currentTile = newTile;
         moving = false;
+
+        if (hanging)
+        {
+            animator.SetBool("isHanging", true);
+        }
+
+        //Reset animation flags
+        animator.SetBool("isSlidingRight", false);
+        animator.SetBool("isSlidingLeft", false);
+        animator.SetBool("hasJumped", false);
+
 
     }
 
