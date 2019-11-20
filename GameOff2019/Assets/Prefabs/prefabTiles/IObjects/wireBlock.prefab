@@ -75,7 +75,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 0}
-  movementSpeed: 5
+  HorizontalMovementSpeedData: {fileID: 11400000, guid: 8f0a7f45695bf0a42ac542aaa276c8c5,
+    type: 2}
+  VerticalMovementSpeedData: {fileID: 11400000, guid: 746bd6aededcfd94282ae04f611aa222,
+    type: 2}
   maxSlopeAngle: 80
   collideableLayer:
     serializedVersion: 2
