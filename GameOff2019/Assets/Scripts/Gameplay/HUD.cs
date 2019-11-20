@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour
 {
     [SerializeField] Text hudText;
+
+    [SerializeField] IntData JumpCount;
     const string HUDTextPrefix = "Jump Height: ";
     //private Action<EventParam> jumpEventListener;
 
@@ -17,6 +19,18 @@ public class HUD : MonoBehaviour
         hudText.text = HUDTextPrefix + 0;
         // jumpEventListener = new Action<EventParam>(HandleJumpEvent);
         // EventManager.AddListener(EventNames.JumpUpdateEvent, jumpEventListener);
+    }
+
+
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
+    {
+        if(JumpCount!=null){
+            HandleJumpEvent(JumpCount.Data);
+
+        }
     }
 
 

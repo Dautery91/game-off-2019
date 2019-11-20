@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - hazzard
+  - Block
+  - passable
   layers:
   - Default
   - TransparentFX
@@ -17,8 +19,8 @@ TagManager:
   - 
   - Ground
   - Player
-  - 
-  - 
+  - Interactables
+  - wires
   - 
   - 
   - 
