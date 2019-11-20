@@ -97,7 +97,12 @@ MonoBehaviour:
   playerInputReader: {fileID: 4539870196126327995}
   tilemap: {fileID: 0}
   jumpCount: {fileID: 11400000, guid: 84504cbc8bc0ce9469f9b6b70e62f0e3, type: 2}
-  movementSpeed: 5
+  HorizontalMovementSpeedData: {fileID: 11400000, guid: 8f0a7f45695bf0a42ac542aaa276c8c5,
+    type: 2}
+  VerticalMovementSpeedData: {fileID: 11400000, guid: 746bd6aededcfd94282ae04f611aa222,
+    type: 2}
+  horizontalMovementSpeed: 5
+  verticalMovementSpeed: 5
   horizontalTileMovementDuringHanging: 2
   maxSlopeAngle: 80
   collideableLayer:

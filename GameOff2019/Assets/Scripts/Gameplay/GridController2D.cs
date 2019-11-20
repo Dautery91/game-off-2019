@@ -55,7 +55,12 @@ public class GridController2D : MonoBehaviour
 
     bool hanging = false;
 
-    public float movementSpeed = 5f;
+    public FloatData HorizontalMovementSpeedData;
+    public FloatData VerticalMovementSpeedData;
+
+    private float horizontalMovementSpeed;
+
+    private float verticalMovementSpeed;
 
     public int horizontalTileMovementDuringHanging = 2;
 
@@ -76,6 +81,9 @@ public class GridController2D : MonoBehaviour
     {
         tilelength = tilemap.cellSize.x;
         currentTile = tilemap.WorldToCell(transform.position);
+
+        horizontalMovementSpeed = HorizontalMovementSpeedData.data;
+        verticalMovementSpeed = VerticalMovementSpeedData.data;
 
         collider = GetComponent<BoxCollider2D>();
         
@@ -110,7 +118,7 @@ public class GridController2D : MonoBehaviour
                     hanging = false;
                 }
                 else{
-                    float duration = horizontalTileMovementDuringHanging*tilelength/movementSpeed;
+                    float duration = horizontalTileMovementDuringHanging*tilelength/horizontalMovementSpeed;
                     HangingTimer.Duration = duration;
                     HangingTimer.Run();
                 }
@@ -367,12 +375,23 @@ public class GridController2D : MonoBehaviour
 
         moving = true;
 
+        float movementSpeedLocal;
+
         Vector3 positionToMove = tilemap.CellToLocal(newTile)+tilemap.tileAnchor;
         Vector3 originPosition = tilemap.CellToLocal(currentTile)+tilemap.tileAnchor;
 
+        if (originPosition.y != positionToMove.y && originPosition.x == positionToMove.x)
+        {
+            movementSpeedLocal = verticalMovementSpeed;
+        }
+        else
+        {
+            movementSpeedLocal = horizontalMovementSpeed;
+        }
+
         while(transform.position!=positionToMove){
 
-            float ratio = Mathf.Abs((Mathf.Abs((transform.position-originPosition).magnitude)+movementSpeed*Time.deltaTime)/(positionToMove-originPosition).magnitude);
+            float ratio = Mathf.Abs((Mathf.Abs((transform.position-originPosition).magnitude)+ movementSpeedLocal * Time.deltaTime)/(positionToMove-originPosition).magnitude);
 
             transform.position = Vector3.Lerp(originPosition,positionToMove,ratio);
 
