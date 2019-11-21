@@ -61,6 +61,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   launched: 0
+  trapped: 0
   animator: {fileID: -5192321119511370824}
 --- !u!114 &4539870196126327995
 MonoBehaviour:
@@ -111,7 +112,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 8092869597745981495, guid: eb71618da6f795c488d9c90cbc3584fe,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
