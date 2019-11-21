@@ -6,14 +6,17 @@ public class UIManager : MonoBehaviour
 {
     public GameObject gameOverPanel;
     public GameObject pauseMenuPanel;
+    public GameObject LevelSelectPanel;
 
     public void OnGamePaused(){
         pauseMenuPanel.SetActive(true);
+        LevelSelectPanel.SetActive(true);
     }
 
     public void OnGameResume(){
         pauseMenuPanel.SetActive(false);
         gameOverPanel.SetActive(false);
+        LevelSelectPanel.SetActive(false);
     }
 
     public void OnLevelCleared(){

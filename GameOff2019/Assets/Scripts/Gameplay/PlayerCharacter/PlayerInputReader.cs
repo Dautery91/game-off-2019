@@ -50,14 +50,14 @@ public class PlayerInputReader : MonoBehaviour
         {
             jumpInput = false;
         }
-        if (Input.GetKeyDown(KeyCode.Q) && !gamePaused)
-        {
-            normalJumpInput = true;
-        }
-        else
-        {
-            normalJumpInput = false;
-        }
+        //if (Input.GetKeyDown(KeyCode.Q) && !gamePaused)
+        //{
+        //    normalJumpInput = true;
+        //}
+        //else
+        //{
+        //    normalJumpInput = false;
+        //}
     }
 
 

@@ -12,12 +12,20 @@ public class PausePanel : MonoBehaviour
     }
 
     public void Retry(){
-        // GameResumeEvent.Raise();
-        // RespawnPlayerEvent.Raise();
         GameManager.instance.ResetLevel();
     }
 
     public void MainMenu(){
         GameManager.instance.LoadMainMenu();
+    }
+
+    private void OnEnable()
+    {
+        Time.timeScale = 0;
+    }
+
+    private void OnDisable()
+    {
+        Time.timeScale = 1;
     }
 }
