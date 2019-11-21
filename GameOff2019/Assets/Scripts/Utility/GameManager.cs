@@ -91,5 +91,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+    public void LoadSpecificLevel(string levelName)
+    {
+        if (Application.CanStreamedLevelBeLoaded(levelName))
+        {
+            SceneManager.LoadScene(levelName);
+        }
+        else
+        {
+            Debug.Log("Level Name Not Found");
+        }
+    }
+
+
 }

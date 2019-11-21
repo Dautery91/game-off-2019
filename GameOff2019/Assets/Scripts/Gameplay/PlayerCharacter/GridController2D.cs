@@ -393,15 +393,16 @@ public class GridController2D : MonoBehaviour
 
 
 
-
-        float distance = 0;
+        // @VJS note i fixed a bug here.  Distance should default to a large number so if there is no raycast hit, it works properly
+        float distance = 500;
 
         RaycastHit2D hit2D;
 
         hit2D = Physics2D.Raycast(origin,direction,float.PositiveInfinity,collideableLayer);
 
-        if(hit2D){
-            return hit2D.distance;
+        if (hit2D)
+        {
+            distance = hit2D.distance;
         }
 
         return distance;

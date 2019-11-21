@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Levels
   m_EditorClassIdentifier: 
   levels:
-  - name: Level1
-  - name: TestScene1
+  - name: BetaL2
+  - name: BetaL1
   startLevel:
     name: MainMenu
   currentLevel:
-    name: 
+    name: Alpha
