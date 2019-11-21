@@ -245,7 +245,15 @@ public class GridController2D : MonoBehaviour
             if (distanceIntiles != 0)
             {
                 animator.SetBool("HasJumped", true);
-                AudioManager.instance.PlaySound("PlayerJump");
+                if (AudioManager.instance != null)
+                {
+                    AudioManager.instance.PlaySound("PlayerJump");
+                }
+                else
+                {
+                    Debug.LogWarning("NO AUDIO MANAGER FOUND");
+                }
+                
             }
 
             Vector3Int newTile = new Vector3Int(currentTile.x,currentTile.y+distanceIntiles,0);

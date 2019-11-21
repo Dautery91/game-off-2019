@@ -10,28 +10,11 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
+
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+        InitializeAudioManager();
 
-
-        DontDestroyOnLoad(this.gameObject);
-
-        foreach (Sound s in sounds)
-        {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.Clip;
-            s.source.volume = s.Volume;
-            s.source.pitch = s.Pitch;
-            s.source.loop = s.Loop;
-        }
     }
 
     public void PlaySound(string name)
@@ -66,5 +49,29 @@ public class AudioManager : MonoBehaviour
         PlaySound("UXClick");
     }
 
+    public void InitializeAudioManager()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
+
+        DontDestroyOnLoad(this.gameObject);
+
+
+        foreach (Sound s in sounds)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.Clip;
+            s.source.volume = s.Volume;
+            s.source.pitch = s.Pitch;
+            s.source.loop = s.Loop;
+        }
+    }
 
 }
