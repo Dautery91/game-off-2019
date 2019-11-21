@@ -61,6 +61,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   launched: 0
+  trapped: 0
   animator: {fileID: -5192321119511370824}
 --- !u!114 &4539870196126327995
 MonoBehaviour:
