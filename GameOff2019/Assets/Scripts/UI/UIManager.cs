@@ -32,4 +32,5 @@ public class UIManager : MonoBehaviour
         gameOverPanel.GetComponent<gameOverPanel>().Setup(false);
         
     }
+
 }

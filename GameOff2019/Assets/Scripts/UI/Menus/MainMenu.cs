@@ -8,7 +8,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Levels levels;
     public void HandlePlayButtonOnClickEvent()
     {
-        if(levels.levels.Length>0){
+        AudioManager.instance.PlayButtonClickSound();
+        if (levels.levels.Length>0){
             SceneManager.LoadScene(levels.levels[0].name);
         }
         else{
@@ -22,6 +23,7 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void HandleOptionsButtonOnClickEvent()
     {
+        AudioManager.instance.PlayButtonClickSound();
         MenuManager.GoToMenu(MenuNamesEnum.OptionsMenu);
     }
 
@@ -30,6 +32,7 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void HandleQuitButtonOnClickEvent()
     {
+        AudioManager.instance.PlayButtonClickSound();
         Application.Quit();
     }
 }

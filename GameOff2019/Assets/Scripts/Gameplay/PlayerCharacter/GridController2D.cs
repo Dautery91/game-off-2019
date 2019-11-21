@@ -242,11 +242,14 @@ public class GridController2D : MonoBehaviour
 
             jumpCount.Data = 0;
 
+            if (distanceIntiles != 0)
+            {
+                animator.SetBool("HasJumped", true);
+                AudioManager.instance.PlaySound("PlayerJump");
+            }
+
             Vector3Int newTile = new Vector3Int(currentTile.x,currentTile.y+distanceIntiles,0);
-
-            //animator.SetTrigger("JumpTrigger");
-            animator.SetBool("HasJumped", true);
-
+            
             StartCoroutine(SmoothMove(newTile));
 
             hanging = true;

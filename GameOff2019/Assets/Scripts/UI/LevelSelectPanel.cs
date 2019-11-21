@@ -10,6 +10,7 @@ public class LevelSelectPanel : MonoBehaviour
 
     public void LoadInputLevel()
     {
+        AudioManager.instance.PlayButtonClickSound();
         levelName = InputText.text;
         GameManager.instance.LoadSpecificLevel(levelName);
     }

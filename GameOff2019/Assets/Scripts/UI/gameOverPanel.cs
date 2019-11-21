@@ -25,16 +25,17 @@ public class gameOverPanel : MonoBehaviour
     }
 
     public void NextLevel(){
+        AudioManager.instance.PlayButtonClickSound();
         GameManager.instance.LoadNextLevel();
     }
 
     public void Retry(){
-        // RespawnPlayerEvent.Raise();
-        // GameResumeEvent.Raise();
+        AudioManager.instance.PlayButtonClickSound();
         GameManager.instance.ResetLevel();
     }
 
     public void MainMenu(){
+        AudioManager.instance.PlayButtonClickSound();
         GameManager.instance.LoadMainMenu();
     }
 

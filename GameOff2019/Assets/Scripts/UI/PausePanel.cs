@@ -8,14 +8,17 @@ public class PausePanel : MonoBehaviour
     [SerializeField] VoidGameEvent RespawnPlayerEvent;
 
     public void ResumeGame(){
+        AudioManager.instance.PlayButtonClickSound();
         GameResumeEvent.Raise();
     }
 
     public void Retry(){
+        AudioManager.instance.PlayButtonClickSound();
         GameManager.instance.ResetLevel();
     }
 
     public void MainMenu(){
+        AudioManager.instance.PlayButtonClickSound();
         GameManager.instance.LoadMainMenu();
     }
 
