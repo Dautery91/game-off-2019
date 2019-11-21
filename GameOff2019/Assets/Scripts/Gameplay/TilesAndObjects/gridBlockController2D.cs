@@ -127,7 +127,7 @@ public class gridBlockController2D : MonoBehaviour
 
     public void HorizontalMovement(float horizontalMovement)
     {
-        if(gridCollisionFlags.below&&!moving){
+        if(gridCollisionFlags.below&&!moving&&!trapped){
            
 
             Vector3Int newTile = currentTile;
