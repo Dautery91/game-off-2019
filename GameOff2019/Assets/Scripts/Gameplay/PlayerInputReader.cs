@@ -21,7 +21,6 @@ public class PlayerInputReader : MonoBehaviour
     public bool PlayerRetryInput { get { return playerRetryInput; } }
     public bool JumpInput { get { return jumpInput; } }
     public bool NormalJumpInput { get { return normalJumpInput; } }
-    public float RotateInput { get { return rotateInput; } }
 
 
 

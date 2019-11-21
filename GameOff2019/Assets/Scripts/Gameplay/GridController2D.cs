@@ -73,6 +73,10 @@ public class GridController2D : MonoBehaviour
     [HideInInspector]
     public bool launched = false;
 
+    // Animation support fields
+    [SerializeField] Animator animator;
+
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
@@ -107,18 +111,22 @@ public class GridController2D : MonoBehaviour
        
         GetCollisions();
 
-        if(!moving&&!launched){
+        if(!moving&&!launched)
+        {
 
-            
 
-            if(hanging&&!HangingTimer.Running){
 
-                if(HangingTimer.Finished){
+            if (hanging && !HangingTimer.Running)
+            {
+
+                if (HangingTimer.Finished)
+                {
                     HangingTimer.Stop();
                     hanging = false;
                 }
-                else{
-                    float duration = horizontalTileMovementDuringHanging*tilelength/horizontalMovementSpeed;
+                else
+                {
+                    float duration = horizontalTileMovementDuringHanging * tilelength / horizontalMovementSpeed;
                     HangingTimer.Duration = duration;
                     HangingTimer.Run();
                 }
@@ -131,11 +139,28 @@ public class GridController2D : MonoBehaviour
 
             JumpMovement();
 
+            CheckIfIdle();
+
         }
 
-        
-        
-        
+
+
+
+    }
+
+    /// <summary>
+    /// For animation
+    /// </summary>
+    private void CheckIfIdle()
+    {
+        if (!moving)
+        {
+            animator.SetBool("isIdle", true);
+        }
+        else
+        {
+            animator.SetBool("isIdle", false);
+        }
     }
 
     IEnumerator launch(Vector2 direction){
@@ -180,9 +205,14 @@ public class GridController2D : MonoBehaviour
 
             distanceIntiles = Mathf.Min(distanceIntiles,jumpCount.Data);
 
+            animator.SetInteger("JumpStrength", jumpCount.Data);
+
             jumpCount.Data = 0;
 
             Vector3Int newTile = new Vector3Int(currentTile.x,currentTile.y+distanceIntiles,0);
+
+            //animator.SetTrigger("JumpTrigger");
+            animator.SetBool("HasJumped", true);
 
             StartCoroutine(SmoothMove(newTile));
 
@@ -250,16 +280,17 @@ public class GridController2D : MonoBehaviour
 
     private void GravityMovement()
     {
-        if(!gridCollisionFlags.below&&!hanging){
-            int distanceIntiles = (int)(GetDistanceToCollideAbleTile(Vector2.up*-1)/tilelength);
-            
-            jumpCount.Data+=distanceIntiles;
+        if (!gridCollisionFlags.below && !hanging) {
+            int distanceIntiles = (int)(GetDistanceToCollideAbleTile(Vector2.up * -1) / tilelength);
 
-            Vector3Int newTile = new Vector3Int(currentTile.x,currentTile.y-distanceIntiles,0);
+            jumpCount.Data += distanceIntiles;
+
+            Vector3Int newTile = new Vector3Int(currentTile.x, currentTile.y - distanceIntiles, 0);
 
             StartCoroutine(SmoothMove(newTile));
-            
+
         }
+
     }
 
     void GetCollisions(){
@@ -279,6 +310,11 @@ public class GridController2D : MonoBehaviour
             gridCollisionFlags.above = true;
             gridCollisionFlags.Cabove = hit.collider;
 
+            //if (hanging)
+            //{
+            //    animator.SetTrigger("HeadBonk");
+            //}
+
         }
 
 
@@ -291,6 +327,8 @@ public class GridController2D : MonoBehaviour
             gridCollisionFlags.below = true;
             gridCollisionFlags.Cbelow = hit.collider;
             gridCollisionFlags.dslopeAngle = Vector2.Angle(hit.normal,Vector2.up);
+
+
 
         }
 
@@ -389,16 +427,57 @@ public class GridController2D : MonoBehaviour
             movementSpeedLocal = horizontalMovementSpeed;
         }
 
-        while(transform.position!=positionToMove){
+        // animation checks
+        if (positionToMove.x > originPosition.x)
+        {
+            animator.SetBool("isSlidingRight", true);
+        }
+        else if (positionToMove.x < originPosition.x)
+        {
+            animator.SetBool("isSlidingLeft", true);
+        }
+        else if (positionToMove.y - originPosition.y < 0)
+        {
+            animator.SetBool("HasStartedFalling", true);
+        }
+
+
+        while (transform.position!=positionToMove){
 
             float ratio = Mathf.Abs((Mathf.Abs((transform.position-originPosition).magnitude)+ movementSpeedLocal * Time.deltaTime)/(positionToMove-originPosition).magnitude);
 
             transform.position = Vector3.Lerp(originPosition,positionToMove,ratio);
 
+            // If we are moving upwards and only have one tile length left to move, start the approach peak animation
+            if (positionToMove.y - transform.position.y < tilelength / 2 && positionToMove.y - transform.position.y > 0 && hanging)
+            {
+                //animator.SetTrigger("ApproachJumpPeak");
+                animator.SetBool("HaveApproachedPeak", true);
+            }
+            else if (positionToMove.y < transform.position.y && Mathf.Abs(positionToMove.y - transform.position.y) < tilelength / 2)
+            {
+                animator.SetBool("HasLanded", true);
+            }
+            else if (hanging && gridCollisionFlags.above)
+            {
+                animator.SetTrigger("HeadBonk");
+            }
+
             yield return null; 
         }
         currentTile = newTile;
         moving = false;
+
+        //Reset animation flags
+        animator.SetBool("isSlidingRight", false);
+        animator.SetBool("isSlidingLeft", false);
+        animator.SetBool("HaveApproachedPeak", false);
+        animator.SetBool("HasStartedFalling", false);
+        animator.SetBool("HasJumped", false);
+        animator.SetBool("HasLanded", false);
+        //animator.ResetTrigger("HeadBonk");
+
+
 
     }
 
