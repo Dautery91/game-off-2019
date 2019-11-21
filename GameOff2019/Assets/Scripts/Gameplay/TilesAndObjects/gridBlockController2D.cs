@@ -34,6 +34,8 @@ public class gridBlockController2D : MonoBehaviour
     public LayerMask collideableLayer;
     public bool launched = false;
 
+    public bool trapped = false;
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
@@ -41,19 +43,23 @@ public class gridBlockController2D : MonoBehaviour
     void Start()
     {
         tilelength = tilemap.cellSize.x;
-        currentTile = tilemap.WorldToCell(transform.position);
+        
 
         horizontalMovementSpeed = HorizontalMovementSpeedData.data;
         verticalMovementSpeed = VerticalMovementSpeedData.data;
 
         collider = GetComponent<BoxCollider2D>();
-        
-        
+
+
         //move into cell centre if not already there
-        transform.position = tilemap.CellToWorld(currentTile)+tilemap.tileAnchor;
+        snapToGrid();
 
+    }
 
-
+    private void snapToGrid()
+    {
+        currentTile = tilemap.WorldToCell(transform.position);
+        transform.position = tilemap.CellToWorld(currentTile) + tilemap.tileAnchor;
     }
 
     /// <summary>
@@ -65,7 +71,7 @@ public class gridBlockController2D : MonoBehaviour
         GetCollisions();
 
 
-        if(!moving&&!launched){
+        if(!moving&&!launched&&!trapped){
 
 
             GravityMovement();
@@ -76,6 +82,19 @@ public class gridBlockController2D : MonoBehaviour
         
         
         
+    }
+
+    public void Trap(Vector3Int cell){
+        if(moving){
+            moving=false;
+            StopAllCoroutines();
+        }
+        if(launched){
+            launched = false;
+        }
+        currentTile = cell;
+        snapToGrid();
+        trapped = true;
     }
 
     IEnumerator launch(Vector2 direction){
@@ -108,7 +127,7 @@ public class gridBlockController2D : MonoBehaviour
 
     public void HorizontalMovement(float horizontalMovement)
     {
-        if(gridCollisionFlags.below&&!moving){
+        if(gridCollisionFlags.below&&!moving&&!trapped){
            
 
             Vector3Int newTile = currentTile;

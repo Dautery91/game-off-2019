@@ -73,6 +73,8 @@ public class GridController2D : MonoBehaviour
     [HideInInspector]
     public bool launched = false;
 
+    public bool trapped = false;
+
     // Animation support fields
     [SerializeField] Animator animator;
 
@@ -84,22 +86,28 @@ public class GridController2D : MonoBehaviour
     void Start()
     {
         tilelength = tilemap.cellSize.x;
-        currentTile = tilemap.WorldToCell(transform.position);
+
 
         horizontalMovementSpeed = HorizontalMovementSpeedData.data;
         verticalMovementSpeed = VerticalMovementSpeedData.data;
 
         collider = GetComponent<BoxCollider2D>();
-        
-        
+
+
         //move into cell centre if not already there
-        transform.position = tilemap.CellToWorld(currentTile)+tilemap.tileAnchor;
+        snapToGrid();
 
         HangingTimer = this.gameObject.AddComponent<Timer>();
 
         jumpCount.Data = 0;
 
 
+    }
+
+    private void snapToGrid()
+    {
+        currentTile = tilemap.WorldToCell(transform.position);
+        transform.position = tilemap.CellToWorld(currentTile) + tilemap.tileAnchor;
     }
 
     /// <summary>
@@ -111,7 +119,7 @@ public class GridController2D : MonoBehaviour
        
         GetCollisions();
 
-        if(!moving&&!launched)
+        if(!moving&&!launched&&!trapped)
         {
 
 
@@ -146,6 +154,27 @@ public class GridController2D : MonoBehaviour
 
 
 
+    }
+
+
+    /// <summary>
+    /// called by magnet tile to trap the player
+    /// </summary>
+    /// <param name="cell"></param>
+
+    public void Trap(Vector3Int cell){
+        if(moving){
+            moving=false;
+            StopAllCoroutines();
+        }
+        if(launched){
+            launched = false;
+        }
+        currentTile = cell;
+        snapToGrid();
+        trapped = true;
+        //set it back to idle animation
+        CheckIfIdle();
     }
 
     /// <summary>
@@ -190,6 +219,10 @@ public class GridController2D : MonoBehaviour
     }
 
     public void Launch(Vector2 direction){
+
+        if(trapped){
+            return;
+        }
 
        StartCoroutine(launch(direction));
        launched = true;
