@@ -685,7 +685,7 @@ PrefabInstance:
     - target: {fileID: 7035639555364115867, guid: 785074802a959a74e82636db040f08d0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7035639555364115867, guid: 785074802a959a74e82636db040f08d0,
         type: 3}
@@ -821,7 +821,7 @@ PrefabInstance:
         type: 3}
       propertyPath: tilemap
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 851196633}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c38ada5558d3ff4eabda4da6fb72e76, type: 3}
 --- !u!4 &685163883 stripped
@@ -918,7 +918,7 @@ PrefabInstance:
         type: 3}
       propertyPath: tilemap
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 851196633}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c38ada5558d3ff4eabda4da6fb72e76, type: 3}
 --- !u!1 &851196630
@@ -7715,7 +7715,7 @@ PrefabInstance:
     - target: {fileID: 5124192612336338367, guid: 9c38ada5558d3ff4eabda4da6fb72e76,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 5124192612336338367, guid: 9c38ada5558d3ff4eabda4da6fb72e76,
         type: 3}
@@ -7766,7 +7766,7 @@ PrefabInstance:
         type: 3}
       propertyPath: tilemap
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 851196633}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c38ada5558d3ff4eabda4da6fb72e76, type: 3}
 --- !u!4 &1258540867 stripped
@@ -7933,7 +7933,7 @@ PrefabInstance:
     - target: {fileID: 7035639555364115867, guid: daa84ae782ed8784f9d1621214b24fa6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.5
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7035639555364115867, guid: daa84ae782ed8784f9d1621214b24fa6,
         type: 3}
