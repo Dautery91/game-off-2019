@@ -79,3 +79,10 @@ MonoBehaviour:
     Volume: 0.5
     Pitch: 1
     source: {fileID: 0}
+  - Name: PopUpSFX
+    Clip: {fileID: 8300000, guid: c69342e12ef55864d8c39ad915e14623, type: 3}
+    Loop: 0
+    IsBackgroundMusic: 0
+    Volume: 0.5
+    Pitch: 1
+    source: {fileID: 0}
