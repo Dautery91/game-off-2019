@@ -10,15 +10,12 @@ public class HUD : MonoBehaviour
     [SerializeField] Text hudText;
 
     [SerializeField] IntData JumpCount;
-    const string HUDTextPrefix = "Jump Height: ";
-    //private Action<EventParam> jumpEventListener;
+    const string HUDTextPrefix = "Leap Strength: ";
 
     private void Start()
     {
-        // Need to figure out initialization
         hudText.text = HUDTextPrefix + 0;
-        // jumpEventListener = new Action<EventParam>(HandleJumpEvent);
-        // EventManager.AddListener(EventNames.JumpUpdateEvent, jumpEventListener);
+
     }
 
 

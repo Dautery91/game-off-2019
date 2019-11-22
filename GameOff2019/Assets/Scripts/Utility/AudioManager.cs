@@ -14,7 +14,6 @@ public class AudioManager : MonoBehaviour
     private void Awake()
     {
         InitializeAudioManager();
-
     }
 
     public void PlaySound(string name)
