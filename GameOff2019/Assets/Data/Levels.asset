@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Levels
   m_EditorClassIdentifier: 
   levels:
+  - name: Tutorial 1
+  - name: Tutorial 2
   - name: Code2
   - name: Code4
   - name: Code5
-  - name: Tutorial 1
-  - name: Tutorial 2
   startLevel:
     name: MainMenu
   currentLevel:
