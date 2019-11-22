@@ -15,6 +15,7 @@ public class InstructionGenerator : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            AudioManager.instance.PlaySound("PopUpSFX");
             InstructionCanvas.SetActive(true);
         }
     }
