@@ -46,29 +46,36 @@ MonoBehaviour:
   sounds:
   - Name: BackgroundMusic1
     Clip: {fileID: 8300000, guid: b435578da6ca0064ca1d12039efb25e1, type: 3}
-    Volume: 0.5
-    Pitch: 1
     Loop: 1
     IsBackgroundMusic: 1
+    Volume: 0.5
+    Pitch: 1
     source: {fileID: 0}
   - Name: PlayerJump
     Clip: {fileID: 8300000, guid: 4846dce45383e434ca37051ce4af9df2, type: 3}
-    Volume: 1
-    Pitch: 1
     Loop: 0
     IsBackgroundMusic: 0
+    Volume: 1
+    Pitch: 1
     source: {fileID: 0}
   - Name: UXClick
     Clip: {fileID: 8300000, guid: 7a10c3d04a99a4242952cda23283e2ac, type: 3}
-    Volume: 1
-    Pitch: 1
     Loop: 0
     IsBackgroundMusic: 0
+    Volume: 1
+    Pitch: 1
     source: {fileID: 0}
   - Name: BackgroundMusic2
     Clip: {fileID: 8300000, guid: 804902564baa953498b3b515f62baf08, type: 3}
-    Volume: 0.5
-    Pitch: 1
     Loop: 1
     IsBackgroundMusic: 1
+    Volume: 0.5
+    Pitch: 1
+    source: {fileID: 0}
+  - Name: BackgroundMusic3
+    Clip: {fileID: 8300000, guid: f8227b7f66575c04cbcf9143c45cb6f9, type: 3}
+    Loop: 1
+    IsBackgroundMusic: 1
+    Volume: 0.5
+    Pitch: 1
     source: {fileID: 0}

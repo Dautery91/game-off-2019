@@ -8,14 +8,14 @@ public class Sound
 
     public AudioClip Clip;
 
+    public bool Loop;
+    public bool IsBackgroundMusic;
+
     [Range(0f, 1f)]
     public float Volume;
 
     [Range(0f, 5f)]
     public float Pitch;
-
-    public bool Loop;
-    public bool IsBackgroundMusic;
 
     [HideInInspector]
     public AudioSource source;
