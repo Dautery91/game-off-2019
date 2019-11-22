@@ -39,7 +39,7 @@ public class GridController2D : MonoBehaviour
 
     [SerializeField] IntData jumpCount;
 
-    BoxCollider2D collider;
+    BoxCollider2D boxCollider;
 
     RayCastOrigins rayCastOrigins;
 
@@ -85,13 +85,14 @@ public class GridController2D : MonoBehaviour
 
     void Start()
     {
+
         tilelength = tilemap.cellSize.x;
 
 
         horizontalMovementSpeed = HorizontalMovementSpeedData.data;
         verticalMovementSpeed = VerticalMovementSpeedData.data;
 
-        collider = GetComponent<BoxCollider2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
 
 
         //move into cell centre if not already there
@@ -406,7 +407,7 @@ public class GridController2D : MonoBehaviour
 
 
     void CalculateRayOrigins(){
-        Bounds bounds = collider.bounds;
+        Bounds bounds = boxCollider.bounds;
         bounds.Expand(-1 * skinWidth);
 
         rayCastOrigins.up = new Vector2(bounds.min.x+bounds.size.x/2,bounds.max.y);

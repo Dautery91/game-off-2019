@@ -48,7 +48,7 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: b435578da6ca0064ca1d12039efb25e1, type: 3}
     Loop: 1
     IsBackgroundMusic: 1
-    Volume: 0.5
+    Volume: 0.394
     Pitch: 1
     source: {fileID: 0}
   - Name: PlayerJump
@@ -69,14 +69,14 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 804902564baa953498b3b515f62baf08, type: 3}
     Loop: 1
     IsBackgroundMusic: 1
-    Volume: 0.5
+    Volume: 0.398
     Pitch: 1
     source: {fileID: 0}
   - Name: BackgroundMusic3
     Clip: {fileID: 8300000, guid: f8227b7f66575c04cbcf9143c45cb6f9, type: 3}
     Loop: 1
     IsBackgroundMusic: 1
-    Volume: 0.5
+    Volume: 0.386
     Pitch: 1
     source: {fileID: 0}
   - Name: PopUpSFX

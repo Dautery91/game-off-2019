@@ -9,12 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 3e50fca7d8939f740b197ee09ed18845
   - enabled: 1
+    path: Assets/Scenes/Codenamed/Code2.unity
+    guid: 81c0d308c08574747bc9b3e4750d8761
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code4.unity
+    guid: fe6678daeed6d3d4a9691b07021302ad
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code5.unity
+    guid: fcf118bef8f46b345836b2cdde99f2d3
+  - enabled: 1
     path: Assets/Scenes/Tutorial 1.unity
     guid: d40aadcb5f196b84b8b96a780bb2d3a1
   - enabled: 1
     path: Assets/Scenes/Tutorial 2.unity
     guid: 95a144fcd5da05a46933b264adff217a
-  - enabled: 1
-    path: Assets/Scenes/Codenamed/BetaL2.unity
-    guid: 249dae5a231bc9f49a53cde275fa4f62
   m_configObjects: {}

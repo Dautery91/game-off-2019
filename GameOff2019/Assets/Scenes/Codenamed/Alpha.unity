@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 253948377}
   - component: {fileID: 253948379}
   - component: {fileID: 253948378}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5919,7 +5919,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1187017374}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4539870196126327997, guid: 3055ead7dac11354eb9158a54faa63cf,
         type: 3}
@@ -5983,12 +5983,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3055ead7dac11354eb9158a54faa63cf, type: 3}
---- !u!4 &676957139 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4539870196126327992, guid: 3055ead7dac11354eb9158a54faa63cf,
-    type: 3}
-  m_PrefabInstance: {fileID: 676957138}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1077473029
 GameObject:
   m_ObjectHideFlags: 0
@@ -6113,7 +6107,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 253948377}
-  - {fileID: 676957139}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
