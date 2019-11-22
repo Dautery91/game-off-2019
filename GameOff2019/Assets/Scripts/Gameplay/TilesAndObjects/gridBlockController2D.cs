@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class gridBlockController2D : MonoBehaviour
 {
 
-    [SerializeField] Tilemap tilemap;
+    Tilemap tilemap;
 
     BoxCollider2D collider;
 
@@ -36,14 +36,15 @@ public class gridBlockController2D : MonoBehaviour
 
     public bool trapped = false;
 
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before
-    /// any of the Update methods is called the first time.
-    /// </summary>
+
+    private void Awake()
+    {
+        tilemap = FindObjectOfType<Tilemap>();
+    }
+
     void Start()
     {
         tilelength = tilemap.cellSize.x;
-        
 
         horizontalMovementSpeed = HorizontalMovementSpeedData.data;
         verticalMovementSpeed = VerticalMovementSpeedData.data;

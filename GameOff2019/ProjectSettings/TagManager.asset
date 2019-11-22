@@ -8,6 +8,7 @@ TagManager:
   - hazzard
   - Block
   - passable
+  - TilemapCollisionLayer
   layers:
   - Default
   - TransparentFX

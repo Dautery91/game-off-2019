@@ -35,7 +35,7 @@ public class GridController2D : MonoBehaviour
 
     [SerializeField] PlayerInputReader playerInputReader;
 
-    [SerializeField] Tilemap tilemap;
+    Tilemap tilemap;
 
     [SerializeField] IntData jumpCount;
 
@@ -78,11 +78,11 @@ public class GridController2D : MonoBehaviour
     // Animation support fields
     [SerializeField] Animator animator;
 
+    private void Awake()
+    {
+        tilemap = FindObjectOfType<Tilemap>();
+    }
 
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before
-    /// any of the Update methods is called the first time.
-    /// </summary>
     void Start()
     {
         tilelength = tilemap.cellSize.x;
