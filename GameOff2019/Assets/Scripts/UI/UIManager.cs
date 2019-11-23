@@ -9,8 +9,16 @@ public class UIManager : MonoBehaviour
     public GameObject LevelSelectPanel;
 
     public void OnGamePaused(){
-        pauseMenuPanel.SetActive(true);
-        LevelSelectPanel.SetActive(true);
+        if (!pauseMenuPanel.activeSelf)
+        {
+            pauseMenuPanel.SetActive(true);
+            LevelSelectPanel.SetActive(true);
+        }
+        else
+        {
+            pauseMenuPanel.SetActive(false);
+            LevelSelectPanel.SetActive(false);
+        }
     }
 
     public void OnGameResume(){
@@ -20,16 +28,16 @@ public class UIManager : MonoBehaviour
     }
 
     public void OnLevelCleared(){
-        GameManager.instance.PauseGame();
+        //GameManager.instance.PauseGame();
         gameOverPanel.SetActive(true);
-        gameOverPanel.GetComponent<gameOverPanel>().Setup(true);
+        gameOverPanel.GetComponent<gameOverPanel>().Setup(true, "Level Cleared!");
 
     }
 
-    public void OnLevelFailed(){
+    public void OnLevelFailed(string stringReason){
 
         gameOverPanel.SetActive(true);
-        gameOverPanel.GetComponent<gameOverPanel>().Setup(false);
+        gameOverPanel.GetComponent<gameOverPanel>().Setup(false, stringReason);
         
     }
 

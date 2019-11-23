@@ -5,8 +5,6 @@ using UnityEngine.Tilemaps;
 
 public class GlobalOnOffSwitch : IObject
 {
-    //public ObjectColor objectColor;
-
     List<IObject> LinkedObjects;
 
     List<IObject> ActivatedPersistentObjects;
@@ -20,34 +18,35 @@ public class GlobalOnOffSwitch : IObject
 
     void Start()
     {
-        AcquireLinkedObjects();
         tilemap = GetComponentInParent<Tilemap>();
+
         if (tilemap == null)
         {
-            cellPos = new Vector3Int(0, 0, 0);
+            //cellPos = new Vector3Int(0, 0, 0);
             Debug.LogError("No tilemap in parent");
             return;
         }
+
+        AcquireLinkedObjects();
     }
 
 
     void AcquireLinkedObjects()
     {
-
         LinkedObjects = new List<IObject>();
         ActivatedPersistentObjects = new List<IObject>();
         IObject[] iobjects = (IObject[])GameObject.FindObjectsOfType(typeof(IObject));
 
         foreach (var iobject in iobjects)
         {
-            if (iobject.objectColor == objectColor)
+            if (iobject.objectColor == objectColor && iobject.gameObject != this.gameObject)
             {
                 LinkedObjects.Add(iobject);
             }
         }
     }
 
-    protected virtual void playerEnteredSwitch()
+    protected virtual void SwitchEntered()
     {
         this.ToggleState();
 
@@ -67,9 +66,9 @@ public class GlobalOnOffSwitch : IObject
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" || other.tag == "Block")
         {
-            playerEnteredSwitch();
+            SwitchEntered();
         }
 
     }

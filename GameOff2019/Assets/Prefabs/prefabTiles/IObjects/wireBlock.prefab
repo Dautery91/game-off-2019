@@ -74,7 +74,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee51cb4596685ab489d6a5e4f2b6a888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 0}
   HorizontalMovementSpeedData: {fileID: 11400000, guid: 8f0a7f45695bf0a42ac542aaa276c8c5,
     type: 2}
   VerticalMovementSpeedData: {fileID: 11400000, guid: 746bd6aededcfd94282ae04f611aa222,
@@ -84,6 +83,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2816
   launched: 0
+  trapped: 0
 --- !u!50 &5124192612336338364
 Rigidbody2D:
   serializedVersion: 4

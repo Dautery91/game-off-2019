@@ -163,6 +163,7 @@ MonoBehaviour:
   collideableLayer:
     serializedVersion: 2
     m_Bits: 1536
+  PlayerDeathEvent: {fileID: 11400000, guid: bcbeba404d906664ba05b005f747041d, type: 2}
   skinWidth: 0.015
 --- !u!61 &2395291403990095559
 BoxCollider2D:

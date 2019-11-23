@@ -13,13 +13,13 @@ public class gameOverPanel : MonoBehaviour
     public Text ResultText;
 
 
-    public void Setup(bool levelCleared){
+    public void Setup(bool levelCleared, string reason){
         if(levelCleared){
-            ResultText.text = "Level Cleared!";
+            ResultText.text = reason;
             NextButton.SetActive(true);
         }
         else{
-            ResultText.text = "Level Failed!";
+            ResultText.text = reason;
             NextButton.SetActive(false);
         }
     }
@@ -39,6 +39,14 @@ public class gameOverPanel : MonoBehaviour
         GameManager.instance.LoadMainMenu();
     }
 
-    
+    private void OnEnable()
+    {
+        Time.timeScale = 0;
+    }
+
+    private void OnDisable()
+    {
+        Time.timeScale = 1;
+    }
 
 }

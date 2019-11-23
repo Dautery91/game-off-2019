@@ -9,18 +9,13 @@ public class PlayerInputReader : MonoBehaviour
     private bool playerRetryInput;
     private bool jumpInput;
     private bool normalJumpInput;
-    private bool gamePaused = false;
 
-    public bool GamePaused{
-        get{
-            return gamePaused;
-        }
-    }
-    private float rotateInput;
+    [SerializeField] VoidGameEvent GamePauseEvent;
+
+
     public float HorizontalMoveInput { get { return horizontalMoveInput; } }
     public bool PlayerRetryInput { get { return playerRetryInput; } }
     public bool JumpInput { get { return jumpInput; } }
-    public bool NormalJumpInput { get { return normalJumpInput; } }
 
 
 
@@ -29,20 +24,20 @@ public class PlayerInputReader : MonoBehaviour
        
         ReadMovementInput();
         ReadJumpInput();
+        ReadPauseInput();
         
     }
 
     private void ReadMovementInput()
     {
-        if(!gamePaused){
-            horizontalMoveInput = Input.GetAxisRaw("Horizontal");
-        }
+        horizontalMoveInput = Input.GetAxisRaw("Horizontal");
+
     }
 
 
     private void ReadJumpInput()
-    {   //@DAUTERY I'm changing the key to W as space bar kept triggering my on resume for some reason
-        if (Input.GetKeyDown(KeyCode.W) && !gamePaused)
+    {   
+        if ((Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.W)))
         {
             jumpInput = true;
         }
@@ -50,23 +45,16 @@ public class PlayerInputReader : MonoBehaviour
         {
             jumpInput = false;
         }
-        //if (Input.GetKeyDown(KeyCode.Q) && !gamePaused)
-        //{
-        //    normalJumpInput = true;
-        //}
-        //else
-        //{
-        //    normalJumpInput = false;
-        //}
     }
 
 
-    public void onPause(){
-        gamePaused = true;
-    }
+    private void ReadPauseInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GamePauseEvent.Raise();
+        }
 
-    public void OnResume(){
-        gamePaused = false;
     }
 
 }
