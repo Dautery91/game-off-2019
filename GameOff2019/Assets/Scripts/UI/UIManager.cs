@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     public GameObject LevelSelectPanel;
 
     public void OnGamePaused(){
-        if (!pauseMenuPanel.activeSelf)
+        if (!pauseMenuPanel.activeSelf && !gameOverPanel.activeSelf)
         {
             pauseMenuPanel.SetActive(true);
             LevelSelectPanel.SetActive(true);
@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     }
 
     public void OnGameResume(){
+
         pauseMenuPanel.SetActive(false);
         gameOverPanel.SetActive(false);
         LevelSelectPanel.SetActive(false);

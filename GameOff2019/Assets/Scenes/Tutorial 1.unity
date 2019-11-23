@@ -282,17 +282,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4539870196126327999, guid: 3055ead7dac11354eb9158a54faa63cf,
-        type: 3}
-      propertyPath: tilemap
-      value: 
-      objectReference: {fileID: 851196633}
-    - target: {fileID: 4539870196126327995, guid: 3055ead7dac11354eb9158a54faa63cf,
-        type: 3}
-      propertyPath: GamePauseEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 98deea485312ac340a3dc986fe548628,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3055ead7dac11354eb9158a54faa63cf, type: 3}
 --- !u!1001 &796659591
@@ -2847,6 +2836,11 @@ PrefabInstance:
     - target: {fileID: 6090391924576309148, guid: 0c22526064068134cbd070f046a1825c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6090391924061409141, guid: 0c22526064068134cbd070f046a1825c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

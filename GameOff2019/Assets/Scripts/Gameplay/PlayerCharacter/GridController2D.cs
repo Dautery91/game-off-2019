@@ -78,6 +78,9 @@ public class GridController2D : MonoBehaviour
     // Animation support fields
     [SerializeField] Animator animator;
 
+    [SerializeField] GameObject JumpIndicator;
+    bool jumpIndicatorInitialized = false;
+
     private void Awake()
     {
         tilemap = FindObjectOfType<Tilemap>();
@@ -88,6 +91,9 @@ public class GridController2D : MonoBehaviour
 
         tilelength = tilemap.cellSize.x;
 
+        JumpIndicator.SetActive(false);
+
+        MoveJumpIndicator();
 
         horizontalMovementSpeed = HorizontalMovementSpeedData.data;
         verticalMovementSpeed = VerticalMovementSpeedData.data;
@@ -116,8 +122,8 @@ public class GridController2D : MonoBehaviour
     /// </summary>
     void Update()
     {
+        
 
-       
         GetCollisions();
 
         if(!moving&&!launched&&!trapped)
@@ -142,11 +148,15 @@ public class GridController2D : MonoBehaviour
 
             }
 
+            
+
             GravityMovement();
 
             HorizontalMovement();
 
             JumpMovement();
+
+            MoveJumpIndicator();
 
             CheckIfIdle();
 
@@ -157,6 +167,25 @@ public class GridController2D : MonoBehaviour
 
     }
 
+
+    private void MoveJumpIndicator()
+    {
+        if (gridCollisionFlags.below && !jumpIndicatorInitialized)
+        {
+            jumpIndicatorInitialized = true;
+        }
+
+        if (jumpCount.Data > 0 && jumpIndicatorInitialized && gridCollisionFlags.below)
+        {
+            JumpIndicator.SetActive(true);
+        }
+        else
+        {
+            JumpIndicator.SetActive(false);
+        }
+
+        JumpIndicator.transform.position = new Vector3(transform.position.x, transform.position.y + (jumpCount.Data / tilelength), transform.position.z);
+    }
 
     /// <summary>
     /// called by magnet tile to trap the player
@@ -503,6 +532,7 @@ public class GridController2D : MonoBehaviour
             else if (positionToMove.y < transform.position.y && Mathf.Abs(positionToMove.y - transform.position.y) < tilelength / 2)
             {
                 animator.SetBool("HasLanded", true);
+                
             }
             else if (hanging && gridCollisionFlags.above)
             {
