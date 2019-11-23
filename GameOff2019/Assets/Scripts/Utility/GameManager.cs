@@ -36,29 +36,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-        ReadPauseInput();
-    }
-
-    private void ReadPauseInput()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape) && !gamePaused)
-        {
-           PauseGame();
-        }
-        
-    }
-
-    public void PauseGame(){
-        gamePaused = true;
-        GamePauseEvent.Raise();
-    }
-
-
     public void LoadNextLevel(){
         level nextLevel = LevelData.getNextLevel(SceneManager.GetActiveScene().name);
         if(nextLevel!=null){

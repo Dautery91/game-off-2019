@@ -11,6 +11,8 @@ public class MagnetTile : WireTile
     public LayerMask collideableLayer;
     RayCastOrigins rayCastOrigins;
 
+    public StringGameEvent PlayerDeathEvent;
+
     List<GameObject> trappedObjects;
 
     BoxCollider2D collider;
@@ -123,6 +125,7 @@ public class MagnetTile : WireTile
             trappedObjects.Add(gobject);
             if(gobject.tag=="Player"){
                 gobject.GetComponent<GridController2D>().Trap(tile);
+                PlayerDeathEvent.Raise("Stuck by magnet!");
             }
             else{
                  gobject.GetComponent<gridBlockController2D>().Trap(tile);

@@ -101,9 +101,9 @@ public class Controller2D : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(playerInputReader.GamePaused){
-            return;
-        }
+        //if(playerInputReader.GamePaused){
+        //    return;
+        //}
         
         if (oldYVelocity >= 0 && currentYVelocity < 0 && haveJumped)
         {
@@ -217,13 +217,13 @@ public class Controller2D : MonoBehaviour
         }
 
         //normalJump
-        if( playerInputReader.NormalJumpInput && collisionFlags.below){
+        //if( playerInputReader.NormalJumpInput && collisionFlags.below){
 
-            float maxHeight = ((float)controller2DData.NormalJumpHeight) * controller2DData.tileLength + collider.bounds.size.y / 4;
-            velocity.y += Mathf.Sqrt(maxHeight * Mathf.Abs(gravity.data.y) * 2);
-            haveNormalJumped = true;
+        //    float maxHeight = ((float)controller2DData.NormalJumpHeight) * controller2DData.tileLength + collider.bounds.size.y / 4;
+        //    velocity.y += Mathf.Sqrt(maxHeight * Mathf.Abs(gravity.data.y) * 2);
+        //    haveNormalJumped = true;
 
-        }
+        //}
     }
 
     void Move(Vector3 movement)
