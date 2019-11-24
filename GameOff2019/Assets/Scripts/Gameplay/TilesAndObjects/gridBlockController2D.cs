@@ -185,53 +185,70 @@ public class gridBlockController2D : MonoBehaviour
         CalculateRayOrigins();
 
         float rayDistance = skinWidth+tilelength/2;
-        
+
         //up
-        RaycastHit2D hit;
+        RaycastHit2D[] hits;
 
-        hit  = Physics2D.Raycast(rayCastOrigins.up,Vector2.up,rayDistance,collideableLayer);
+        hits  = Physics2D.RaycastAll(rayCastOrigins.up,Vector2.up,rayDistance,collideableLayer);
 
-        if(hit){
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit && hit.transform.gameObject != this.transform.gameObject)
+            {
 
-            gridCollisionFlags.above = true;
-            gridCollisionFlags.Cabove = hit.collider;
+                gridCollisionFlags.above = true;
+                gridCollisionFlags.Cabove = hit.collider;
 
+            }
         }
 
 
+
         //down
-        hit  = Physics2D.Raycast(rayCastOrigins.down,-1*Vector2.up,rayDistance,collideableLayer);
+        hits  = Physics2D.RaycastAll(rayCastOrigins.down,-1*Vector2.up,rayDistance,collideableLayer);
         Debug.DrawRay(rayCastOrigins.down,-1*Vector2.up,Color.red);
 
-        if(hit){
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit && hit.transform.gameObject != this.transform.gameObject)
+            {
 
-            gridCollisionFlags.below = true;
-            gridCollisionFlags.Cbelow = hit.collider;
-            gridCollisionFlags.dslopeAngle = Vector2.Angle(hit.normal,Vector2.up);
+                gridCollisionFlags.below = true;
+                gridCollisionFlags.Cbelow = hit.collider;
+                gridCollisionFlags.dslopeAngle = Vector2.Angle(hit.normal, Vector2.up);
 
+            }
         }
 
         //left
 
-        hit  = Physics2D.Raycast(rayCastOrigins.left,-1*Vector2.right,rayDistance,collideableLayer);
+        hits  = Physics2D.RaycastAll(rayCastOrigins.left,-1*Vector2.right,rayDistance,collideableLayer);
 
-        if(hit){
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit && hit.transform.gameObject != this.transform.gameObject)
+            {
 
-            gridCollisionFlags.left = true;
-            gridCollisionFlags.Cleft = hit.collider;
-            gridCollisionFlags.lslopeAngle = Vector2.Angle(hit.normal,Vector2.up);
+                gridCollisionFlags.left = true;
+                gridCollisionFlags.Cleft = hit.collider;
+                gridCollisionFlags.lslopeAngle = Vector2.Angle(hit.normal, Vector2.up);
 
+            }
         }
 
         //right
-        hit  = Physics2D.Raycast(rayCastOrigins.right,Vector2.right,rayDistance,collideableLayer);
+        hits  = Physics2D.RaycastAll(rayCastOrigins.right,Vector2.right,rayDistance,collideableLayer);
 
-        if(hit){
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit && hit.transform.gameObject != this.transform.gameObject)
+            {
 
-            gridCollisionFlags.right = true;
-            gridCollisionFlags.Cright = hit.collider;
-            gridCollisionFlags.rslopeAngle = Vector2.Angle(hit.normal,Vector2.up);
+                gridCollisionFlags.right = true;
+                gridCollisionFlags.Cright = hit.collider;
+                gridCollisionFlags.rslopeAngle = Vector2.Angle(hit.normal, Vector2.up);
 
+            }
         }
 
 
@@ -271,12 +288,23 @@ public class gridBlockController2D : MonoBehaviour
 
         float distance = 0;
 
-        RaycastHit2D hit2D;
+        //RaycastHit2D hit2D;
 
-        hit2D = Physics2D.Raycast(origin,direction,float.PositiveInfinity,collideableLayer);
+        //hit2D = Physics2D.Raycast(origin,direction,float.PositiveInfinity,collideableLayer);
 
-        if(hit2D){
-            return hit2D.distance;
+        //if(hit2D){
+        //    return hit2D.distance;
+        //}
+
+
+        RaycastHit2D[] allHits = Physics2D.RaycastAll(origin, direction, float.PositiveInfinity, collideableLayer);
+
+        foreach (RaycastHit2D hit in allHits)
+        {
+            if (hit.transform.gameObject != this.transform.gameObject)
+            {
+                return hit.distance;
+            }
         }
 
         return distance;

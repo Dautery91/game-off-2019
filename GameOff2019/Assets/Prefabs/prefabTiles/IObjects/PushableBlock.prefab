@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7647983716345362858}
   - component: {fileID: 7647983716345362859}
   m_Layer: 10
-  m_Name: block
+  m_Name: PushableBlock
   m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
   maxSlopeAngle: 80
   collideableLayer:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 1792
   launched: 0
   trapped: 0
 --- !u!50 &7647983716345362858
