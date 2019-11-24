@@ -60,7 +60,15 @@ public class GridController2DAndroid : MonoBehaviour
 
     private void Awake()
     {
-        tilemap = FindObjectOfType<Tilemap>();
+        Tilemap[] tilemaps = FindObjectsOfType<Tilemap>();
+
+        foreach (Tilemap tm in tilemaps)
+        {
+            if (tm.tag == "Ground")
+            {
+                tilemap = tm;
+            }
+        }
     }
 
     void Start()
@@ -117,7 +125,7 @@ public class GridController2DAndroid : MonoBehaviour
                 }
                 else if (!HangingTimer.Running)
                 {
-                    HangingTimer.Duration = 2;
+                    HangingTimer.Duration = 1.25f;
                     HangingTimer.Run();
                 }
 
