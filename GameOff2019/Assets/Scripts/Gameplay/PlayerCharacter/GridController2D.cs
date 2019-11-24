@@ -63,6 +63,7 @@ public class GridController2D : MonoBehaviour
     private float verticalMovementSpeed;
 
     public int horizontalTileMovementDuringHanging = 2;
+    private float tilesMovedDuringHangtime = 0;
 
     public float maxSlopeAngle = 80f;
 
@@ -129,20 +130,18 @@ public class GridController2D : MonoBehaviour
         if(!moving&&!launched&&!trapped)
         {
 
-
-
-            if (hanging && !HangingTimer.Running)
+            if (hanging)
             {
 
-                if (HangingTimer.Finished)
+                if (HangingTimer.Finished || tilesMovedDuringHangtime >= horizontalTileMovementDuringHanging)
                 {
                     HangingTimer.Stop();
                     hanging = false;
+                    tilesMovedDuringHangtime = 0;
                 }
-                else
+                else if (!HangingTimer.Running)
                 {
-                    float duration = horizontalTileMovementDuringHanging * tilelength / horizontalMovementSpeed;
-                    HangingTimer.Duration = duration;
+                    HangingTimer.Duration = 2;
                     HangingTimer.Run();
                 }
 
@@ -299,7 +298,8 @@ public class GridController2D : MonoBehaviour
 
     private void HorizontalMovement()
     {
-        if(gridCollisionFlags.below || hanging){
+        if(gridCollisionFlags.below || hanging)
+        {
             float horizontalMovement = playerInputReader.HorizontalMoveInput;
 
             Vector3Int newTile = currentTile;
@@ -329,8 +329,6 @@ public class GridController2D : MonoBehaviour
             if(tilemap.HasTile(newTile)){
                 newTile.y+=1;
             }
-
-
             
             StartCoroutine(SmoothMove(newTile));
 
@@ -543,6 +541,11 @@ public class GridController2D : MonoBehaviour
         }
         currentTile = newTile;
         moving = false;
+
+        if (hanging)
+        {
+            tilesMovedDuringHangtime += Mathf.Abs(originPosition.x - positionToMove.x);
+        }
 
         //Reset animation flags
         animator.SetBool("isSlidingRight", false);

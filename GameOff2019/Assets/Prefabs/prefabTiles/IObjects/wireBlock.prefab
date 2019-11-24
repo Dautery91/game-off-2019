@@ -81,7 +81,7 @@ MonoBehaviour:
   maxSlopeAngle: 80
   collideableLayer:
     serializedVersion: 2
-    m_Bits: 2816
+    m_Bits: 3840
   launched: 0
   trapped: 0
 --- !u!50 &5124192612336338364
