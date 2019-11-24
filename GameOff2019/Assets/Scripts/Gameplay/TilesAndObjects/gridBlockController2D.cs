@@ -38,7 +38,15 @@ public class gridBlockController2D : MonoBehaviour
 
     private void Awake()
     {
-        tilemap = FindObjectOfType<Tilemap>();
+        Tilemap[] tilemaps = FindObjectsOfType<Tilemap>();
+
+        foreach (Tilemap tm in tilemaps)
+        {
+            if (tm.tag == "Ground")
+            {
+                tilemap = tm;
+            }
+        }
     }
 
     void Start()
