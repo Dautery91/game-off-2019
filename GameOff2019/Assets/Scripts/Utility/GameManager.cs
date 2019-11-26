@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] VoidGameEvent TouchScreenToggleEvent;
+    private bool isTouchScreenMode = false;
 
     [SerializeField] Levels LevelData;
     [SerializeField] VoidGameEvent GamePauseEvent;
@@ -14,12 +16,15 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     private bool gamePaused = false;
 
+    public bool IsTouchScreenMode { get { return isTouchScreenMode; } set { isTouchScreenMode = value; } }
+
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
     void Awake()
     {
-        if(GameManager.instance != null && GameManager.instance!= this){
+
+        if (GameManager.instance != null && GameManager.instance!= this){
             Destroy(this);
         }
         else{
@@ -80,5 +85,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void InitializeGameManager()
+    {
+        GameManager.instance.IsTouchScreenMode = this.isTouchScreenMode;
+        if (isTouchScreenMode)
+        {
+            GameManager.instance.ToggleTouchScreenMode();
+        }
+    }
+
+    public void ToggleTouchScreenMode()
+    {
+        isTouchScreenMode = !isTouchScreenMode;
+        TouchScreenToggleEvent.Raise();
+        Debug.Log("Mode Toggled");
+    }
 
 }

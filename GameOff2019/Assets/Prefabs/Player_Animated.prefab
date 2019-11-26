@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4539870196126327992}
   - component: {fileID: 4539870196126327999}
   - component: {fileID: 4539870196126327995}
+  - component: {fileID: -5163714422744324115}
+  - component: {fileID: 1869274960918535805}
   - component: {fileID: 119920736566284946}
   - component: {fileID: 4539870196126327996}
   - component: {fileID: 4539870196126327994}
@@ -77,6 +79,60 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GamePauseEvent: {fileID: 11400000, guid: 98deea485312ac340a3dc986fe548628, type: 2}
+--- !u!114 &-5163714422744324115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4539870196126327997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1fdb781ab08f7c48b27369cbb940ec5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4539870196126327995}
+        m_MethodName: ToggleTouchScreenMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gameEvent: {fileID: 11400000, guid: 42d774eee3d996848863528ebf83679f, type: 2}
+--- !u!114 &1869274960918535805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4539870196126327997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1fdb781ab08f7c48b27369cbb940ec5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4539870196126327999}
+        m_MethodName: HandleJumpInterruption
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gameEvent: {fileID: 11400000, guid: ce7af6b4cba0f8e41a09ce09ab73afcd, type: 2}
 --- !u!212 &119920736566284946
 SpriteRenderer:
   m_ObjectHideFlags: 0

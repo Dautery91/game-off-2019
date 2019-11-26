@@ -13,7 +13,7 @@ public struct RayCastOrigins{
 public struct GridCollisionFlags{
     public bool above,below,left,right;
 
-    public float lslopeAngle , rslopeAngle, dslopeAngle;
+    public float lslopeAngle, rslopeAngle, dslopeAngle;
 
     public Collider2D Cabove,Cbelow,Cleft,Cright;
 
@@ -32,6 +32,7 @@ public struct GridCollisionFlags{
 [RequireComponent(typeof(BoxCollider2D))]
 public class GridController2D : MonoBehaviour
 {
+    #region Fields and Properties
 
     [SerializeField] PlayerInputReader playerInputReader;
 
@@ -52,15 +53,17 @@ public class GridController2D : MonoBehaviour
     Vector3Int currentTile;
 
     bool moving = false;
-
     bool hanging = false;
 
     public FloatData HorizontalMovementSpeedData;
     public FloatData VerticalMovementSpeedData;
-
     private float horizontalMovementSpeed;
-
     private float verticalMovementSpeed;
+
+    private bool jumpInterrupted = false;
+    private bool jumpingCorrection = false;
+    private int originalJumpHeightTarget = 0;
+    private int originalJumpStartingPosition = 0;
 
     public int horizontalTileMovementDuringHanging = 2;
     private float tilesMovedDuringHangtime = 0;
@@ -81,6 +84,8 @@ public class GridController2D : MonoBehaviour
 
     [SerializeField] GameObject JumpIndicator;
     bool jumpIndicatorInitialized = false;
+
+    #endregion
 
     private void Awake()
     {
@@ -126,12 +131,8 @@ public class GridController2D : MonoBehaviour
         transform.position = tilemap.CellToWorld(currentTile) + tilemap.tileAnchor;
     }
 
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
     void Update()
     {
-        
 
         GetCollisions();
 
@@ -269,7 +270,8 @@ public class GridController2D : MonoBehaviour
     private void JumpMovement()
     {
 
-        if(gridCollisionFlags.below && playerInputReader.JumpInput){
+        if(gridCollisionFlags.below && playerInputReader.JumpInput)
+        {
             
             int distanceIntiles = (int)(GetDistanceToCollideAbleTile(Vector2.up)/tilelength);
 
@@ -293,8 +295,12 @@ public class GridController2D : MonoBehaviour
                 
             }
 
-            Vector3Int newTile = new Vector3Int(currentTile.x,currentTile.y+distanceIntiles,0);
-            
+            originalJumpStartingPosition = currentTile.y;
+
+            Vector3Int newTile = new Vector3Int(currentTile.x,currentTile.y + distanceIntiles,0);
+
+            originalJumpHeightTarget = newTile.y;
+
             StartCoroutine(SmoothMove(newTile));
 
             hanging = true;
@@ -303,6 +309,8 @@ public class GridController2D : MonoBehaviour
         }
 
     }
+
+
 
     private void HorizontalMovement()
     {
@@ -373,13 +381,20 @@ public class GridController2D : MonoBehaviour
 
     }
 
-    void GetCollisions(){
+    void GetCollisions()
+    {
         
         gridCollisionFlags.Reset();
         CalculateRayOrigins();
 
         float rayDistance = skinWidth+tilelength/2;
-        
+
+        //if (jumpInterrupted && hanging)
+        //{
+        //    StopAllCoroutines();
+        //    RecalculateJumpDistance();
+        //}
+
         //up
         RaycastHit2D hit;
 
@@ -390,25 +405,18 @@ public class GridController2D : MonoBehaviour
             gridCollisionFlags.above = true;
             gridCollisionFlags.Cabove = hit.collider;
 
-            //if (hanging)
-            //{
-            //    animator.SetTrigger("HeadBonk");
-            //}
-
         }
 
 
         //down
         hit  = Physics2D.Raycast(rayCastOrigins.down,-1*Vector2.up,rayDistance,collideableLayer);
-        Debug.DrawRay(rayCastOrigins.down,-1*Vector2.up,Color.red);
+        //Debug.DrawRay(rayCastOrigins.down,-1*Vector2.up,Color.red);
 
         if(hit){
 
             gridCollisionFlags.below = true;
             gridCollisionFlags.Cbelow = hit.collider;
             gridCollisionFlags.dslopeAngle = Vector2.Angle(hit.normal,Vector2.up);
-
-
 
         }
 
@@ -450,7 +458,6 @@ public class GridController2D : MonoBehaviour
         rayCastOrigins.left = new Vector2(bounds.min.x,bounds.min.y+bounds.size.y/2);
         rayCastOrigins.right = new Vector2(bounds.max.x,bounds.min.y+bounds.size.y/2);
 
-
     }
 
     float GetDistanceToCollideAbleTile(Vector2 direction){
@@ -470,10 +477,6 @@ public class GridController2D : MonoBehaviour
             origin = rayCastOrigins.left;
         }
 
-
-
-
-        // @VJS note i fixed a bug here.  Distance should default to a large number so if there is no raycast hit, it works properly
         float distance = 500;
 
         RaycastHit2D hit2D;
@@ -490,7 +493,9 @@ public class GridController2D : MonoBehaviour
     }
 
 
-    IEnumerator SmoothMove(Vector3Int newTile){
+    // Need to rework the animation stuff / this is messy as is
+    IEnumerator SmoothMove(Vector3Int newTile)
+    {
 
         moving = true;
 
@@ -523,7 +528,8 @@ public class GridController2D : MonoBehaviour
         }
 
 
-        while (transform.position!=positionToMove){
+        while (transform.position!=positionToMove)
+        {
 
             float ratio = Mathf.Abs((Mathf.Abs((transform.position-originPosition).magnitude)+ movementSpeedLocal * Time.deltaTime)/(positionToMove-originPosition).magnitude);
 
@@ -565,19 +571,64 @@ public class GridController2D : MonoBehaviour
         //animator.ResetTrigger("HeadBonk");
 
 
+    }
 
+    #region Unused Bug Fix Attempt
+
+    public void HandleJumpInterruption()
+    {
+        jumpInterrupted = true;
     }
 
 
+    public void RecalculateJumpDistance()
+    {
+        jumpInterrupted = false;
+        int newJumpHeight;
+
+        Vector2 origin = transform.position;
+
+        origin = rayCastOrigins.up;
+
+        RaycastHit2D hit2D;
+
+        hit2D = Physics2D.Raycast(origin, Vector2.up, float.PositiveInfinity, collideableLayer);
+
+        //currentTile = tilemap.WorldToCell(transform.position);
+
+        //float currentYPosition = transform.position.y;
+        //float distance = GetDistanceToCollideAbleTile(Vector2.up) / tilelength;
+        //int potentialNewJumpPosition = Mathf.RoundToInt(distance + transform.position.y);
+
+        //int newJumpHeight = Mathf.Min(potentialNewJumpPosition, originalJumpHeightTarget);
 
 
 
-    
+        if (originalJumpHeightTarget > hit2D.point.y && hit2D.transform.gameObject.GetComponent<GlobalOnOffSwitch>() != null)
+        {
+            newJumpHeight = Mathf.RoundToInt(hit2D.point.y);
+        }
+        else if (originalJumpHeightTarget < hit2D.point.y && hit2D.transform.gameObject.GetComponent<GlobalOnOffSwitch>() == null)
+        {
+            newJumpHeight = Mathf.RoundToInt(hit2D.point.y);
+        }
+        else
+        {
+            newJumpHeight = originalJumpHeightTarget;
+        }
 
-    
+        Vector3Int newTile = new Vector3Int(currentTile.x, newJumpHeight, 0);
+        StartCoroutine(SmoothMove(newTile));
+
+        originalJumpHeightTarget = 0;
+    }
+
+    #endregion
 
 
 
-    
+
+
+
 }
 

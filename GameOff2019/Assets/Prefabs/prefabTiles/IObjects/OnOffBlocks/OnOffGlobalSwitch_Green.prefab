@@ -214,6 +214,7 @@ MonoBehaviour:
   cellPos: {x: 0, y: 0, z: 0}
   SwitchUnpressedSprite: {fileID: 7035639554986894938}
   SwitchPressedSprite: {fileID: 1928689312008134690}
+  JumpInterruptEvent: {fileID: 11400000, guid: ce7af6b4cba0f8e41a09ce09ab73afcd, type: 2}
 --- !u!58 &706323796
 CircleCollider2D:
   m_ObjectHideFlags: 0
