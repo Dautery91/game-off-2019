@@ -10,6 +10,12 @@ public class PlayerInputReader : MonoBehaviour
     private bool jumpInput;
     private bool normalJumpInput;
 
+    private bool startedHoldingReset = false;
+    private Timer resetTimer;
+    private const float ResetHoldTime = 1;
+
+    private bool isTouchScreenMode = false;
+
     [SerializeField] VoidGameEvent GamePauseEvent;
 
 
@@ -17,15 +23,24 @@ public class PlayerInputReader : MonoBehaviour
     public bool PlayerRetryInput { get { return playerRetryInput; } }
     public bool JumpInput { get { return jumpInput; } }
 
-
+    private void Awake()
+    {
+        resetTimer = this.gameObject.AddComponent<Timer>();
+        resetTimer.Duration = ResetHoldTime;
+    }
 
     void Update()
     {
-       
-        ReadMovementInput();
         ReadJumpInput();
+        ReadMovementInput();
         ReadPauseInput();
-        
+        ReadResetInput();
+
+        //if (isTouchScreenMode)
+        //{
+        //    Debug.Log("in touch screen mode");
+        //}
+
     }
 
     private void ReadMovementInput()
@@ -56,5 +71,34 @@ public class PlayerInputReader : MonoBehaviour
         }
 
     }
+
+    private void ReadResetInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            startedHoldingReset = true;
+            resetTimer.Run();
+        }
+
+        if (Input.GetKeyUp(KeyCode.Backspace))
+        {
+            startedHoldingReset = false;
+            resetTimer.Stop();
+        }
+
+        if (resetTimer.Finished)
+        {
+            resetTimer.Stop();
+            startedHoldingReset = false;
+            GameManager.instance.ResetLevel();
+        }
+    }
+
+    public void ToggleTouchScreenMode()
+    {
+        isTouchScreenMode = GameManager.instance.IsTouchScreenMode;
+    }
+
+
 
 }

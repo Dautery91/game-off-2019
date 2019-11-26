@@ -753,6 +753,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ba455bf1081e1c4a8d4748d434ed951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TouchScreenToggleEvent: {fileID: 11400000, guid: 42d774eee3d996848863528ebf83679f,
+    type: 2}
   LevelData: {fileID: 11400000, guid: 06a851107a2638e4d839b8b63d36673f, type: 2}
   GamePauseEvent: {fileID: 11400000, guid: 98deea485312ac340a3dc986fe548628, type: 2}
 --- !u!114 &6090391923612118898

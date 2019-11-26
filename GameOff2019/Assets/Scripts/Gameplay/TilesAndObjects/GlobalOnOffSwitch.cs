@@ -16,8 +16,16 @@ public class GlobalOnOffSwitch : IObject
     [SerializeField] GameObject SwitchPressedSprite;
 
 
+    [SerializeField] VoidGameEvent JumpInterruptEvent;
+
+    Timer eventCooldownTimer;
+
     void Start()
     {
+        eventCooldownTimer = this.gameObject.AddComponent<Timer>();
+        eventCooldownTimer.Duration = 0.15f;
+        eventCooldownTimer.Run();
+
         tilemap = GetComponentInParent<Tilemap>();
 
         if (tilemap == null)
@@ -50,6 +58,7 @@ public class GlobalOnOffSwitch : IObject
     {
         this.ToggleState();
 
+
         foreach (IObject iobject in LinkedObjects)
         {
             iobject.ToggleState();
@@ -61,6 +70,13 @@ public class GlobalOnOffSwitch : IObject
                 }
             }
 
+        }
+
+        // Triggers player to recalculate their jump distance in case new blocks obstruct their path
+        if (eventCooldownTimer.Finished && !eventCooldownTimer.Running)
+        {
+            JumpInterruptEvent.Raise();
+            eventCooldownTimer.Run();
         }
     }
 
