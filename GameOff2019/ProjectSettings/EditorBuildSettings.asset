@@ -8,4 +8,76 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 3e50fca7d8939f740b197ee09ed18845
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code7.unity
+    guid: bb56e13dde7080e44a38161fc1e205f6
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code12.unity
+    guid: a2f917b6fd6b0784a91bcced6622a7ac
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code8.unity
+    guid: 1746a15bd738a784e902705a904541e9
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code0.unity
+    guid: 029355ebb1c9bd7418d018ccb18aef10
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code1.unity
+    guid: c1fa91a377a72764ea7968fea5a0ac61
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code2.unity
+    guid: 81c0d308c08574747bc9b3e4750d8761
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code3.unity
+    guid: e802c253a1760a549930d4e75e0f0c8b
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code4.unity
+    guid: fe6678daeed6d3d4a9691b07021302ad
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code5.unity
+    guid: fcf118bef8f46b345836b2cdde99f2d3
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code6.unity
+    guid: 65852f0a1a16c54409a8f858483a5109
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code9.unity
+    guid: 5ad975b71b699514ea85d605bacdd05d
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code10.unity
+    guid: af23baa041c989844b3ffc540f7975c0
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code11.unity
+    guid: f82cc8546bf40124298027f1f108d342
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code13.unity
+    guid: 5af2878c7fe49ea4fa5c8be3c9481d10
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code14.unity
+    guid: 6cb965e714f66d1429ffae356fc3407a
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code15.unity
+    guid: 56ad59e24a286064385a8826fe7fae3f
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code16.unity
+    guid: c7c52d9b9da94a942869995ade2cf470
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code17.unity
+    guid: 97a0f216f271ec9418a6916420a6732c
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code18.unity
+    guid: 126bc4e90889f1f4f82502ad12092b93
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code19.unity
+    guid: 0b81f69079bca544b8242b9b8215bec3
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code20.unity
+    guid: 333e1403763d095478ffbaec176735c7
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code21.unity
+    guid: c3e2b971586f0db4cac4056759d0d336
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code22.unity
+    guid: 1fe7b156f41c50b4b8bd2b604c1ef91c
+  - enabled: 1
+    path: Assets/Scenes/Codenamed/Code23.unity
+    guid: 73cd52d2fbe27ba49b191971f94a3ec0
   m_configObjects: {}
