@@ -98,6 +98,7 @@ public class GridController2D : MonoBehaviour
                 tilemap = tm;
             }
         }
+
     }
 
     void Start()
@@ -125,11 +126,6 @@ public class GridController2D : MonoBehaviour
 
     }
 
-    private void snapToGrid()
-    {
-        currentTile = tilemap.WorldToCell(transform.position);
-        transform.position = tilemap.CellToWorld(currentTile) + tilemap.tileAnchor;
-    }
 
     void Update()
     {
@@ -176,6 +172,11 @@ public class GridController2D : MonoBehaviour
     }
 
 
+    private void snapToGrid()
+    {
+        currentTile = tilemap.WorldToCell(transform.position);
+        transform.position = tilemap.CellToWorld(currentTile) + tilemap.tileAnchor;
+    }
     private void MoveJumpIndicator()
     {
         if (gridCollisionFlags.below && !jumpIndicatorInitialized)
