@@ -8,8 +8,7 @@ public class Sound
 
     public AudioClip Clip;
 
-    public bool Loop;
-    public bool IsBackgroundMusic;
+    public bool IsSFX;
 
     [Range(0f, 1f)]
     public float Volume;

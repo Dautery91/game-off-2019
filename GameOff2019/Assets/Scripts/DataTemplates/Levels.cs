@@ -21,7 +21,12 @@ public class Levels : ScriptableObject
         }
         return null;
     }
-    
+
+    public level GetFirstLevel()
+    {
+        return levels[0];
+    }
+
     public level getPrevLevel(string lname){
         for (int i = 0; i < levels.Length; i++)
         {

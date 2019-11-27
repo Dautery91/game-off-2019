@@ -6,6 +6,9 @@ using System.Collections.Generic;
 
 public class AudioManager : MonoBehaviour
 {
+    public AudioMixer MainMixer;
+    public AudioMixerGroup SFXGroup;
+
     public Sound[] sounds;
 
     public static AudioManager instance;
@@ -27,20 +30,6 @@ public class AudioManager : MonoBehaviour
         }
 
         s.source.Play();
-    }
-
-
-    private void Start()
-    {
-
-        foreach (Sound s in sounds)
-        {
-            if (s.IsBackgroundMusic)
-            {
-                PlaySound(s.Name);
-            }
-        }
-
     }
 
     public void PlayButtonClickSound()
@@ -69,7 +58,11 @@ public class AudioManager : MonoBehaviour
             s.source.clip = s.Clip;
             s.source.volume = s.Volume;
             s.source.pitch = s.Pitch;
-            s.source.loop = s.Loop;
+
+            if (s.IsSFX)
+            {
+                s.source.outputAudioMixerGroup = SFXGroup;
+            }
         }
     }
 

@@ -41,6 +41,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void StartGame()
+    {
+        SceneManager.LoadScene(LevelData.GetFirstLevel().name);
+    }
+
     public void LoadNextLevel(){
         level nextLevel = LevelData.getNextLevel(SceneManager.GetActiveScene().name);
         if(nextLevel!=null){
