@@ -46,28 +46,42 @@ MonoBehaviour:
   MainMixer: {fileID: 24100000, guid: 11486f1719bf12047b6bf09cbd005d74, type: 2}
   SFXGroup: {fileID: 7344318439984241379, guid: 11486f1719bf12047b6bf09cbd005d74,
     type: 2}
+  BGMusicGroup: {fileID: 8284677869786787504, guid: 11486f1719bf12047b6bf09cbd005d74,
+    type: 2}
   sounds:
   - Name: PlayerJump
     Clip: {fileID: 8300000, guid: 65c6f4e12a995f34b8f0e588f36d8e67, type: 3}
     IsSFX: 1
+    IsBackgroundMusic: 0
     Volume: 1
     Pitch: 1
     source: {fileID: 0}
   - Name: UXClick
     Clip: {fileID: 8300000, guid: 406b03a10842c9b45b31a013b8581707, type: 3}
     IsSFX: 1
+    IsBackgroundMusic: 0
     Volume: 1
     Pitch: 1
     source: {fileID: 0}
   - Name: PopUpSFX
     Clip: {fileID: 8300000, guid: 406b03a10842c9b45b31a013b8581707, type: 3}
     IsSFX: 1
+    IsBackgroundMusic: 0
     Volume: 0.5
     Pitch: 1
     source: {fileID: 0}
   - Name: UXClickBack
     Clip: {fileID: 8300000, guid: 083f59c1579df724faa229b9e9093d81, type: 3}
     IsSFX: 1
+    IsBackgroundMusic: 0
     Volume: 0.5
     Pitch: 1
     source: {fileID: 0}
+  - Name: BackgroundMusic
+    Clip: {fileID: 8300000, guid: 610a256f95e6c2f4280df3b354c2367d, type: 3}
+    IsSFX: 0
+    IsBackgroundMusic: 1
+    Volume: 0.5
+    Pitch: 1
+    source: {fileID: 0}
+  BackgroundMusicPlaying: 0
