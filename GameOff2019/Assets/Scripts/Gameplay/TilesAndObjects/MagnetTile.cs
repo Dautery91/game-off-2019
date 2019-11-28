@@ -125,7 +125,7 @@ public class MagnetTile : WireTile
             trappedObjects.Add(gobject);
             if(gobject.tag=="Player"){
                 gobject.GetComponent<GridController2D>().Trap(tile);
-                PlayerDeathEvent.Raise("Stuck by magnet!");
+                PlayerDeathEvent.Raise("The little blob got stuck by a magnet! Try again?");
             }
             else{
                  gobject.GetComponent<gridBlockController2D>().Trap(tile);

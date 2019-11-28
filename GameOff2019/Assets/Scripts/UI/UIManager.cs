@@ -12,7 +12,6 @@ public class UIManager : MonoBehaviour
         if (!pauseMenuPanel.activeSelf && !gameOverPanel.activeSelf)
         {
             pauseMenuPanel.SetActive(true);
-            LevelSelectPanel.SetActive(true);
         }
         else
         {

@@ -46,13 +46,12 @@ public class PlayerInputReader : MonoBehaviour
     private void ReadMovementInput()
     {
         horizontalMoveInput = Input.GetAxisRaw("Horizontal");
-
     }
 
 
     private void ReadJumpInput()
     {   
-        if ((Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.W)))
+        if ((Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)))
         {
             jumpInput = true;
         }
