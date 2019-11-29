@@ -5,22 +5,7 @@ using UnityEngine.Audio;
 
 public class BackgroundMusic : MonoBehaviour
 {
-    private AudioClip MusicClip;
-    private AudioSource source;
+    public string BackgroundTrackName;
 
-    [HideInInspector]
-    public bool isPlaying = false;
 
-    private void Awake()
-    {
-        source = this.gameObject.GetComponent<AudioSource>();
-
-    }
-
-    public void PlayBackgroundMusic()
-    {
-        source.Play();
-        isPlaying = true;
-
-    }
 }

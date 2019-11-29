@@ -11,6 +11,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] Levels LevelData;
     [SerializeField] VoidGameEvent GamePauseEvent;
 
+    private StopWatch gameTimer;
+    
+    public float GameTimeElapsed
+    {
+        get
+        {
+            return gameTimer.ElapsedSeconds;
+        }
+        set
+        {
+            gameTimer.ElapsedSeconds = value;
+        }
+    }
 
     //singleton stuff
     public static GameManager instance;
@@ -24,11 +37,14 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
 
-        if (GameManager.instance != null && GameManager.instance!= this){
+        if (GameManager.instance != null && GameManager.instance!= this)
+        {
             Destroy(this);
         }
-        else{
+        else
+        {
             instance = this;
+            
         }
     }
 
@@ -44,6 +60,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene(LevelData.GetFirstLevel().name);
+        FindObjectOfType<StopWatch>().StartTiming();
     }
 
     public void LoadNextLevel(){
@@ -53,8 +70,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(nextLevel.name);
         }
         else{
-            //handle this
-            Debug.Log("this is the last level");
+            
         }
     }
     public void LoadPrevLevel(){
@@ -63,8 +79,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(PrevLevel.name);
         }
         else{
-           //handle this
-           Debug.Log("this is the first level");
+           
         }
     }
 
@@ -72,9 +87,10 @@ public class GameManager : MonoBehaviour
         level MainMenuLevel = LevelData.startLevel;
         if(MainMenuLevel!=null){
             SceneManager.LoadScene(MainMenuLevel.name);
+            FindObjectOfType<StopWatch>().ResetTimer();
         }
         else{
-            Debug.LogError("error: startlevel not found in levels data");
+            
         }
     }
 
@@ -86,7 +102,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Level Name Not Found");
+            
         }
     }
 
@@ -103,7 +119,22 @@ public class GameManager : MonoBehaviour
     {
         isTouchScreenMode = !isTouchScreenMode;
         TouchScreenToggleEvent.Raise();
-        Debug.Log("Mode Toggled");
+        
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        AudioManager.instance.StopSound("ElecOn");
+    }
+
+    public void StartGameTimer()
+    {
+        gameTimer.StartTiming();
+    }
+
+    public void ResetGameTimer()
+    {
+        gameTimer.ResetTimer();
     }
 
 }

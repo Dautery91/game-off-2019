@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
             SceneManager.LoadScene(levels.levels[0].name);
         }
         else{
-            Debug.LogError("there are no levels configured in levels data");
+            
         }
         
     }
