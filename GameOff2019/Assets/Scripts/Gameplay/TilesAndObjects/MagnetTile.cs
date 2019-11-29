@@ -91,7 +91,7 @@ public class MagnetTile : WireTile
 
         //down
         hit  = Physics2D.Raycast(rayCastOrigins.down,-1*Vector2.up,rayDistance,collideableLayer);
-        Debug.DrawRay(rayCastOrigins.down,-1*Vector2.up,Color.red);
+        //Debug.DrawRay(rayCastOrigins.down,-1*Vector2.up,Color.red);
 
         if(hit&&(hit.collider.tag=="Player"||hit.collider.tag=="Block")){
             TrapObject(hit.collider.gameObject,trapTiles.down);

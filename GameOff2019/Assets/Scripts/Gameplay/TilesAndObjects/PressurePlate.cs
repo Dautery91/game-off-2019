@@ -157,7 +157,7 @@ public class PressurePlate : IObject
 
         //down
         hits = Physics2D.RaycastAll(rayCastOrigins.down, -1 * Vector2.up, rayDistance, collideableLayer);
-        Debug.DrawRay(rayCastOrigins.down, -1 * Vector2.up, Color.red);
+        //Debug.DrawRay(rayCastOrigins.down, -1 * Vector2.up, Color.red);
 
         for(int i=0;i<hits.Length;i++)
         {
@@ -188,7 +188,7 @@ public class PressurePlate : IObject
 
         //right
         hits = Physics2D.RaycastAll(rayCastOrigins.right, Vector2.right, rayDistance, collideableLayer);
-        Debug.DrawRay(rayCastOrigins.right,  Vector2.right, Color.red);
+        //Debug.DrawRay(rayCastOrigins.right,  Vector2.right, Color.red);
         for(int i=0;i<hits.Length;i++)
         {
             if (hits[i].collider!=col)
