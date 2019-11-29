@@ -15,21 +15,38 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
     private bool isInitialized = false;
 
-    public bool BackgroundMusicPlaying = false;
-    private BackgroundMusic music;
+    private BackgroundMusic backgroundMusic = null;
 
+    private string musicName = null;
+    private string prevMusicName = null;
 
     private void Awake()
     {
         InitializeAudioManager();
-
-
-        //InitializeBackgroundMusic();
+        BackgroundMusicSwitch();
     }
 
-    private void Start()
+    private void OnLevelWasLoaded(int level)
     {
-        InitializeBackgroundMusic();
+        BackgroundMusicSwitch();
+    }
+
+    private void BackgroundMusicSwitch()
+    {
+        backgroundMusic = FindObjectOfType<BackgroundMusic>();
+
+        if (backgroundMusic != null)
+        {
+            musicName = backgroundMusic.BackgroundTrackName;
+
+            if (musicName != prevMusicName)
+            {
+                StopSound(prevMusicName);
+                PlaySound(musicName);
+                prevMusicName = musicName;
+            }
+
+        }
     }
 
     public void PlaySound(string name)
@@ -38,16 +55,35 @@ public class AudioManager : MonoBehaviour
 
         if (s == null)
         {
-            Debug.Log("Sound name not found");
+            
             return;
         }
 
         s.source.Play();
     }
 
+    public void StopSound(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.Name == name);
+
+        if (s == null)
+        {
+            
+            return;
+        }
+
+        s.source.Stop();
+
+    }
+
     public void PlayButtonClickSound()
     {
         PlaySound("UXClick");
+    }
+
+    public void PlayButtonClickBackSound()
+    {
+        PlaySound("UXClickBack");
     }
 
     public void InitializeAudioManager()
@@ -76,7 +112,14 @@ public class AudioManager : MonoBehaviour
 
                 if (s.IsSFX)
                 {
+                    s.source.playOnAwake = false;
                     s.source.outputAudioMixerGroup = SFXGroup;
+
+                    if (s.ShouldLoop)
+                    {
+                        s.source.loop = true;
+                    }
+
                 }
 
                 if (s.IsBackgroundMusic)
@@ -85,7 +128,7 @@ public class AudioManager : MonoBehaviour
                     s.source.loop = true;
                     s.source.playOnAwake = false;
                     //s.source.playOnAwake = false;
-                    s.source.Play();
+                    //s.source.Play();
                 }
             }
 
@@ -95,20 +138,6 @@ public class AudioManager : MonoBehaviour
         }
 
 
-    }
-
-    private void InitializeBackgroundMusic()
-    {
-        music = FindObjectOfType<BackgroundMusic>();
-
-        if (music != null)
-        {
-            if (!music.isPlaying)
-            {
-                music.PlayBackgroundMusic();
-                BackgroundMusicPlaying = true;
-            }
-        }
     }
 
 }

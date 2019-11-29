@@ -27,7 +27,8 @@ MonoBehaviour:
   - name: Code22
   - name: Code10
   - name: Code23
+  - name: FinalLevel
   startLevel:
     name: MainMenu
   currentLevel:
-    name: Tutorial 2
+    name: Code12

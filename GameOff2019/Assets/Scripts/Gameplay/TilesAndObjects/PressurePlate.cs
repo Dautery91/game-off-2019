@@ -25,6 +25,8 @@ public class PressurePlate : IObject
 
     float tileLength;
 
+    private bool elecSoundOn = false;
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
@@ -46,13 +48,16 @@ public class PressurePlate : IObject
         setCollisionCount();
 
         ActivateWireBlocks();
-
+        
         if(collisionCount%2 == 1 && objectState == ObjectState.Off){
            
             ToggleState();
+            
         }
         else if(collisionCount%2 == 0 && objectState == ObjectState.On){
             ToggleState();
+            AudioManager.instance.StopSound("ElecOn");
+            elecSoundOn = !elecSoundOn;
         }
     }
 
@@ -73,8 +78,15 @@ public class PressurePlate : IObject
                 continue;
             }
             WireTile wireTile = collider.GetComponent<WireTile>();
-            if(wireTile!=null&&!visited.Contains(wireTile.transform)){
+            if(wireTile!=null&&!visited.Contains(wireTile.transform))
+            {
                 queue.Enqueue(wireTile);
+                if (!elecSoundOn && objectState == ObjectState.On)
+                {
+                    AudioManager.instance.PlaySound("ElecOn");
+                    elecSoundOn = !elecSoundOn;
+                }
+
             }
 
             
@@ -112,6 +124,7 @@ public class PressurePlate : IObject
 
 
         }
+
         
 
     }
