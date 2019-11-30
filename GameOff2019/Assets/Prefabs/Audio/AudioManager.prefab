@@ -100,7 +100,7 @@ MonoBehaviour:
     Pitch: 1.2
     source: {fileID: 0}
   - Name: OnOff
-    Clip: {fileID: 8300000, guid: 51773f85bdfa78646998d9b9da02e4ea, type: 3}
+    Clip: {fileID: 8300000, guid: 89f257961ea03cb4890d32d2f432f5e2, type: 3}
     IsSFX: 1
     ShouldLoop: 0
     IsBackgroundMusic: 0
