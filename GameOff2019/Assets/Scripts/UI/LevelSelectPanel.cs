@@ -13,7 +13,6 @@ public class LevelSelectPanel : MonoBehaviour
     [SerializeField] GameObject levelPrefab;
     [SerializeField] Levels levels;
 
-    [SerializeField] Scrollbar scrollbar;
 
     public void LoadInputLevel()
     {
@@ -30,7 +29,6 @@ public class LevelSelectPanel : MonoBehaviour
             levelSelectButton.level = l;
             levelSelectButton.Initialize();
         }
-        scrollbar.value = 1;
         
     }
 
