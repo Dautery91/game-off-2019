@@ -20661,6 +20661,68 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayButtonClickSound
       objectReference: {fileID: 0}
+    - target: {fileID: 7356824311473141612, guid: e198fd86ae5561c48a9638293006779b,
+        type: 3}
+      propertyPath: m_text
+      value: 'Twitter: @DrakesGames
+
+        Email:  founder@DrakeAuteryGameStudios.com
+
+
+
+        Email: jeyasurya.v@gmail.com'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7356824311473141612, guid: e198fd86ae5561c48a9638293006779b,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 7356824311473141612, guid: e198fd86ae5561c48a9638293006779b,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7356824311473141612, guid: e198fd86ae5561c48a9638293006779b,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7356824311473141612, guid: e198fd86ae5561c48a9638293006779b,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 272166740904940721, guid: e198fd86ae5561c48a9638293006779b,
+        type: 3}
+      propertyPath: m_text
+      value: 'Drake
+
+
+
+
+        Bricks
+
+
+        VJS ( JeyaSurya )
+
+
+        Livin'' The Dream'
+      objectReference: {fileID: 0}
+    - target: {fileID: 272166740904940721, guid: e198fd86ae5561c48a9638293006779b,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 272166740904940721, guid: e198fd86ae5561c48a9638293006779b,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 272166740904940721, guid: e198fd86ae5561c48a9638293006779b,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e198fd86ae5561c48a9638293006779b, type: 3}
 --- !u!1001 &878964796076353069
