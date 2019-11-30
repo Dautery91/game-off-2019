@@ -15,17 +15,21 @@ public class InstructionGenerator : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            AudioManager.instance.PlaySound("PopUpSFX");
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.PlaySound("PopUpSFX");
+            }
+
+            Time.timeScale = 0;
             InstructionCanvas.SetActive(true);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            InstructionCanvas.SetActive(false);
-        }
 
+    public void CloseInstructions()
+    {
+        Time.timeScale = 1;
+        InstructionCanvas.SetActive(false);
     }
+
 }
