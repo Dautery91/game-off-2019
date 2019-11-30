@@ -36,6 +36,7 @@ public class PressurePlate : IObject
        tilemap = transform.parent.GetComponent<Tilemap>();
        collider = GetComponent<BoxCollider2D>();
        tileLength = tilemap.cellSize.x;
+       InitializeState();
     }
 
     /// <summary>
@@ -54,10 +55,13 @@ public class PressurePlate : IObject
             ToggleState();
             
         }
-        else if(collisionCount%2 == 0 && objectState == ObjectState.On && AudioManager.instance != null){
+        else if(collisionCount%2 == 0 && objectState == ObjectState.On){
             ToggleState();
-            AudioManager.instance.StopSound("ElecOn");
-            elecSoundOn = !elecSoundOn;
+            if(AudioManager.instance != null){
+                AudioManager.instance.StopSound("ElecOn");
+                elecSoundOn = !elecSoundOn;
+            }
+               
         }
     }
 
@@ -126,6 +130,20 @@ public class PressurePlate : IObject
         }
 
         
+
+    }
+
+    public override void TurnOn(){
+
+        onSprite.SetActive(true);
+        OffSprite.SetActive(false);
+
+    }
+
+    public override void TurnOff(){
+
+        onSprite.SetActive(false);
+        OffSprite.SetActive(true);
 
     }
 
