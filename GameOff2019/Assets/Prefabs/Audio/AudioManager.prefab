@@ -160,7 +160,7 @@ MonoBehaviour:
     IsSFX: 1
     ShouldLoop: 0
     IsBackgroundMusic: 0
-    Volume: 0.25
+    Volume: 0.15
     Pitch: 1
     source: {fileID: 0}
   - Name: Dead
