@@ -15,4 +15,9 @@ public class ButtonHelper : MonoBehaviour
         AudioManager.instance.PlayButtonClickBackSound();
     }
 
+    public void LinkToTwitter()
+    {
+        Application.OpenURL("https://twitter.com/DrakesGames");
+    }
+
 }

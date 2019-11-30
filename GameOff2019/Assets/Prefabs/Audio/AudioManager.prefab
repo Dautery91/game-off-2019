@@ -110,7 +110,7 @@ MonoBehaviour:
     IsSFX: 0
     ShouldLoop: 0
     IsBackgroundMusic: 1
-    Volume: 0.4
+    Volume: 0.35
     Pitch: 1
     source: {fileID: 0}
   - Name: GO2019code2
@@ -118,7 +118,7 @@ MonoBehaviour:
     IsSFX: 0
     ShouldLoop: 0
     IsBackgroundMusic: 1
-    Volume: 0.5
+    Volume: 0.35
     Pitch: 1
     source: {fileID: 0}
   - Name: GO2019code8
@@ -126,7 +126,7 @@ MonoBehaviour:
     IsSFX: 0
     ShouldLoop: 0
     IsBackgroundMusic: 1
-    Volume: 0.5
+    Volume: 0.35
     Pitch: 1
     source: {fileID: 0}
   - Name: GO2019code12
@@ -134,7 +134,7 @@ MonoBehaviour:
     IsSFX: 0
     ShouldLoop: 0
     IsBackgroundMusic: 1
-    Volume: 0.5
+    Volume: 0.35
     Pitch: 1
     source: {fileID: 0}
   - Name: GO2019tut1
@@ -142,7 +142,7 @@ MonoBehaviour:
     IsSFX: 0
     ShouldLoop: 0
     IsBackgroundMusic: 1
-    Volume: 0.5
+    Volume: 0.35
     Pitch: 1
     source: {fileID: 0}
   - Name: GO2019Tut2
@@ -150,6 +150,6 @@ MonoBehaviour:
     IsSFX: 0
     ShouldLoop: 0
     IsBackgroundMusic: 1
-    Volume: 0.5
+    Volume: 0.35
     Pitch: 1
     source: {fileID: 0}
