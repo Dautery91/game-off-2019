@@ -188,8 +188,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 89.3, y: 45.99999}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 169.4, y: 56.5}
+  m_SizeDelta: {x: 301.9, y: 49.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &548900916
 CanvasRenderer:
@@ -265,8 +265,8 @@ MonoBehaviour:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
-    m_SelectedTrigger: 
-    m_DisabledTrigger: 
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 548900915}
   m_OnClick:
@@ -803,13 +803,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1587557610}
-    characterCount: 7
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -863,8 +863,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -3}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0.9, y: -24.6}
+  m_SizeDelta: {x: 301.9, y: 49.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1677616461
 CanvasRenderer:
@@ -940,8 +940,8 @@ MonoBehaviour:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
-    m_SelectedTrigger: 
-    m_DisabledTrigger: 
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1677616460}
   m_OnClick:
@@ -1120,13 +1120,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2107470013}
-    characterCount: 1
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -1415,13 +1415,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 509868141049750057}
-    characterCount: 4
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -1475,8 +1475,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -91.3, y: 45.99999}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -171.4, y: 56.5}
+  m_SizeDelta: {x: 301.9, y: 49.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &271401732261975135
 CanvasRenderer:
@@ -1552,8 +1552,8 @@ MonoBehaviour:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
-    m_SelectedTrigger: 
-    m_DisabledTrigger: 
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 271401732261975134}
   m_OnClick:
@@ -1688,7 +1688,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1280, y: 720}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1774,8 +1774,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 101}
-  m_SizeDelta: {x: 187.78, y: 53.81}
+  m_AnchoredPosition: {x: 0.9, y: 147.5}
+  m_SizeDelta: {x: 354.3, y: 89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &271401733904748683
 CanvasRenderer:
@@ -1850,8 +1850,8 @@ MonoBehaviour:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
-    m_SelectedTrigger: 
-    m_DisabledTrigger: 
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 271401733904748682}
   m_OnClick:
@@ -1870,6 +1870,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 0}
         m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: EnableTimer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1935,8 +1946,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -53.00002}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0.9, y: -107.3}
+  m_SizeDelta: {x: 301.9, y: 49.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &271401734215249529
 CanvasRenderer:
@@ -2011,8 +2022,8 @@ MonoBehaviour:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
-    m_SelectedTrigger: 
-    m_DisabledTrigger: 
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 271401734215249528}
   m_OnClick:
@@ -2481,13 +2492,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 8242707214545268984}
-    characterCount: 1
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -2537,7 +2548,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9, y: 0}
+  m_AnchoredPosition: {x: -0.0025024414, y: 5.899994}
   m_SizeDelta: {x: 689.1, y: 292.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2277573344063550568
@@ -2673,13 +2684,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 4788501070765665358}
-    characterCount: 118
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 16
-    wordCount: 17
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 2
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -3056,13 +3067,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 6472384094242515648}
-    characterCount: 15
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -3211,13 +3222,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 4053820016951871894}
-    characterCount: 38
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 5
-    wordCount: 6
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -3497,7 +3508,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'LL Pixel Font by Markus Schroppel.  From dafont.com: https://www.dafont.com/llpixel.font '
+  m_text: 'LL Pixel Font by Markus Schroppel.  From dafont.com: https://www.dafont.com/llpixel.font
+
+
+    Auto Letterbox (Unity Asset Store): Hexdragonal Games: https://assetstore.unity.com/packages/tools/camera/auto-letterbox-56814 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3566,13 +3580,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 9004069830861091756}
-    characterCount: 89
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 10
-    wordCount: 15
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -3725,13 +3739,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 4620761597068398937}
-    characterCount: 357
+    characterCount: 0
     spriteCount: 0
     spaceCount: 65
-    wordCount: 59
+    wordCount: 0
     linkCount: 0
-    lineCount: 10
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -3987,13 +4001,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0.000000404234, w: 0}
   m_textInfo:
     textComponent: {fileID: 7356824311473141612}
-    characterCount: 64
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 4
-    wordCount: 6
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 4
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -4142,13 +4156,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 6257716796368272103}
-    characterCount: 7
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -4198,7 +4212,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.3, y: 9.4}
+  m_AnchoredPosition: {x: 0.2999878, y: 9.399994}
   m_SizeDelta: {x: 671.2, y: 267.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4940310756327852586
@@ -4758,13 +4772,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 3984716380862259398}
-    characterCount: 5
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -4819,7 +4833,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: 0.00051116943}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0.008243561}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &7144127987281979607
@@ -4965,13 +4979,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0.000000404234, w: 0}
   m_textInfo:
     textComponent: {fileID: 9149278990497164660}
-    characterCount: 64
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 11
-    wordCount: 7
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 9
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -5120,13 +5134,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1457487398140063779}
-    characterCount: 23
+    characterCount: 0
     spriteCount: 0
     spaceCount: 3
-    wordCount: 3
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -5176,7 +5190,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: 0.00051116943}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0.008243561}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &7463648014785539039
@@ -5462,13 +5476,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0.000000404234, w: 0}
   m_textInfo:
     textComponent: {fileID: 272166740904940721}
-    characterCount: 38
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 10
-    wordCount: 6
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 9
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -5517,8 +5531,8 @@ RectTransform:
   m_Father: {fileID: 1852960982802460852}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.062998354}
-  m_AnchorMax: {x: 1, y: 0.9999983}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: -0.000030517578}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5813,13 +5827,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2679274780445209324}
-    characterCount: 1
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -6145,13 +6159,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2807877999332330102}
-    characterCount: 1
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -6368,6 +6382,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2633304458514657191, guid: ea0cce33545bc6c4ca949d95261543e3,
         type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633304458514657191, guid: ea0cce33545bc6c4ca949d95261543e3,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633304458514657191, guid: ea0cce33545bc6c4ca949d95261543e3,
+        type: 3}
       propertyPath: m_textInfo.characterCount
       value: 13
       objectReference: {fileID: 0}
@@ -6524,17 +6548,22 @@ PrefabInstance:
     - target: {fileID: 2633304458514657191, guid: ea0cce33545bc6c4ca949d95261543e3,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 2633304458514657191, guid: ea0cce33545bc6c4ca949d95261543e3,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2633304458514657191, guid: ea0cce33545bc6c4ca949d95261543e3,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633304458514657191, guid: ea0cce33545bc6c4ca949d95261543e3,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633304458514657191, guid: ea0cce33545bc6c4ca949d95261543e3,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea0cce33545bc6c4ca949d95261543e3, type: 3}
@@ -7049,6 +7078,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2633304458514657191, guid: ea0cce33545bc6c4ca949d95261543e3,
         type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633304458514657191, guid: ea0cce33545bc6c4ca949d95261543e3,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633304458514657191, guid: ea0cce33545bc6c4ca949d95261543e3,
+        type: 3}
       propertyPath: m_textInfo.characterCount
       value: 7
       objectReference: {fileID: 0}
@@ -7181,6 +7220,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Start Game
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633304458514657191, guid: ea0cce33545bc6c4ca949d95261543e3,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633304458514657191, guid: ea0cce33545bc6c4ca949d95261543e3,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2633304458514657191, guid: ea0cce33545bc6c4ca949d95261543e3,
         type: 3}
@@ -7329,6 +7378,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2633304458514657191, guid: ea0cce33545bc6c4ca949d95261543e3,
         type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633304458514657191, guid: ea0cce33545bc6c4ca949d95261543e3,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633304458514657191, guid: ea0cce33545bc6c4ca949d95261543e3,
+        type: 3}
       propertyPath: m_textInfo.characterCount
       value: 7
       objectReference: {fileID: 0}
@@ -7410,22 +7469,22 @@ PrefabInstance:
     - target: {fileID: 3847059276059347970, guid: 31c5541fb06254342a7b14291c20b9f8,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 322.8
+      value: 527.05
       objectReference: {fileID: 0}
     - target: {fileID: 3847059276059347970, guid: 31c5541fb06254342a7b14291c20b9f8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -161.1
+      value: -262
       objectReference: {fileID: 0}
     - target: {fileID: 3847059276059347970, guid: 31c5541fb06254342a7b14291c20b9f8,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: -660.5
+      value: -1054.1
       objectReference: {fileID: 0}
     - target: {fileID: 3847059276059347970, guid: 31c5541fb06254342a7b14291c20b9f8,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: -341.4
+      value: -570.2
       objectReference: {fileID: 0}
     - target: {fileID: 3847059276059347970, guid: 31c5541fb06254342a7b14291c20b9f8,
         type: 3}
@@ -7582,6 +7641,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonText
       objectReference: {fileID: 0}
+    - target: {fileID: 2633304458514657191, guid: ea0cce33545bc6c4ca949d95261543e3,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633304458514657191, guid: ea0cce33545bc6c4ca949d95261543e3,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea0cce33545bc6c4ca949d95261543e3, type: 3}
 --- !u!224 &8633798367642682464 stripped
@@ -7725,17 +7794,22 @@ PrefabInstance:
     - target: {fileID: 2633304458514657191, guid: ea0cce33545bc6c4ca949d95261543e3,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2633304458514657191, guid: ea0cce33545bc6c4ca949d95261543e3,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2633304458514657191, guid: ea0cce33545bc6c4ca949d95261543e3,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633304458514657191, guid: ea0cce33545bc6c4ca949d95261543e3,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633304458514657191, guid: ea0cce33545bc6c4ca949d95261543e3,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea0cce33545bc6c4ca949d95261543e3, type: 3}
@@ -7810,22 +7884,22 @@ PrefabInstance:
     - target: {fileID: 6310452317003056072, guid: 4d111a97717476b4d87559b5f8831b05,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6310452317003056072, guid: 4d111a97717476b4d87559b5f8831b05,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 185
+      value: 292.6
       objectReference: {fileID: 0}
     - target: {fileID: 6310452317003056072, guid: 4d111a97717476b4d87559b5f8831b05,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -488.15
       objectReference: {fileID: 0}
     - target: {fileID: 6310452317003056072, guid: 4d111a97717476b4d87559b5f8831b05,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: -400
+      value: -615.1
       objectReference: {fileID: 0}
     - target: {fileID: 6310452317003056072, guid: 4d111a97717476b4d87559b5f8831b05,
         type: 3}
@@ -7865,12 +7939,22 @@ PrefabInstance:
     - target: {fileID: 6310452317003056073, guid: 4d111a97717476b4d87559b5f8831b05,
         type: 3}
       propertyPath: m_text
-      value: EnCon
+      value: Transilio
+      objectReference: {fileID: 0}
+    - target: {fileID: 6310452317003056073, guid: 4d111a97717476b4d87559b5f8831b05,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6310452317003056073, guid: 4d111a97717476b4d87559b5f8831b05,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 6310452317003056073, guid: 4d111a97717476b4d87559b5f8831b05,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6310452317003056073, guid: 4d111a97717476b4d87559b5f8831b05,
         type: 3}

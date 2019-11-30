@@ -43,7 +43,7 @@ public class StopWatch : MonoBehaviour
         if (running  && !timerDisabled)
         {
             elapsedSeconds += Time.deltaTime;
-            Debug.Log("Elapsed Time: " + elapsedSeconds);
+           
         }
     }
 
@@ -61,7 +61,7 @@ public class StopWatch : MonoBehaviour
 
     public void ResetTimer()
     {
-        Debug.Log("Timer Reset");
+        
         running = false;
         started = false;
         elapsedSeconds = 0;

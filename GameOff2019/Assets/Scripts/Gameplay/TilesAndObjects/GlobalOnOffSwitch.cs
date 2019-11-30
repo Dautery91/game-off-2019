@@ -31,7 +31,7 @@ public class GlobalOnOffSwitch : IObject
         if (tilemap == null)
         {
             //cellPos = new Vector3Int(0, 0, 0);
-            Debug.LogError("No tilemap in parent");
+            
             return;
         }
 

@@ -110,7 +110,7 @@ MonoBehaviour:
     IsSFX: 0
     ShouldLoop: 0
     IsBackgroundMusic: 1
-    Volume: 0.5
+    Volume: 0.4
     Pitch: 1
     source: {fileID: 0}
   - Name: GO2019code2
