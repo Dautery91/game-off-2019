@@ -25,7 +25,12 @@ public class HUD : MonoBehaviour
     private void Start()
     {
         JumpCountText.text = HUDTextPrefix + 0;
-        gameTimer.StartTiming();
+
+        if (gameTimer != null)
+        {
+            gameTimer.StartTiming();
+        }
+        
         TimerText.text = timerPrefix;
 
     }
@@ -41,14 +46,19 @@ public class HUD : MonoBehaviour
 
         }
 
-        if (!gameTimer.IsDisabled)
+        if (gameTimer != null)
         {
-            TimerText.text = timerPrefix + gameTimer.ElapsedSeconds.ToString("0.00");
+
+            if (!gameTimer.IsDisabled)
+            {
+                TimerText.text = timerPrefix + gameTimer.ElapsedSeconds.ToString("0.00");
+            }
+            else
+            {
+                TimerText.text = timerPrefix + "Disabled!";
+            }
         }
-        else
-        {
-            TimerText.text = timerPrefix + "Disabled!";
-        }
+
         
     }
 
