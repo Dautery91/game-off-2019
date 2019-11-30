@@ -6,20 +6,13 @@ public class ButtonHelper : MonoBehaviour
 {
     public void PlayButtonClickSound()
     {
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.PlayButtonClickSound();
-        }
-
+        AudioManager.instance.PlayButtonClickSound();
+        
     }
 
     public void PlayButtonClickBackSound()
     {
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.PlayButtonClickBackSound();
-        }
-        
+        AudioManager.instance.PlayButtonClickBackSound();
     }
 
     public void LinkToTwitter()

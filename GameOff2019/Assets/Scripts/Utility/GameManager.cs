@@ -124,11 +124,7 @@ public class GameManager : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.StopSound("ElecOn");
-        }
-        
+        AudioManager.instance.StopSound("ElecOn");
     }
 
     public void StartGameTimer()

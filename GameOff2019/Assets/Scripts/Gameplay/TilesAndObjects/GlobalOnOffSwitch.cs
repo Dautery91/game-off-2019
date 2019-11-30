@@ -58,11 +58,7 @@ public class GlobalOnOffSwitch : IObject
     {
         this.ToggleState();
 
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.PlaySound("OnOff");
-        }
-        
+        AudioManager.instance.PlaySound("OnOff");
 
 
         foreach (IObject iobject in LinkedObjects)

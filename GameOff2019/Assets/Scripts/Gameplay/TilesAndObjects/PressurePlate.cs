@@ -54,7 +54,7 @@ public class PressurePlate : IObject
             ToggleState();
             
         }
-        else if(collisionCount%2 == 0 && objectState == ObjectState.On && AudioManager.instance != null){
+        else if(collisionCount%2 == 0 && objectState == ObjectState.On){
             ToggleState();
             AudioManager.instance.StopSound("ElecOn");
             elecSoundOn = !elecSoundOn;
@@ -81,7 +81,7 @@ public class PressurePlate : IObject
             if(wireTile!=null&&!visited.Contains(wireTile.transform))
             {
                 queue.Enqueue(wireTile);
-                if (!elecSoundOn && objectState == ObjectState.On && AudioManager.instance != null)
+                if (!elecSoundOn && objectState == ObjectState.On)
                 {
                     AudioManager.instance.PlaySound("ElecOn");
                     elecSoundOn = !elecSoundOn;
