@@ -14,7 +14,7 @@ public class FinalLevelCanvas : MonoBehaviour
 
         if (!gameTimer.IsDisabled)
         {
-            FinalTimerText.text = "Finaasdasdl Time: " + FindObjectOfType<StopWatch>().ElapsedSeconds.ToString("0.00") + " Seconds";
+            FinalTimerText.text = "Final Time: " + FindObjectOfType<StopWatch>().ElapsedSeconds.ToString("0.00") + " Seconds";
         }
         else
         {

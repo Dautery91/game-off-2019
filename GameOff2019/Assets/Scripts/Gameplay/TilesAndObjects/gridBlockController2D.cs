@@ -5,8 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class gridBlockController2D : MonoBehaviour
 {
-
-    Tilemap tilemap;
+    [HideInInspector]
+    public Tilemap tilemap;
 
     BoxCollider2D boxCollider;
 
@@ -348,9 +348,7 @@ public class gridBlockController2D : MonoBehaviour
         }
         currentTile = newTile;
         moving = false;
-
     }
-
 
 
 

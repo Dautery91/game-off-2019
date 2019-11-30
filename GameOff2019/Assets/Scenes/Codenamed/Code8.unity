@@ -15743,16 +15743,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6090391924061409141, guid: 0c22526064068134cbd070f046a1825c,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6090391923714721109, guid: 0c22526064068134cbd070f046a1825c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c22526064068134cbd070f046a1825c, type: 3}
 --- !u!1001 &1124369875
@@ -15900,15 +15890,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -2239825139743624534, guid: cdd7de8835713e647961278ed1d35b06,
-        type: 3}
-      propertyPath: BackgroundTrackName
-      value: GO2019Code7
-      objectReference: {fileID: 0}
     - target: {fileID: 778152763735284088, guid: cdd7de8835713e647961278ed1d35b06,
         type: 3}
       propertyPath: m_Name
       value: LevelBackgroundMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: -2239825139743624534, guid: cdd7de8835713e647961278ed1d35b06,
+        type: 3}
+      propertyPath: BackgroundTrackName
+      value: GO2019Code7
       objectReference: {fileID: 0}
     - target: {fileID: 8886394323180028937, guid: cdd7de8835713e647961278ed1d35b06,
         type: 3}
