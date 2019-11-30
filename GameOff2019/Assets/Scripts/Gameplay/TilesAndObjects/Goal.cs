@@ -10,7 +10,10 @@ public class Goal : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            AudioManager.instance.StopSound("ElecOn");
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.StopSound("ElecOn");
+            }
             LevelFinished.Raise();
         }
     }
