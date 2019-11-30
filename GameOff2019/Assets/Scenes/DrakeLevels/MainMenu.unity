@@ -19011,9 +19011,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4539870196126327999, guid: 3055ead7dac11354eb9158a54faa63cf,
         type: 3}
+      propertyPath: PlayerSFX.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539870196126327999, guid: 3055ead7dac11354eb9158a54faa63cf,
+        type: 3}
       propertyPath: tilemap
       value: 
       objectReference: {fileID: 390586124}
+    - target: {fileID: 4539870196126327999, guid: 3055ead7dac11354eb9158a54faa63cf,
+        type: 3}
+      propertyPath: SFXGroup
+      value: 
+      objectReference: {fileID: 7344318439984241379, guid: 11486f1719bf12047b6bf09cbd005d74,
+        type: 2}
+    - target: {fileID: 4539870196126327999, guid: 3055ead7dac11354eb9158a54faa63cf,
+        type: 3}
+      propertyPath: PlayerSFX.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: cfc9541ffea2ddd48891a45c307f12f1, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3055ead7dac11354eb9158a54faa63cf, type: 3}
 --- !u!4 &1780759833 stripped

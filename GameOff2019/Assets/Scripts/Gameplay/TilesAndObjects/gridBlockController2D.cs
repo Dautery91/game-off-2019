@@ -89,8 +89,6 @@ public class gridBlockController2D : MonoBehaviour
         }
 
         
-        
-        
     }
 
     public void Trap(Vector3Int cell){
@@ -337,6 +335,13 @@ public class gridBlockController2D : MonoBehaviour
         {
             movementSpeedLocal = horizontalMovementSpeed;
         }
+
+        // SFX stuff.  Messy.  Need to clean up
+        if ((positionToMove.x > originPosition.x || positionToMove.x < originPosition.x) && originPosition.y == positionToMove.y && AudioManager.instance != null)
+        {
+            AudioManager.instance.PlaySound("BoxMove");
+        }
+
 
         while (transform.position!=positionToMove){
 

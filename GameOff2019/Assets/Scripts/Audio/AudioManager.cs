@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
+using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
@@ -74,6 +75,21 @@ public class AudioManager : MonoBehaviour
 
         s.source.Stop();
 
+    }
+
+    public void RandomizePitchAndPlay(string name, float lower, float upper)
+    {
+        Sound s = Array.Find(sounds, sound => sound.Name == name);
+
+        if (s == null)
+        {
+            return;
+        }
+        float pitch = UnityEngine.Random.Range(lower, upper);
+
+        s.source.pitch = pitch;
+
+        s.source.Play();
     }
 
     public void PlayButtonClickSound()
