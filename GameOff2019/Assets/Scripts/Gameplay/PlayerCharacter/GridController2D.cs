@@ -86,9 +86,6 @@ public class GridController2D : MonoBehaviour
     [SerializeField] GameObject JumpIndicator;
     bool jumpIndicatorInitialized = false;
 
-    // SFX Support
-    Timer walkSoundTimer;
-    const float WalkSoundInterval = 0.5f;
     #endregion
 
     private void Awake()
@@ -103,9 +100,6 @@ public class GridController2D : MonoBehaviour
             }
         }
 
-        walkSoundTimer = gameObject.AddComponent<Timer>();
-        walkSoundTimer.Duration = WalkSoundInterval;
-        walkSoundTimer.Run();
     }
 
     void Start()
@@ -517,13 +511,6 @@ public class GridController2D : MonoBehaviour
         else
         {
             movementSpeedLocal = horizontalMovementSpeed;
-        }
-
-        // SFX stuff.  Messy.  Need to clean up
-        if ((positionToMove.x > originPosition.x || positionToMove.x < originPosition.x) && !hanging && AudioManager.instance != null && walkSoundTimer.Finished)
-        {
-            AudioManager.instance.RandomizePitchAndPlay("Walk1", 0.8f, 1.2f);
-            walkSoundTimer.Run();
         }
 
         // animation checks
