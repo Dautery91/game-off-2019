@@ -52,36 +52,104 @@ MonoBehaviour:
   - Name: PlayerJump
     Clip: {fileID: 8300000, guid: 65c6f4e12a995f34b8f0e588f36d8e67, type: 3}
     IsSFX: 1
+    ShouldLoop: 0
     IsBackgroundMusic: 0
     Volume: 1
     Pitch: 1
     source: {fileID: 0}
   - Name: UXClick
-    Clip: {fileID: 8300000, guid: 406b03a10842c9b45b31a013b8581707, type: 3}
+    Clip: {fileID: 8300000, guid: 19f478e71af8ab847a77623026c6a94b, type: 3}
     IsSFX: 1
+    ShouldLoop: 0
     IsBackgroundMusic: 0
     Volume: 1
     Pitch: 1
     source: {fileID: 0}
   - Name: PopUpSFX
-    Clip: {fileID: 8300000, guid: 406b03a10842c9b45b31a013b8581707, type: 3}
+    Clip: {fileID: 8300000, guid: 19f478e71af8ab847a77623026c6a94b, type: 3}
     IsSFX: 1
+    ShouldLoop: 0
     IsBackgroundMusic: 0
     Volume: 0.5
     Pitch: 1
     source: {fileID: 0}
   - Name: UXClickBack
-    Clip: {fileID: 8300000, guid: 083f59c1579df724faa229b9e9093d81, type: 3}
+    Clip: {fileID: 8300000, guid: e0e6ebf213a42b74f9fa1b67567c1016, type: 3}
     IsSFX: 1
+    ShouldLoop: 0
     IsBackgroundMusic: 0
     Volume: 0.5
     Pitch: 1
     source: {fileID: 0}
-  - Name: BackgroundMusic
+  - Name: GO2019title
     Clip: {fileID: 8300000, guid: 610a256f95e6c2f4280df3b354c2367d, type: 3}
     IsSFX: 0
+    ShouldLoop: 0
     IsBackgroundMusic: 1
     Volume: 0.5
     Pitch: 1
     source: {fileID: 0}
-  BackgroundMusicPlaying: 0
+  - Name: ElecOn
+    Clip: {fileID: 8300000, guid: 7d39672532e21e045a1d00254d05d462, type: 3}
+    IsSFX: 1
+    ShouldLoop: 1
+    IsBackgroundMusic: 0
+    Volume: 0.156
+    Pitch: 1.2
+    source: {fileID: 0}
+  - Name: OnOff
+    Clip: {fileID: 8300000, guid: 51773f85bdfa78646998d9b9da02e4ea, type: 3}
+    IsSFX: 1
+    ShouldLoop: 0
+    IsBackgroundMusic: 0
+    Volume: 0.5
+    Pitch: 1
+    source: {fileID: 0}
+  - Name: GO2019Code7
+    Clip: {fileID: 8300000, guid: 740720b533a63414a8ea900199b1550b, type: 3}
+    IsSFX: 0
+    ShouldLoop: 0
+    IsBackgroundMusic: 1
+    Volume: 0.4
+    Pitch: 1
+    source: {fileID: 0}
+  - Name: GO2019code2
+    Clip: {fileID: 8300000, guid: d0e22858c56d2954391dd99fe84a57c8, type: 3}
+    IsSFX: 0
+    ShouldLoop: 0
+    IsBackgroundMusic: 1
+    Volume: 0.5
+    Pitch: 1
+    source: {fileID: 0}
+  - Name: GO2019code8
+    Clip: {fileID: 8300000, guid: 461103db1eb1d3d46b0700b33db75adf, type: 3}
+    IsSFX: 0
+    ShouldLoop: 0
+    IsBackgroundMusic: 1
+    Volume: 0.5
+    Pitch: 1
+    source: {fileID: 0}
+  - Name: GO2019code12
+    Clip: {fileID: 8300000, guid: 596d9db505b60314eba4b948fc1423ba, type: 3}
+    IsSFX: 0
+    ShouldLoop: 0
+    IsBackgroundMusic: 1
+    Volume: 0.5
+    Pitch: 1
+    source: {fileID: 0}
+  - Name: GO2019tut1
+    Clip: {fileID: 8300000, guid: 65faa259ea7ad5f4c9c9b6d4fd2a7af9, type: 3}
+    IsSFX: 0
+    ShouldLoop: 0
+    IsBackgroundMusic: 1
+    Volume: 0.5
+    Pitch: 1
+    source: {fileID: 0}
+  - Name: GO2019Tut2
+    Clip: {fileID: 8300000, guid: d43c862b9925d5d4f885d8119c74bc2b, type: 3}
+    IsSFX: 0
+    ShouldLoop: 0
+    IsBackgroundMusic: 1
+    Volume: 0.5
+    Pitch: 1
+    source: {fileID: 0}

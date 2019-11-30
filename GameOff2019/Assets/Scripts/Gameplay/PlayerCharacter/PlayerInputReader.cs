@@ -36,11 +36,6 @@ public class PlayerInputReader : MonoBehaviour
         ReadPauseInput();
         ReadResetInput();
 
-        //if (isTouchScreenMode)
-        //{
-        //    Debug.Log("in touch screen mode");
-        //}
-
     }
 
     private void ReadMovementInput()

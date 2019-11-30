@@ -28,7 +28,7 @@ public class ProximitySwitch : MonoBehaviour
         tilemap = GetComponentInParent<Tilemap>();
         if(tilemap == null){
             cellPos = new Vector3Int(0,0,0);
-            Debug.LogError("No tilemap in parent");
+            
             return;
         }
       

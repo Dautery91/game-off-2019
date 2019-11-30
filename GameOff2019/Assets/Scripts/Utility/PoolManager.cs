@@ -56,7 +56,7 @@ public class PoolManager : MonoBehaviour
 
         if (poolObject == null)
         {
-            Debug.Log("Pool NOT created.  Check if PoolObject script is attached to prefab: " + prefab.name);
+            //Debug.Log("Pool NOT created.  Check if PoolObject script is attached to prefab: " + prefab.name);
             return;
         }
         else

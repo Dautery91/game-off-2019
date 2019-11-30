@@ -7,14 +7,26 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    [SerializeField] Text hudText;
+    [SerializeField] Text JumpCountText;
 
     [SerializeField] IntData JumpCount;
     const string HUDTextPrefix = "Leap Strength: ";
 
+    [SerializeField] Text TimerText;
+    const string timerPrefix = "Time Elapsed: ";
+    StopWatch gameTimer;
+    
+
+    private void Awake()
+    {
+        gameTimer = FindObjectOfType<StopWatch>();
+    }
+
     private void Start()
     {
-        hudText.text = HUDTextPrefix + 0;
+        JumpCountText.text = HUDTextPrefix + 0;
+        gameTimer.StartTiming();
+        TimerText.text = timerPrefix;
 
     }
 
@@ -28,12 +40,28 @@ public class HUD : MonoBehaviour
             HandleJumpEvent(JumpCount.Data);
 
         }
+
+        if (!gameTimer.IsDisabled)
+        {
+            TimerText.text = timerPrefix + gameTimer.ElapsedSeconds.ToString("0.00");
+        }
+        else
+        {
+            TimerText.text = timerPrefix + "Disabled!";
+        }
+        
     }
 
 
 
     public void HandleJumpEvent(int jumpStrength)
     {
-        hudText.text = HUDTextPrefix + jumpStrength;
+        JumpCountText.text = HUDTextPrefix + jumpStrength;
+    }
+
+    public void DisableGameTimer()
+    {
+        TimerText.text = timerPrefix + "Disabled!";
+        gameTimer.DisableTimer();
     }
 }

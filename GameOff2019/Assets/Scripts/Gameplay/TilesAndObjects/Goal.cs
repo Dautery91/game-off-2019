@@ -10,7 +10,7 @@ public class Goal : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Level Finished!");
+            AudioManager.instance.StopSound("ElecOn");
             LevelFinished.Raise();
         }
     }

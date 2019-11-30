@@ -25,6 +25,8 @@ public class PressurePlate : IObject
 
     float tileLength;
 
+    private bool elecSoundOn = false;
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
@@ -46,13 +48,16 @@ public class PressurePlate : IObject
         setCollisionCount();
 
         ActivateWireBlocks();
-
+        
         if(collisionCount%2 == 1 && objectState == ObjectState.Off){
            
             ToggleState();
+            
         }
         else if(collisionCount%2 == 0 && objectState == ObjectState.On){
             ToggleState();
+            AudioManager.instance.StopSound("ElecOn");
+            elecSoundOn = !elecSoundOn;
         }
     }
 
@@ -73,8 +78,15 @@ public class PressurePlate : IObject
                 continue;
             }
             WireTile wireTile = collider.GetComponent<WireTile>();
-            if(wireTile!=null&&!visited.Contains(wireTile.transform)){
+            if(wireTile!=null&&!visited.Contains(wireTile.transform))
+            {
                 queue.Enqueue(wireTile);
+                if (!elecSoundOn && objectState == ObjectState.On)
+                {
+                    AudioManager.instance.PlaySound("ElecOn");
+                    elecSoundOn = !elecSoundOn;
+                }
+
             }
 
             
@@ -112,6 +124,7 @@ public class PressurePlate : IObject
 
 
         }
+
         
 
     }
@@ -144,7 +157,7 @@ public class PressurePlate : IObject
 
         //down
         hits = Physics2D.RaycastAll(rayCastOrigins.down, -1 * Vector2.up, rayDistance, collideableLayer);
-        Debug.DrawRay(rayCastOrigins.down, -1 * Vector2.up, Color.red);
+        //Debug.DrawRay(rayCastOrigins.down, -1 * Vector2.up, Color.red);
 
         for(int i=0;i<hits.Length;i++)
         {
@@ -175,7 +188,7 @@ public class PressurePlate : IObject
 
         //right
         hits = Physics2D.RaycastAll(rayCastOrigins.right, Vector2.right, rayDistance, collideableLayer);
-        Debug.DrawRay(rayCastOrigins.right,  Vector2.right, Color.red);
+        //Debug.DrawRay(rayCastOrigins.right,  Vector2.right, Color.red);
         for(int i=0;i<hits.Length;i++)
         {
             if (hits[i].collider!=col)

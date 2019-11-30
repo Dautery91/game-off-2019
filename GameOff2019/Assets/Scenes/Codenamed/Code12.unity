@@ -6245,7 +6245,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6090391923714721109, guid: 0c22526064068134cbd070f046a1825c,
+    - target: {fileID: 2895211559395676673, guid: 0c22526064068134cbd070f046a1825c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -279
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895211559395676673, guid: 0c22526064068134cbd070f046a1825c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -145
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895211559395676673, guid: 0c22526064068134cbd070f046a1825c,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -597.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895211559395676678, guid: 0c22526064068134cbd070f046a1825c,
         type: 3}
       propertyPath: m_IsActive
       value: 1
