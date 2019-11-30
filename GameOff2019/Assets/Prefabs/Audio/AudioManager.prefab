@@ -112,7 +112,7 @@ MonoBehaviour:
     IsSFX: 0
     ShouldLoop: 0
     IsBackgroundMusic: 1
-    Volume: 0.35
+    Volume: 0.25
     Pitch: 1
     source: {fileID: 0}
   - Name: GO2019code2
@@ -123,8 +123,8 @@ MonoBehaviour:
     Volume: 0.35
     Pitch: 1
     source: {fileID: 0}
-  - Name: GO2019code8
-    Clip: {fileID: 8300000, guid: 461103db1eb1d3d46b0700b33db75adf, type: 3}
+  - Name: GO2019code1
+    Clip: {fileID: 8300000, guid: 461cc86f61e77564689abad149a28b5b, type: 3}
     IsSFX: 0
     ShouldLoop: 0
     IsBackgroundMusic: 1
@@ -160,7 +160,7 @@ MonoBehaviour:
     IsSFX: 1
     ShouldLoop: 0
     IsBackgroundMusic: 0
-    Volume: 0.35
+    Volume: 0.25
     Pitch: 1
     source: {fileID: 0}
   - Name: Dead
@@ -186,6 +186,14 @@ MonoBehaviour:
     IsBackgroundMusic: 0
     Volume: 0.2
     Pitch: 4
+    source: {fileID: 0}
+  - Name: GO2019code8
+    Clip: {fileID: 8300000, guid: 461103db1eb1d3d46b0700b33db75adf, type: 3}
+    IsSFX: 0
+    ShouldLoop: 0
+    IsBackgroundMusic: 1
+    Volume: 0.2
+    Pitch: 1
     source: {fileID: 0}
 --- !u!114 &172466201491561003
 MonoBehaviour:
