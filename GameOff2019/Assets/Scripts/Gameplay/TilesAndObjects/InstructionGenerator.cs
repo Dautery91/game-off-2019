@@ -6,6 +6,9 @@ public class InstructionGenerator : MonoBehaviour
     [SerializeField]
     GameObject InstructionCanvas;
 
+    [SerializeField]
+    GameObject OtherGameObject;
+
     private void Awake()
     {
         InstructionCanvas.SetActive(false);
@@ -22,6 +25,12 @@ public class InstructionGenerator : MonoBehaviour
 
             Time.timeScale = 0;
             InstructionCanvas.SetActive(true);
+
+            if (OtherGameObject != null)
+            {
+                OtherGameObject.SetActive(true);
+            }
+            
         }
     }
 
@@ -29,7 +38,15 @@ public class InstructionGenerator : MonoBehaviour
     public void CloseInstructions()
     {
         Time.timeScale = 1;
+        this.gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
         InstructionCanvas.SetActive(false);
+
+        if (OtherGameObject != null)
+        {
+            OtherGameObject.SetActive(false);
+        }
+
+        Destroy(gameObject.GetComponent<InstructionGenerator>());
     }
 
 }
