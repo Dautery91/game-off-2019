@@ -27,4 +27,8 @@ public class ButtonHelper : MonoBehaviour
         Application.OpenURL("https://twitter.com/DrakesGames");
     }
 
+    public void LinkToDiscord()
+    {
+        Application.OpenURL("https:/discord.gg/4DHmjCk");
+    }
 }

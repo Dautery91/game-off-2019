@@ -13,22 +13,23 @@ MonoBehaviour:
   m_Name: Levels
   m_EditorClassIdentifier: 
   levels:
-  - name: Code7
-  - name: Code12
-  - name: Code8
-  - name: Code2
-  - name: Code1
-  - name: Code4
-  - name: Code5
-  - name: Code6
-  - name: Code9
-  - name: Code11
-  - name: Code20
-  - name: Code22
-  - name: Code10
-  - name: Code23
+  - name: Tutorial
+  - name: Level1
+  - name: Level2
+  - name: Level3
+  - name: Level4
+  - name: Level5
+  - name: Level6
+  - name: Level7
+  - name: Level8
+  - name: Level9
+  - name: Level10
+  - name: Level11
+  - name: Level12
+  - name: Level13
+  - name: Level14
   - name: FinalLevel
   startLevel:
     name: MainMenu
   currentLevel:
-    name: Code12
+    name: FinalLevel

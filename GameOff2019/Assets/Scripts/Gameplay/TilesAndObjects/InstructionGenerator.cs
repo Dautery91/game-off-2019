@@ -6,6 +6,9 @@ public class InstructionGenerator : MonoBehaviour
     [SerializeField]
     GameObject InstructionCanvas;
 
+    [SerializeField]
+    GameObject OtherGameObject;
+
     private void Awake()
     {
         InstructionCanvas.SetActive(false);
@@ -15,17 +18,35 @@ public class InstructionGenerator : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            AudioManager.instance.PlaySound("PopUpSFX");
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.PlaySound("PopUpSFX");
+            }
+
+            Time.timeScale = 0;
             InstructionCanvas.SetActive(true);
+
+            if (OtherGameObject != null)
+            {
+                OtherGameObject.SetActive(true);
+            }
+            
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+
+    public void CloseInstructions()
     {
-        if (collision.gameObject.tag == "Player")
+        Time.timeScale = 1;
+        this.gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
+        InstructionCanvas.SetActive(false);
+
+        if (OtherGameObject != null)
         {
-            InstructionCanvas.SetActive(false);
+            OtherGameObject.SetActive(false);
         }
 
+        Destroy(gameObject.GetComponent<InstructionGenerator>());
     }
+
 }

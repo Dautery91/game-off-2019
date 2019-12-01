@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.Audio;
 
 
 public struct RayCastOrigins{
@@ -166,9 +167,6 @@ public class GridController2D : MonoBehaviour
 
         }
 
-
-
-
     }
 
 
@@ -177,6 +175,7 @@ public class GridController2D : MonoBehaviour
         currentTile = tilemap.WorldToCell(transform.position);
         transform.position = tilemap.CellToWorld(currentTile) + tilemap.tileAnchor;
     }
+
     private void MoveJumpIndicator()
     {
         if (gridCollisionFlags.below && !jumpIndicatorInitialized)
