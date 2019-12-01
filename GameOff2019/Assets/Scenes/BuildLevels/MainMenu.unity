@@ -21972,7 +21972,7 @@ PrefabInstance:
       value: "Thank you so much for checking out our game!  We eagerly await any comments,
         feedback!  \n\nWe are considering adding more levels or expanding the game
         but need your honest input / to get a feel for the interest.  Let us know!\n\nAlso,
-        feel free to let us know what your fastest completion time is!\n\nEmail: founder@DrakeAuteryGameStudios.com\nCommunity
+        feel free to let us know what your fastest completion time is!\n\nCommunity
         Discord: https:/discord.gg/4DHmjCk\n\nSee game description for hyperlinks!"
       objectReference: {fileID: 0}
     - target: {fileID: 4620761597068398937, guid: e198fd86ae5561c48a9638293006779b,
