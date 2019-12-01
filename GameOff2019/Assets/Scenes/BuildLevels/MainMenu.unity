@@ -7363,6 +7363,83 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 334369528}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &409203750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 409203751}
+  - component: {fileID: 409203753}
+  - component: {fileID: 409203752}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &409203751
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409203750}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 271401734296360977}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -232}
+  m_SizeDelta: {x: 719.6, y: 61.5}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &409203752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409203750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 24
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: See game description below for hyperlinks!
+--- !u!222 &409203753
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409203750}
+  m_CullTransparentMesh: 0
 --- !u!4 &423799751 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4569953645766041762, guid: c0ba0c2b4d9e2cc468542f67a57a7bd7,
@@ -21769,27 +21846,35 @@ PrefabInstance:
 
 
 
-        Email: jeyasurya.v@gmail.com'
+        Email: jeyasurya.v@gmail.com
+
+
+        Band Camp:  https://livinthedream1.bandcamp.com/album/go-transilio'
       objectReference: {fileID: 0}
     - target: {fileID: 7356824311473141612, guid: e198fd86ae5561c48a9638293006779b,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 95
+      value: 163
       objectReference: {fileID: 0}
     - target: {fileID: 7356824311473141612, guid: e198fd86ae5561c48a9638293006779b,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 8
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7356824311473141612, guid: e198fd86ae5561c48a9638293006779b,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 7
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7356824311473141612, guid: e198fd86ae5561c48a9638293006779b,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 11
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 7356824311473141612, guid: e198fd86ae5561c48a9638293006779b,
+        type: 3}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: 109
       objectReference: {fileID: 0}
     - target: {fileID: 272166740904940721, guid: e198fd86ae5561c48a9638293006779b,
         type: 3}
@@ -21888,20 +21973,96 @@ PrefabInstance:
         feedback!  \n\nWe are considering adding more levels or expanding the game
         but need your honest input / to get a feel for the interest.  Let us know!\n\nAlso,
         feel free to let us know what your fastest completion time is!\n\nEmail: founder@DrakeAuteryGameStudios.com\nCommunity
-        Discord: https:/discord.gg/4DHmjCk"
+        Discord: https:/discord.gg/4DHmjCk\n\nSee game description for hyperlinks!"
       objectReference: {fileID: 0}
     - target: {fileID: 4620761597068398937, guid: e198fd86ae5561c48a9638293006779b,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 382
+      value: 420
       objectReference: {fileID: 0}
     - target: {fileID: 4620761597068398937, guid: e198fd86ae5561c48a9638293006779b,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 63
+      value: 68
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620761597068398937, guid: e198fd86ae5561c48a9638293006779b,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 71
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620761597068398937, guid: e198fd86ae5561c48a9638293006779b,
+        type: 3}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: 383
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620761597068398937, guid: e198fd86ae5561c48a9638293006779b,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3919329063867203261, guid: e198fd86ae5561c48a9638293006779b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3919329063867203261, guid: e198fd86ae5561c48a9638293006779b,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 479.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3919329063867203261, guid: e198fd86ae5561c48a9638293006779b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 4.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3919329063867203261, guid: e198fd86ae5561c48a9638293006779b,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 995.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5454474796267625779, guid: e198fd86ae5561c48a9638293006779b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000011399388
+      objectReference: {fileID: 0}
+    - target: {fileID: 3283694977885326171, guid: e198fd86ae5561c48a9638293006779b,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -11.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3283694977885326171, guid: e198fd86ae5561c48a9638293006779b,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 15.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256232748146958636, guid: e198fd86ae5561c48a9638293006779b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -21.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256232748146958636, guid: e198fd86ae5561c48a9638293006779b,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 450.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256232748146958636, guid: e198fd86ae5561c48a9638293006779b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 7.7125
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256232748146958636, guid: e198fd86ae5561c48a9638293006779b,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 948.33
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e198fd86ae5561c48a9638293006779b, type: 3}
+--- !u!224 &271401734296360977 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5454474796267625779, guid: e198fd86ae5561c48a9638293006779b,
+    type: 3}
+  m_PrefabInstance: {fileID: 271401734296360976}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &878964796076353069
 PrefabInstance:
   m_ObjectHideFlags: 0

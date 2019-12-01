@@ -2675,8 +2675,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.00085831}
-  m_SizeDelta: {x: 576.8, y: 255.8}
+  m_AnchoredPosition: {x: 0, y: 10.7}
+  m_SizeDelta: {x: 576.8, y: 277.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &760133827
 MonoBehaviour:
@@ -2701,9 +2701,17 @@ MonoBehaviour:
     us know if you want more / would be interested in an expansion of this game.
 
 
-    Email: founder@DrakeAuteryGameStudios.com
+    Team: Drake, Bricks, VJS, Livin'' The Dream
 
-    Community Discord:  https:/discord.gg/4DHmjCk'
+
+    My Twitter:  twitter.com/DrakesGames
+
+    Audio:  https://livinthedream1.bandcamp.com/album/go-transilio
+
+    Community Discord:  https:/discord.gg/4DHmjCk
+
+
+    See credits page on main menu for more details / links'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2731,8 +2739,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2772,12 +2780,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 760133827}
-    characterCount: 320
+    characterCount: 478
     spriteCount: 0
-    spaceCount: 53
-    wordCount: 53
+    spaceCount: 78
+    wordCount: 78
     linkCount: 0
-    lineCount: 8
+    lineCount: 12
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -5159,8 +5167,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 47}
-  m_SizeDelta: {x: -165.6, y: -165.6}
+  m_AnchoredPosition: {x: 0, y: 53.7}
+  m_SizeDelta: {x: -197.6, y: -130.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &915263092
 MonoBehaviour:
@@ -7253,8 +7261,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 187, y: -104}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -2, y: -130}
+  m_SizeDelta: {x: 160, y: 31.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1657410410
 MonoBehaviour:
