@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
     public GameObject gameOverPanel;
     public GameObject pauseMenuPanel;
     public GameObject LevelSelectPanel;
+
+    private EventSystem ES;
 
     public void OnGamePaused(){
         if (!pauseMenuPanel.activeSelf && !gameOverPanel.activeSelf)

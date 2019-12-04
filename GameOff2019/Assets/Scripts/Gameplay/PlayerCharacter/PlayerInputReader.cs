@@ -31,16 +31,27 @@ public class PlayerInputReader : MonoBehaviour
 
     void Update()
     {
-        ReadJumpInput();
-        ReadMovementInput();
-        ReadPauseInput();
-        ReadResetInput();
+        if (Time.timeScale != 0)
+        {
+            ReadJumpInput();
+
+            if (!jumpInput)
+            {
+                ReadMovementInput();
+            }
+            
+            ReadPauseInput();
+            ReadResetInput();
+        }
+
 
     }
 
     private void ReadMovementInput()
     {
+
         horizontalMoveInput = Input.GetAxisRaw("Horizontal");
+
     }
 
 
