@@ -5141,6 +5141,7 @@ GameObject:
   - component: {fileID: 915263091}
   - component: {fileID: 915263093}
   - component: {fileID: 915263092}
+  - component: {fileID: 915263094}
   m_Layer: 5
   m_Name: FinalLevelPanel
   m_TagString: Untagged
@@ -5206,6 +5207,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 915263090}
   m_CullTransparentMesh: 0
+--- !u!114 &915263094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915263090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53337c7103c889542870ff9004d968a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultButton: {fileID: 1657410408}
+  BackButton: {fileID: 0}
+  AlternativeDefault: {fileID: 0}
 --- !u!4 &915473932 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5124192612336338367, guid: 9c38ada5558d3ff4eabda4da6fb72e76,
@@ -7296,7 +7312,8 @@ MonoBehaviour:
       type: 3}
     m_PressedSprite: {fileID: 493018975388421518, guid: 694a58d0f37590940ab4c19d36070386,
       type: 3}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: -5564402966293546754, guid: 694a58d0f37590940ab4c19d36070386,
+      type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal

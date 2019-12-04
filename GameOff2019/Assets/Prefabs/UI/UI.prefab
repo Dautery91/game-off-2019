@@ -1329,7 +1329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 6090391924080420359}
+  m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!114 &6090391922949363601
@@ -1937,6 +1937,7 @@ MonoBehaviour:
   RespawnPlayerEvent: {fileID: 11400000, guid: cd3941c181893f746b071490a7bf5e5f, type: 2}
   GameResumeEvent: {fileID: 11400000, guid: c2b644d739660304787b09a4283f8625, type: 2}
   NextButton: {fileID: 6090391923721705818}
+  RetryButton: {fileID: 6090391924315368786}
   ResultText: {fileID: 6090391924692613880}
 --- !u!114 &5685835118979822207
 MonoBehaviour:
@@ -1950,9 +1951,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53337c7103c889542870ff9004d968a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultButton: {fileID: 6090391924315368786}
+  DefaultButton: {fileID: 6090391923721705818}
   BackButton: {fileID: 6090391924315368786}
-  AlternativeDefault: {fileID: 6090391923721705818}
+  AlternativeDefault: {fileID: 6090391924315368786}
 --- !u!1 &6090391924061409145
 GameObject:
   m_ObjectHideFlags: 0
