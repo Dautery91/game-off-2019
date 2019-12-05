@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
     public GameObject gameOverPanel;
     public GameObject pauseMenuPanel;
     public GameObject LevelSelectPanel;
+
+    private EventSystem ES;
 
     public void OnGamePaused(){
         if (!pauseMenuPanel.activeSelf && !gameOverPanel.activeSelf)
@@ -29,16 +33,16 @@ public class UIManager : MonoBehaviour
 
     public void OnLevelCleared(){
         //GameManager.instance.PauseGame();
-        gameOverPanel.SetActive(true);
         gameOverPanel.GetComponent<gameOverPanel>().Setup(true, "Level Cleared!");
+        gameOverPanel.SetActive(true);
 
     }
 
     public void OnLevelFailed(string stringReason){
 
-        gameOverPanel.SetActive(true);
         gameOverPanel.GetComponent<gameOverPanel>().Setup(false, stringReason);
-        
+        gameOverPanel.SetActive(true);
+
     }
 
 }

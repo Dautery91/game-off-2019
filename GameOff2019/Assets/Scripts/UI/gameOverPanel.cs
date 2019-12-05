@@ -9,6 +9,7 @@ public class gameOverPanel : MonoBehaviour
     [SerializeField] VoidGameEvent GameResumeEvent;
 
     public GameObject NextButton;
+    public GameObject RetryButton;
 
     public Text ResultText;
 
@@ -17,10 +18,12 @@ public class gameOverPanel : MonoBehaviour
         if(levelCleared){
             ResultText.text = reason;
             NextButton.SetActive(true);
+            RetryButton.SetActive(false);
         }
         else{
             ResultText.text = reason;
             NextButton.SetActive(false);
+            RetryButton.SetActive(true);
         }
     }
 
