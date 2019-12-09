@@ -61,7 +61,6 @@ public class GridController2D : MonoBehaviour
     private float horizontalMovementSpeed;
     private float verticalMovementSpeed;
 
-    private bool jumpInterrupted = false;
     private bool jumpingCorrection = false;
     private int originalJumpHeightTarget = 0;
     private int originalJumpStartingPosition = 0;
@@ -389,12 +388,7 @@ public class GridController2D : MonoBehaviour
 
         float rayDistance = skinWidth+tilelength/2;
 
-        //if (jumpInterrupted && hanging)
-        //{
-        //    StopAllCoroutines();
-        //    RecalculateJumpDistance();
-        //}
-
+        
         //up
         RaycastHit2D hit;
 
@@ -504,6 +498,8 @@ public class GridController2D : MonoBehaviour
         Vector3 positionToMove = tilemap.CellToLocal(newTile)+tilemap.tileAnchor;
         Vector3 originPosition = tilemap.CellToLocal(currentTile)+tilemap.tileAnchor;
 
+        Vector3 direction = (positionToMove-originPosition).normalized;
+
         if (originPosition.y != positionToMove.y && originPosition.x == positionToMove.x)
         {
             movementSpeedLocal = verticalMovementSpeed;
@@ -531,29 +527,49 @@ public class GridController2D : MonoBehaviour
         while (transform.position!=positionToMove)
         {
 
-            float ratio = Mathf.Abs((Mathf.Abs((transform.position-originPosition).magnitude)+ movementSpeedLocal * Time.deltaTime)/(positionToMove-originPosition).magnitude);
+            Vector3Int nextTile = currentTile + new Vector3Int((int)direction.x,(int)direction.y,(int)direction.z);
+            Vector3 NextTileToMovePos = tilemap.CellToLocal(nextTile)+tilemap.tileAnchor;
 
-            transform.position = Vector3.Lerp(originPosition,positionToMove,ratio);
 
-            // If we are moving upwards and only have one tile length left to move, start the approach peak animation
-            if (positionToMove.y - transform.position.y < tilelength / 2 && positionToMove.y - transform.position.y > 0 && hanging)
-            {
-                //animator.SetTrigger("ApproachJumpPeak");
-                animator.SetBool("HaveApproachedPeak", true);
-            }
-            else if (positionToMove.y < transform.position.y && Mathf.Abs(positionToMove.y - transform.position.y) < tilelength / 2)
-            {
-                animator.SetBool("HasLanded", true);
+            while(transform.position!=NextTileToMovePos){
+                float ratio = Mathf.Abs((Mathf.Abs((transform.position-originPosition).magnitude)+ movementSpeedLocal * Time.deltaTime)/(NextTileToMovePos-originPosition).magnitude);
+                transform.position = Vector3.Lerp(originPosition,NextTileToMovePos,ratio);
                 
-            }
-            else if (hanging && gridCollisionFlags.above)
-            {
-                animator.SetTrigger("HeadBonk");
+                GetCollisions();
+                // If we are moving upwards and only have one tile length left to move, start the approach peak animation
+                if (positionToMove.y - transform.position.y < tilelength / 2 && positionToMove.y - originPosition.y > 0 && hanging)
+                {
+                    //animator.SetTrigger("ApproachJumpPeak");
+                    animator.SetBool("HaveApproachedPeak", true);
+                }
+                else if (positionToMove.y<originPosition.y && (gridCollisionFlags.below||transform.position==NextTileToMovePos))
+                {
+                    Debug.Log(positionToMove.y+":"+originPosition.y+":"+gridCollisionFlags.below);
+                    animator.SetBool("HasLanded", true);
+                    
+                }
+                else if (hanging && gridCollisionFlags.above)
+                {
+                    animator.SetTrigger("HeadBonk");
+                }
+                
+                yield return null; 
             }
 
-            yield return null; 
+
+            GetCollisions();
+            
+            currentTile = nextTile;
+
+        
+            if(gridCollisionFlags.above||gridCollisionFlags.below){
+                
+                break;
+            }
+
+            
         }
-        currentTile = newTile;
+
         moving = false;
 
         if (hanging)
@@ -573,57 +589,7 @@ public class GridController2D : MonoBehaviour
 
     }
 
-    #region Unused Bug Fix Attempt
-
-    public void HandleJumpInterruption()
-    {
-        jumpInterrupted = true;
-    }
-
-
-    public void RecalculateJumpDistance()
-    {
-        jumpInterrupted = false;
-        int newJumpHeight;
-
-        Vector2 origin = transform.position;
-
-        origin = rayCastOrigins.up;
-
-        RaycastHit2D hit2D;
-
-        hit2D = Physics2D.Raycast(origin, Vector2.up, float.PositiveInfinity, collideableLayer);
-
-        //currentTile = tilemap.WorldToCell(transform.position);
-
-        //float currentYPosition = transform.position.y;
-        //float distance = GetDistanceToCollideAbleTile(Vector2.up) / tilelength;
-        //int potentialNewJumpPosition = Mathf.RoundToInt(distance + transform.position.y);
-
-        //int newJumpHeight = Mathf.Min(potentialNewJumpPosition, originalJumpHeightTarget);
-
-
-
-        if (originalJumpHeightTarget > hit2D.point.y && hit2D.transform.gameObject.GetComponent<GlobalOnOffSwitch>() != null)
-        {
-            newJumpHeight = Mathf.RoundToInt(hit2D.point.y);
-        }
-        else if (originalJumpHeightTarget < hit2D.point.y && hit2D.transform.gameObject.GetComponent<GlobalOnOffSwitch>() == null)
-        {
-            newJumpHeight = Mathf.RoundToInt(hit2D.point.y);
-        }
-        else
-        {
-            newJumpHeight = originalJumpHeightTarget;
-        }
-
-        Vector3Int newTile = new Vector3Int(currentTile.x, newJumpHeight, 0);
-        StartCoroutine(SmoothMove(newTile));
-
-        originalJumpHeightTarget = 0;
-    }
-
-    #endregion
+   
 
 
 
