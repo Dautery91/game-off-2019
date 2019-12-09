@@ -6,60 +6,22 @@ using UnityEngine.Tilemaps;
 using UnityEngine.Audio;
 
 
-public struct RayCastOrigins{
-    public Vector2 up,down;
-    public Vector2 left,right;
-    
-}
-public struct GridCollisionFlags{
-    public bool above,below,left,right;
 
-    public float lslopeAngle, rslopeAngle, dslopeAngle;
 
-    public Collider2D Cabove,Cbelow,Cleft,Cright;
 
-    public void Reset()
-    {
-        above = below = false;
-        left = right = false;
-
-        Cabove = Cbelow = Cleft = Cright = null;
-
-        dslopeAngle = lslopeAngle = rslopeAngle = 0;
-
-    }
-}
-
-[RequireComponent(typeof(BoxCollider2D))]
-public class GridController2D : MonoBehaviour
+public class GridController2D : GridController2DBase
 {
     #region Fields and Properties
 
     [SerializeField] PlayerInputReader playerInputReader;
 
-    Tilemap tilemap;
+    
 
     [SerializeField] IntData jumpCount;
 
-    BoxCollider2D boxCollider;
-
-    RayCastOrigins rayCastOrigins;
-
-    const float skinWidth = 0.015f;
-
-    public GridCollisionFlags gridCollisionFlags;
-
-    float tilelength;
-
-    Vector3Int currentTile;
-
-    bool moving = false;
     bool hanging = false;
 
-    public FloatData HorizontalMovementSpeedData;
-    public FloatData VerticalMovementSpeedData;
-    private float horizontalMovementSpeed;
-    private float verticalMovementSpeed;
+    
 
     private bool jumpingCorrection = false;
     private int originalJumpHeightTarget = 0;
@@ -68,16 +30,11 @@ public class GridController2D : MonoBehaviour
     public int horizontalTileMovementDuringHanging = 2;
     private float tilesMovedDuringHangtime = 0;
 
-    public float maxSlopeAngle = 80f;
-
-    public LayerMask collideableLayer;
+    
 
     Timer HangingTimer;
 
-    [HideInInspector]
-    public bool launched = false;
-
-    public bool trapped = false;
+    
 
     // Animation support fields
     [SerializeField] Animator animator;
@@ -87,38 +44,18 @@ public class GridController2D : MonoBehaviour
 
     #endregion
 
-    private void Awake()
-    {
-        Tilemap[] tilemaps = FindObjectsOfType<Tilemap>();
+    
 
-        foreach (Tilemap tm in tilemaps)
-        {
-            if (tm.tag == "Ground")
-            {
-                tilemap = tm;
-            }
-        }
-
-    }
-
-    void Start()
+    public override void Start()
     {
 
-        tilelength = tilemap.cellSize.x;
+       base.Start();
 
         JumpIndicator.SetActive(false);
 
         MoveJumpIndicator();
 
-        horizontalMovementSpeed = HorizontalMovementSpeedData.data;
-        verticalMovementSpeed = VerticalMovementSpeedData.data;
-
-        boxCollider = GetComponent<BoxCollider2D>();
-
-
-        //move into cell centre if not already there
-        snapToGrid();
-
+       
         HangingTimer = this.gameObject.AddComponent<Timer>();
 
         jumpCount.Data = 0;
@@ -169,12 +106,7 @@ public class GridController2D : MonoBehaviour
     }
 
 
-    private void snapToGrid()
-    {
-        currentTile = tilemap.WorldToCell(transform.position);
-        transform.position = tilemap.CellToWorld(currentTile) + tilemap.tileAnchor;
-    }
-
+    
     private void MoveJumpIndicator()
     {
         if (gridCollisionFlags.below && !jumpIndicatorInitialized)
@@ -199,17 +131,10 @@ public class GridController2D : MonoBehaviour
     /// </summary>
     /// <param name="cell"></param>
 
-    public void Trap(Vector3Int cell){
-        if(moving){
-            moving=false;
-            StopAllCoroutines();
-        }
-        if(launched){
-            launched = false;
-        }
-        currentTile = cell;
-        snapToGrid();
-        trapped = true;
+    public override void Trap(Vector3Int cell){
+        
+        base.Trap(cell);
+
         //set it back to idle animation
         CheckIfIdle();
     }
@@ -229,42 +154,7 @@ public class GridController2D : MonoBehaviour
         }
     }
 
-    IEnumerator launch(Vector2 direction){
-
-        while(moving){
-            yield return null;
-        }
-        if(direction==Vector2.up){
-            hanging = true;
-        }
-        else{
-            hanging = false;
-        }
-        int distanceIntiles = (int)(GetDistanceToCollideAbleTile(direction)/tilelength);
-
-        Vector3Int newTile = currentTile + new Vector3Int((int)direction.x*distanceIntiles,(int)direction.y*distanceIntiles,0);
-
-        StartCoroutine(SmoothMove(newTile));
-
-        while(moving){
-            yield return null;
-        }
-
-        launched = false;
-
-
-    }
-
-    public void Launch(Vector2 direction){
-
-        if(trapped){
-            return;
-        }
-
-       StartCoroutine(launch(direction));
-       launched = true;
-
-    }
+    
 
     private void JumpMovement()
     {
@@ -380,115 +270,41 @@ public class GridController2D : MonoBehaviour
 
     }
 
-    void GetCollisions()
-    {
+    public override IEnumerator launch(Vector2 direction){
         
-        gridCollisionFlags.Reset();
-        CalculateRayOrigins();
+        while(moving){
+            yield return null;
+        }
+        if(direction==Vector2.up){
+            hanging = true;
+        }
+        else{
+            hanging = false;
+        }
+        int distanceIntiles = (int)(GetDistanceToCollideAbleTile(direction)/tilelength);
 
-        float rayDistance = skinWidth+tilelength/2;
+        Vector3Int newTile = currentTile + new Vector3Int((int)direction.x*distanceIntiles,(int)direction.y*distanceIntiles,0);
 
-        
-        //up
-        RaycastHit2D hit;
+        StartCoroutine(SmoothMove(newTile));
 
-        hit  = Physics2D.Raycast(rayCastOrigins.up,Vector2.up,rayDistance,collideableLayer);
-
-        if(hit){
-
-            gridCollisionFlags.above = true;
-            gridCollisionFlags.Cabove = hit.collider;
-
+        while(moving){
+            yield return null;
         }
 
-
-        //down
-        hit  = Physics2D.Raycast(rayCastOrigins.down,-1*Vector2.up,rayDistance,collideableLayer);
-        //Debug.DrawRay(rayCastOrigins.down,-1*Vector2.up,Color.red);
-
-        if(hit){
-
-            gridCollisionFlags.below = true;
-            gridCollisionFlags.Cbelow = hit.collider;
-            gridCollisionFlags.dslopeAngle = Vector2.Angle(hit.normal,Vector2.up);
-
-        }
-
-        //left
-
-        hit  = Physics2D.Raycast(rayCastOrigins.left,-1*Vector2.right,rayDistance,collideableLayer);
-
-        if(hit){
-
-            gridCollisionFlags.left = true;
-            gridCollisionFlags.Cleft = hit.collider;
-            gridCollisionFlags.lslopeAngle = Vector2.Angle(hit.normal,Vector2.up);
-
-        }
-
-        //right
-        hit  = Physics2D.Raycast(rayCastOrigins.right,Vector2.right,rayDistance,collideableLayer);
-
-        if(hit){
-
-            gridCollisionFlags.right = true;
-            gridCollisionFlags.Cright = hit.collider;
-            gridCollisionFlags.rslopeAngle = Vector2.Angle(hit.normal,Vector2.up);
-
-        }
-
-
-        
+        launched = false;
 
     }
 
+    
 
-    void CalculateRayOrigins(){
-        Bounds bounds = boxCollider.bounds;
-        bounds.Expand(-1 * skinWidth);
 
-        rayCastOrigins.up = new Vector2(bounds.min.x+bounds.size.x/2,bounds.max.y);
-        rayCastOrigins.down = new Vector2(bounds.min.x+bounds.size.x/2,bounds.min.y);
-        rayCastOrigins.left = new Vector2(bounds.min.x,bounds.min.y+bounds.size.y/2);
-        rayCastOrigins.right = new Vector2(bounds.max.x,bounds.min.y+bounds.size.y/2);
+    
 
-    }
-
-    float GetDistanceToCollideAbleTile(Vector2 direction){
-
-        Vector2 origin = transform.position;
-
-        if(direction == Vector2.up){
-            origin = rayCastOrigins.up;
-        }
-        else if(direction == -1*Vector2.up){
-            origin = rayCastOrigins.down;
-        }
-        else if(direction == Vector2.right){
-            origin = rayCastOrigins.right;
-        }
-        else if(direction == -1*Vector2.right){
-            origin = rayCastOrigins.left;
-        }
-
-        float distance = 500;
-
-        RaycastHit2D hit2D;
-
-        hit2D = Physics2D.Raycast(origin,direction,float.PositiveInfinity,collideableLayer);
-
-        if (hit2D)
-        {
-            distance = hit2D.distance;
-        }
-
-        return distance;
-
-    }
+    
 
 
     // Need to rework the animation stuff / this is messy as is
-    IEnumerator SmoothMove(Vector3Int newTile)
+    protected override IEnumerator SmoothMove(Vector3Int newTile)
     {
 
         moving = true;
@@ -544,7 +360,6 @@ public class GridController2D : MonoBehaviour
                 }
                 else if (positionToMove.y<originPosition.y && (gridCollisionFlags.below||transform.position==NextTileToMovePos))
                 {
-                    Debug.Log(positionToMove.y+":"+originPosition.y+":"+gridCollisionFlags.below);
                     animator.SetBool("HasLanded", true);
                     
                 }
