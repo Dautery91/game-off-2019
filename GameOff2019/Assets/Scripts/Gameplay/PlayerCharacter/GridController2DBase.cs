@@ -281,6 +281,11 @@ public class GridController2DBase : MonoBehaviour
 
         Vector3 direction = (positionToMove-originPosition).normalized;
 
+        //ramp check
+        if(Mathf.Abs(direction.x)<1&&Mathf.Abs(direction.x)>0){
+            direction = new Vector3(Mathf.Sign(direction.x)*1,Mathf.Sign(direction.y)*1,0);
+        }
+
         if (originPosition.y != positionToMove.y && originPosition.x == positionToMove.x)
         {
             movementSpeedLocal = verticalMovementSpeed;
